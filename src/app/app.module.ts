@@ -7,6 +7,7 @@ import { TopHeaderComponent } from './website/top-header/top-header.component';
 import { FooterComponent } from './website/footer/footer.component';
 import { HomeComponent } from './website/home/home.component';
 import { CoverComponent } from './website/cover/cover.component';
+import { AlbumsComponent } from './website/albums/albums.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { CoverComponent } from './website/cover/cover.component';
     FooterComponent,
     HomeComponent,
     CoverComponent,
+    AlbumsComponent,
   ],
   imports: [
     BrowserModule,
