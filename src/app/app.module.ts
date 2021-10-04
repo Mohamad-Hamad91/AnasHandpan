@@ -3,16 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { TopHeaderComponent } from './shared/top-header/top-header.component';
-import { FooterComponent } from './shared/footer/footer.component';
-import { LoginComponent } from './shared/login/login.component';
+import { TopHeaderComponent } from './website/top-header/top-header.component';
+import { FooterComponent } from './website/footer/footer.component';
+import { HomeComponent } from './website/home/home.component';
+import { CoverComponent } from './website/cover/cover.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     TopHeaderComponent,
     FooterComponent,
-    LoginComponent
+    HomeComponent,
+    CoverComponent,
   ],
   imports: [
     BrowserModule,
