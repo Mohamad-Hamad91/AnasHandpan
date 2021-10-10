@@ -23,6 +23,7 @@ export class AdminLoginComponent implements OnInit {
       .subscribe(res => { 
         localStorage.setItem('role', '' + res.Data?.RoleId);
         localStorage.setItem('sID', res.Data?.SessionId);
+        localStorage.setItem('username', res.Data?.Username);
         this._router.navigate(['/']);
         
       }, er => { });

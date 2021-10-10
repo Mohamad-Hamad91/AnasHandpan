@@ -24,7 +24,7 @@
                 <!-- Menu Fixed Primary List -->
                 <ul>
                     <!-- Menu Fixed Item -->
-                    <li>
+                    <li *ngIf="isAdmin">
                         <a routerLink="/dashboard">
                             Admin Dashboard
                         </a>

@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./top-header.component.less']
 })
 export class TopHeaderComponent implements OnInit {
+  isAdmin: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.isAdmin = localStorage.getItem('role') === '1';
   }
 
 }
