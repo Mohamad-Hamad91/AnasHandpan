@@ -3,22 +3,32 @@ import { BaseResponse } from "./baseResponse";
 export class LoginRes extends BaseResponse {
     Data!: {
         SessionId: string;
-        RoleId: number;
-        Username: string;
+        Profile: {
+            Email: String;
+            Name: String
+            Phone: String;
+            IsGoogleUser: Number;
+            IsAppleUser: Number;
+        };
     };
 }
 
 export class RegisterRes extends BaseResponse { }
-export class VerifyRes extends BaseResponse { 
+export class VerifyRes extends BaseResponse {
     Data!: {
         SessionId: string;
-        RoleId: number;
-        Username: string;
+        Profile: {
+            Email: String;
+            Name: String
+            Phone: String;
+            IsGoogleUser: Number;
+            IsAppleUser: Number;
+        };
     };
 }
 
 export class LoginReq {
-    Username!: string;
+    Email!: string;
     Password!: string;
 }
 

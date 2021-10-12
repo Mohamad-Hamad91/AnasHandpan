@@ -24,9 +24,10 @@ export class VerifyComponent implements OnInit {
     this._authservice
       .verify(this.data)
       .subscribe(res => {
-        localStorage.setItem('role', '' + res.Data?.RoleId);
+        localStorage.setItem('role', 'USER');
         localStorage.setItem('sID', res.Data?.SessionId);
-        localStorage.setItem('username', res.Data?.Username);
+        localStorage.setItem('username', res.Data?.Profile?.Name?.toString());
+        localStorage.setItem('email', res.Data?.Profile?.Email?.toString());
         this._router.navigate(['/']);
       }, er => { });
   }

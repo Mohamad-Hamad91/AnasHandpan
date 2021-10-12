@@ -1,1 +1,31 @@
-<p>login works!</p>
+<p-toast></p-toast>
+<section class="contactSingle padding background-properties" id="content"
+    style="background-image:url(assets/img/subHeader/header.png);">
+    <div class="container">
+        <div class="row" style="min-height: 63vh;">
+            <div class="col-sm-4">
+                <div class="contactTop">
+                    <h2>Welcome To Anas handPan</h2>
+                    <h4>Please fill the form</h4>
+                    <p>To Login to your account </p>
+                    <h3>OR</h3>
+                    
+                </div>
+            </div><!-- end col-sm-4 -->
+            <div class="col-sm-7 col-sm-offset-1">
+                <div class="singleBlogForm">
+                    <h2>LOG-IN</h2>
+                    <form class="comment-form" (ngSubmit)="register()">
+                        <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
+                            [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
+                        <input id="Passowrd" name="Password" type="password" aria-required="true" required
+                            placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" value="Submit">
+                        </p>
+                    </form>
+                </div><!-- end contactForm -->
+            </div><!-- end col-sm-7 col-sm-offset-1 -->
+        </div>
+    </div><!-- end container -->
+</section>
