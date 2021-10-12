@@ -1,7 +1,21 @@
+//#region ng
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+//#endregion ng
 
+//#region primeng
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+//#endregion primeng
+
+//#region modules
 import { AppRoutingModule } from './app-routing.module';
+//#endregion modules
+
+//#region components
 import { AppComponent } from './app.component';
 import { TopHeaderComponent } from './website/top-header/top-header.component';
 import { FooterComponent } from './website/footer/footer.component';
@@ -15,9 +29,10 @@ import { AdminFooterComponent } from './admin/admin-footer/admin-footer.componen
 import { AdminNavbarComponent } from './admin/admin-navbar/admin-navbar.component';
 import { AdminSidebarComponent } from './admin/admin-sidebar/admin-sidebar.component';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
-import { FormsModule } from '@angular/forms';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-
+import { RegisterComponent } from './website/register/register.component';
+import { LoginComponent } from './website/login/login.component';
+import { VerifyComponent } from './website/verify/verify.component';
+//#endregion components
 
 @NgModule({
   declarations: [
@@ -34,14 +49,19 @@ import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common
     AdminNavbarComponent,
     AdminSidebarComponent,
     AdminLoginComponent,
+    RegisterComponent,
+    LoginComponent,
+    VerifyComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    BrowserAnimationsModule,
+    HttpClientModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

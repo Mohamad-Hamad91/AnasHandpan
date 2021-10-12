@@ -1,0 +1,36 @@
+<p-toast></p-toast>
+<section class="contactSingle padding background-properties" id="content"
+    style="background-image:url(assets/img/subHeader/header.png);">
+    <div class="container">
+        <div class="row" style="min-height: 63vh;">
+            <div class="col-sm-4">
+                <div class="contactTop">
+                    <h2>Welcome To Anas handPan</h2>
+                    <h4>Please fill the form</h4>
+                    <p>To create an account
+                    </p>
+                </div>
+            </div><!-- end col-sm-4 -->
+            <div class="col-sm-7 col-sm-offset-1">
+                <div class="singleBlogForm">
+                    <h2>Register</h2>
+                    <form class="comment-form" (ngSubmit)="register()">
+                        <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
+                            [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
+                        <input id="Name" name="Name" type="Name" aria-required="true" required placeholder="Name *"
+                            [(ngModel)]="data.Name" #Name="ngModel">
+                        <input id="Phone" name="Phone" type="tel" aria-required="true" required placeholder="Phone *"
+                            [(ngModel)]="data.Phone" #Phone="ngModel">
+                        <input id="Passowrd" name="Password" type="Password" aria-required="true" required
+                            placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
+                        <input id="ConfirmPassowrd" name="ConfirmPassowrd" type="ConfirmPassowrd" aria-required="true" required
+                            placeholder="ConfirmPassowrd *" [(ngModel)]="data.ConfirmPassowrd" #Password="ngModel">
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" value="Submit">
+                        </p>
+                    </form>
+                </div><!-- end contactForm -->
+            </div><!-- end col-sm-7 col-sm-offset-1 -->
+        </div>
+    </div><!-- end container -->
+</section>

@@ -29,6 +29,16 @@
                             Admin Dashboard
                         </a>
                     </li>
+                    <li *ngIf="!isLoggedin">
+                        <a routerLink="/login">
+                            Login
+                        </a>
+                    </li>
+                    <li *ngIf="!isLoggedin">
+                        <a routerLink="/register">
+                            Register
+                        </a>
+                    </li>
                 </ul>
                 <!-- Menu Fixed Close Button -->
                 <div class="x-filter">
