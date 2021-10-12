@@ -9,7 +9,13 @@ export class LoginRes extends BaseResponse {
 }
 
 export class RegisterRes extends BaseResponse { }
-export class VerifyRes extends BaseResponse { }
+export class VerifyRes extends BaseResponse { 
+    Data!: {
+        SessionId: string;
+        RoleId: number;
+        Username: string;
+    };
+}
 
 export class LoginReq {
     Username!: string;
@@ -25,6 +31,10 @@ export class RegisterReq {
 }
 
 export class VerifyReq {
-    Email!: string;
+    Email!: string | null;
     VerificationCode!: string;
+}
+
+export class VerifyResendReq {
+    Email!: string | null;
 }

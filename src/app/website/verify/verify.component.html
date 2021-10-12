@@ -1,1 +1,29 @@
-<p>verify works!</p>
+<p-toast></p-toast>
+<section class="contactSingle padding background-properties" id="content"
+    style="background-image:url(assets/img/subHeader/header.png);">
+    <div class="container">
+        <div class="row" style="min-height: 63vh;">
+            <div class="col-sm-4">
+                <div class="contactTop">
+                    <h2>Welcome To Anas handPan</h2>
+                    <h4>Please fill the form</h4>
+                    <p>To verify your account
+                    </p>
+                </div>
+            </div><!-- end col-sm-4 -->
+            <div class="col-sm-7 col-sm-offset-1">
+                <div class="singleBlogForm">
+                    <h2>Account Verification</h2>
+                    <form class="comment-form" (ngSubmit)="verify()">
+                        <input id="VerificationCode" name="VerificationCode" type="text" aria-required="true" required placeholder="Verification Code *"
+                            [(ngModel)]="data.VerificationCode" #VerificationCode="ngModel" minlength="4">
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" value="Submit">
+                        </p>
+                        <a (click)="resend()"> Resend verification Code</a>
+                    </form>
+                </div><!-- end contactForm -->
+            </div><!-- end col-sm-7 col-sm-offset-1 -->
+        </div>
+    </div><!-- end container -->
+</section>
