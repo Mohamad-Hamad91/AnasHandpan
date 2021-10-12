@@ -9,13 +9,18 @@
                     <h4>Please fill the form</h4>
                     <p>To Login to your account </p>
                     <h3>OR</h3>
-                    
+                    <button (click)="loginWithGoogle()" mat-raised-button class="btn bt-primary google-login-btn">
+                        Google
+                    </button>
+                    <button (click)="loginWithApple()" mat-raised-button class="btn bt-primary apple-login-btn">
+                        Apple
+                    </button>
                 </div>
             </div><!-- end col-sm-4 -->
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>LOG-IN</h2>
-                    <form class="comment-form" (ngSubmit)="register()">
+                    <form class="comment-form" (ngSubmit)="login()">
                         <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
                             [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
                         <input id="Passowrd" name="Password" type="password" aria-required="true" required

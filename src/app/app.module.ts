@@ -3,11 +3,11 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //#endregion ng
 
 //#region primeng
-import {ToastModule} from 'primeng/toast';
+import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 //#endregion primeng
 
@@ -34,6 +34,9 @@ import { LoginComponent } from './website/login/login.component';
 import { VerifyComponent } from './website/verify/verify.component';
 //#endregion components
 
+//#region Other
+
+//#endregion Other
 @NgModule({
   declarations: [
     AppComponent,
@@ -59,9 +62,9 @@ import { VerifyComponent } from './website/verify/verify.component';
     FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastModule
+    ToastModule,
   ],
-  providers: [MessageService],
+  providers: [MessageService,],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
