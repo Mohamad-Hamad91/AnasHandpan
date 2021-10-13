@@ -9,6 +9,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //#region primeng
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 //#endregion primeng
 
 //#region modules
@@ -32,6 +34,8 @@ import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { RegisterComponent } from './website/register/register.component';
 import { LoginComponent } from './website/login/login.component';
 import { VerifyComponent } from './website/verify/verify.component';
+import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
+import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 //#endregion components
 
 //#region Other
@@ -55,6 +59,8 @@ import { VerifyComponent } from './website/verify/verify.component';
     RegisterComponent,
     LoginComponent,
     VerifyComponent,
+    ForgetPassComponent,
+    ForgetPassCodeComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +69,8 @@ import { VerifyComponent } from './website/verify/verify.component';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule,
+    MessagesModule,
+    MessageModule
   ],
   providers: [MessageService,],
   bootstrap: [AppComponent]

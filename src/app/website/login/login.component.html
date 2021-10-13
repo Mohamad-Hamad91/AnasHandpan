@@ -8,7 +8,7 @@
                     <h2>Welcome To Anas handPan</h2>
                     <h4>Please fill the form</h4>
                     <p>To Login to your account </p>
-                    <h3>OR</h3>
+                    <h5>OR</h5><br>
                     <button (click)="loginWithGoogle()" mat-raised-button class="btn bt-primary google-login-btn">
                         Google
                     </button>
@@ -28,6 +28,9 @@
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
+                        <a routerLink="/forget-password">Forget password?</a>
+                        <br>
+                        <a  routerLink="/register">Don't have an account?</a>
                     </form>
                 </div><!-- end contactForm -->
             </div><!-- end col-sm-7 col-sm-offset-1 -->

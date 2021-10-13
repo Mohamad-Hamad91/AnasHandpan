@@ -14,6 +14,7 @@
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>Register</h2>
+                    <p-messages></p-messages>
                     <form class="comment-form" (ngSubmit)="register()">
                         <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
                             [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
@@ -25,6 +26,7 @@
                             placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
                         <input id="ConfirmPassowrd" name="ConfirmPassowrd" type="password" aria-required="true" required
                             placeholder="ConfirmPassowrd *" [(ngModel)]="data.ConfirmPassowrd" #Password="ngModel">
+                            <a routerLink="/login">Already have an account? sign in here</a>
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>

@@ -48,3 +48,22 @@ export class VerifyReq {
 export class VerifyResendReq {
     Email!: string | null;
 }
+
+export class ResendForgetPassCodeReq {
+    Email!: string | null;
+    ForgetPasswordRequestId!: string | null;
+}
+
+export class ForgetPassCodeRes extends BaseResponse{
+    Data!: {
+        ForgetPasswordRequestId: String;
+    };
+}
+
+export class ForgetPassResetReq {
+    Email!: string | null;
+    RequestForgetPasswordId!: string | null;
+    ForgetPasswordCode!: string;
+    NewPassword!: string;
+    ConfirmPassword!: string;
+}

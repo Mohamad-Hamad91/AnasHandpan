@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { LoginReq, LoginRes, RegisterReq, RegisterRes, VerifyReq, VerifyRes, VerifyResendReq } from '../model/login';
+import { ForgetPassCodeRes, ForgetPassResetReq, LoginReq, LoginRes, RegisterReq, RegisterRes, ResendForgetPassCodeReq, VerifyReq, VerifyRes, VerifyResendReq } from '../model/login';
 import { Observable } from 'rxjs';
 import { BaseResponse } from '../model/baseResponse';
 
@@ -28,6 +28,18 @@ export class AuthService {
 
   login(data : LoginReq): Observable<LoginRes> {
     return this._http.post<LoginRes>(this._thisURL + 'login', data);
+  }
+
+  requestForgetPassCode(data: VerifyResendReq) : Observable<ForgetPassCodeRes> {
+    return this._http.post<ForgetPassCodeRes>(this._thisURL + 'forgetPasswordFirstStep', data);
+  }
+
+  resendForgetPassCode(data: ResendForgetPassCodeReq) : Observable<BaseResponse> {
+    return this._http.post<BaseResponse>(this._thisURL + 'resendForgetPasswordCode', data);
+  }
+
+  resetPassForgetPass(data: ForgetPassResetReq) : Observable<LoginRes> {
+    return this._http.post<LoginRes>(this._thisURL + 'forgetPasswordSecondStep', data);
   }
 
 }

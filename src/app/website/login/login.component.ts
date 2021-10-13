@@ -15,8 +15,8 @@ export class LoginComponent implements OnInit {
   @ViewChild('Email') Email!: HTMLFormElement;
   @ViewChild('Password') Password!: HTMLFormElement;
 
-  constructor(private _router: Router, private _authService: AuthService) { 
-    
+  constructor(private _router: Router, private _authService: AuthService) {
+
   }
 
   ngOnInit(): void {
