@@ -338,7 +338,6 @@ jQuery('.breadcrumb.breadcrumb-video-content').each(function () {
     jQuery('.open-menu').on('click', function () {
 
       jQuery(this).toggleClass('active');
-
       jQuery('.menu-fixed-container').toggleClass('open');
 
     });

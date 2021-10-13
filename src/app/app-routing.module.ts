@@ -6,6 +6,7 @@ import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
 import { HomeComponent } from './website/home/home.component';
 import { LoginComponent } from './website/login/login.component';
+import { LogoutComponent } from './website/logout/logout.component';
 import { RegisterComponent } from './website/register/register.component';
 import { VerifyComponent } from './website/verify/verify.component';
 
@@ -18,6 +19,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'forget-password', component: ForgetPassComponent },
   { path: 'forget-password-code', component: ForgetPassCodeComponent },
+  { path: 'logout', component: LogoutComponent },
   //#endregion website section
 
   //#region Admin section

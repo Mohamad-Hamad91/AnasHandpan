@@ -36,6 +36,8 @@ import { LoginComponent } from './website/login/login.component';
 import { VerifyComponent } from './website/verify/verify.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
+import { LogoutComponent } from './website/logout/logout.component';
+import { SessionInterceptor } from './session.interceptor';
 //#endregion components
 
 //#region Other
@@ -61,6 +63,7 @@ import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-
     VerifyComponent,
     ForgetPassComponent,
     ForgetPassCodeComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,11 @@ import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-
     MessagesModule,
     MessageModule
   ],
-  providers: [MessageService,],
+  providers: [MessageService,{
+    provide: HTTP_INTERCEPTORS,
+    useClass: SessionInterceptor,
+    multi: true
+  },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

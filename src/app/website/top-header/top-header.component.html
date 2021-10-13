@@ -4,7 +4,7 @@
         <div class="header">
             <div class="rightTopHeader">
                 <!-- Open Menu Button -->
-                <a class="open-menu">
+                <a (click)='menuClicked()' #openMenu class="open-menu">
                     <!-- Buttons Bars -->
                     <span class="span-1"></span>
                     <span class="span-2"></span>
@@ -13,7 +13,7 @@
             </div><!-- end rightTopHeader -->
         </div><!-- end header -->
         <!-- Menu Fixed Container -->
-        <div class="menu-fixed-container">
+        <div #menu class="menu-fixed-container">
             <!-- Menu Fixed Centred Container -->
             <nav>
                 <!-- Menu Fixed Close Button -->
@@ -37,6 +37,11 @@
                     <li *ngIf="!isLoggedin">
                         <a routerLink="/register">
                             Register
+                        </a>
+                    </li>
+                    <li *ngIf="isLoggedin">
+                        <a routerLink="/logout">
+                            Logout
                         </a>
                     </li>
                 </ul>
