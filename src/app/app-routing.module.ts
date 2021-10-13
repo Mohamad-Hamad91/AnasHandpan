@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
+import { AdminsComponent } from './admin/admins/admins.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { UsersComponent } from './admin/users/users.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
 import { HomeComponent } from './website/home/home.component';
@@ -24,7 +26,10 @@ const routes: Routes = [
 
   //#region Admin section
   { path: 'admin', component: AdminLoginComponent },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: 'dashboard', component: DashboardComponent , children: [
+    { path: 'admins', component: AdminsComponent },
+    { path: 'users', component: UsersComponent },
+  ]},
   //#endregion Admin section
 ];
 

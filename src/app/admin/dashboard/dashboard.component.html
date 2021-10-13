@@ -1,4 +1,12 @@
-<admin-navbar></admin-navbar>
-<admin-sidebar></admin-sidebar>
-<p>dashboard works!</p>
-<admin-footer></admin-footer>
+<div class="p-grid">
+    <div class="p-mb-6 p-col-12">
+        <admin-navbar></admin-navbar>
+    </div>
+    <div class="p-mt-6 p-col-12 dashboard">
+        <router-outlet></router-outlet>
+    </div> 
+    <div class="p-mb-6 p-col-12">
+        <admin-footer></admin-footer>
+    </div>
+ </div>
+

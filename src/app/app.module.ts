@@ -11,6 +11,10 @@ import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
+import {MenubarModule} from 'primeng/menubar';
+import {SidebarModule} from 'primeng/sidebar';
+import {MenuModule} from 'primeng/menu';
+import {ButtonModule} from 'primeng/button';
 //#endregion primeng
 
 //#region modules
@@ -38,6 +42,8 @@ import { ForgetPassComponent } from './website/forget-pass/forget-pass.component
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { LogoutComponent } from './website/logout/logout.component';
 import { SessionInterceptor } from './session.interceptor';
+import { AdminsComponent } from './admin/admins/admins.component';
+import { UsersComponent } from './admin/users/users.component';
 //#endregion components
 
 //#region Other
@@ -64,6 +70,8 @@ import { SessionInterceptor } from './session.interceptor';
     ForgetPassComponent,
     ForgetPassCodeComponent,
     LogoutComponent,
+    AdminsComponent,
+    UsersComponent,
   ],
   imports: [
     BrowserModule,
@@ -73,7 +81,11 @@ import { SessionInterceptor } from './session.interceptor';
     HttpClientModule,
     ToastModule,
     MessagesModule,
-    MessageModule
+    MessageModule,
+    MenubarModule,
+    SidebarModule,
+    MenuModule,
+    ButtonModule
   ],
   providers: [MessageService,{
     provide: HTTP_INTERCEPTORS,
