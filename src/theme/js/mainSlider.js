@@ -543,11 +543,11 @@ jQuery(document).ready(function(){
 
   });
 
-  jQuery('.menu-fixed-container nav ul li .sub-menu').parent().find('> a').on('click', function(e){
+  // jQuery('.menu-fixed-container nav ul li .sub-menu').parent().find('> a').on('click', function(e){
 
-    e.preventDefault();
+  //   e.preventDefault();
 
-  });
+  // });
 /***********************************************************************************************/
 /* END MENU */
 /***********************************************************************************************/

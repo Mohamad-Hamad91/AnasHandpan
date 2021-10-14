@@ -8,13 +8,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 //#region primeng
 import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import {MessagesModule} from 'primeng/messages';
-import {MessageModule} from 'primeng/message';
-import {MenubarModule} from 'primeng/menubar';
-import {SidebarModule} from 'primeng/sidebar';
-import {MenuModule} from 'primeng/menu';
-import {ButtonModule} from 'primeng/button';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { MessagesModule } from 'primeng/messages';
+import { MessageModule } from 'primeng/message';
+import { MenubarModule } from 'primeng/menubar';
+import { SidebarModule } from 'primeng/sidebar';
+import { MenuModule } from 'primeng/menu';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ProgressBarModule } from 'primeng/progressbar';
+import { TableModule } from 'primeng/table';
+import { DropdownModule } from 'primeng/dropdown';
 //#endregion primeng
 
 //#region modules
@@ -85,9 +89,13 @@ import { UsersComponent } from './admin/users/users.component';
     MenubarModule,
     SidebarModule,
     MenuModule,
-    ButtonModule
+    ButtonModule,
+    ConfirmDialogModule,
+    ProgressBarModule,
+    TableModule,
+    DropdownModule
   ],
-  providers: [MessageService,{
+  providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,
     useClass: SessionInterceptor,
     multi: true

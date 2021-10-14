@@ -1,1 +1,90 @@
-<p>admins works!</p>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <p-table #dt dataKey="Id" [value]="admins" [columns]="cols" styleClass="p-datatable-gridlines"
+            [resizableColumns]="true" responsive="true" [scrollable]="true" scrollHeight="400px"
+            [reorderableColumns]="true" [loading]="waiting">
+            <ng-template pTemplate="colgroup">
+                <colgroup>
+                    <col *ngFor="let col of cols">
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="caption">
+                <!-- <div class="p-mb-4">
+                    <button type="button" pButton pRipple icon="pi pi-filter-slash" (click)="clearFilter()"
+                        class="p-ml-6 clearFilter" pTooltip="{{'Data_Table.clearFilter' | translate}}"
+                        *ngIf="filtersNo>0" tooltipPosition="bottom"></button>
+                </div> -->
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="{{col.field}}" pResizableColumn pReorderableColumn class="p-text-{{col.align}}"
+                        *ngFor="let col of cols">
+                        {{col.header}}
+                        <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                    </th>
+                    <th>Action </th>
+                </tr>
+                <tr>
+                    <th pResizableColumn *ngFor="let col of cols" class="autocomplete">
+                        <!-- <input pInputText type="text" [(ngModel)]="criteria[col.field]" [style]="{width:'90%'}"
+              (input)="filterChange($any($event.target).value, col.field)" class="filterInputCss"
+              *ngIf="col.field != 'documentTypeNewName'"/>
+
+              <p-dropdown [options]="docTypesFilter" [(ngModel)]="criteria[col.field]" optionValue="documentTypeName" appendTo="body"
+                placeholder="Document Type new" optionLabel="documentTypeName" [showClear]="true"
+                filterBy="documentTypeName" (onChange)="filterChange($event.value, col.field)" [style]="{width:'100%'}"
+                *ngIf="col.field == 'documentTypeNewName'">
+                <ng-template pTemplate="item" let-item>
+                  {{'Document_Type.'+item.documentTypeName | translate}}
+                </ng-template>
+                <ng-template pTemplate="selectedItem" let-item>
+                  {{'Document_Type.'+item.documentTypeName | translate}}
+                </ng-template>
+              </p-dropdown> -->
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr>
+                    <td pReorderableRowHandle *ngFor="let col of cols">
+                        {{ col.field != 'Role' ? row[col.field] : '' }}
+                        <div *ngIf="!row.isEditable && col.field == 'Role'">
+                            {{ row['RoleName'] }}
+                        </div>
+                        <div *ngIf="row.isEditable && col.field == 'Role'">
+                            <p-dropdown [options]="roles" [(ngModel)]="row.RoleId" optionValue="Id" appendTo="body"
+                                placeholder="Role" optionLabel="Title" [showClear]="true" [filter]="true"
+                                filterBy="Title" (onChange)="roleChangedHandler($event, row)" >
+                                <!-- <ng-template pTemplate="item" let-item>
+                                    {{'Document_Type.'+item.documentTypeName | translate}}
+                                </ng-template>
+                                <ng-template pTemplate="selectedItem" let-item>
+                                    {{'Document_Type.'+item.documentTypeName | translate}}
+                                </ng-template> -->
+                            </p-dropdown>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable"
+                            pTooltip="Update" tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-save" (click)="updateAdmin(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable"
+                            pTooltip="Save" tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-times" (click)="cancel(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable"
+                            pTooltip="Cancel" tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-trash" (click)="deleteAdmin(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable && row.Id"
+                            pTooltip="Delete" tooltipPosition="bottom"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

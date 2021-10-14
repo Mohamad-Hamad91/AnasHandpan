@@ -37,6 +37,7 @@ export class AdminNavbarComponent implements OnInit {
   } // end of init
 
   getSideBarItems() {
+    debugger;
     this.sideBarShow = true;
     this.sidebarItems = [
       {
