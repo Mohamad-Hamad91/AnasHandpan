@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-top-header',
@@ -9,9 +9,6 @@ export class TopHeaderComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedin: boolean = false;
 
-  @ViewChild('openMenu') openMenu!: HTMLAnchorElement;
-  @ViewChild('menu') menu!: HTMLDivElement;
-
   constructor() { }
 
   ngOnInit(): void {
@@ -20,10 +17,13 @@ export class TopHeaderComponent implements OnInit {
   }
 
   menuClicked() {
-    this.openMenu?.classList?.add('active');
-    this.menu?.classList?.add('open');
     document.getElementById('open-menu')?.classList?.add('active');
     document.getElementById('menu-fixed-container')?.classList?.add('open');
+  }
+
+  xClicked() {
+    document.getElementById('open-menu')?.classList?.remove('active');
+    document.getElementById('menu-fixed-container')?.classList?.remove('open');
   }
 
 }

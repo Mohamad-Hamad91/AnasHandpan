@@ -4,7 +4,7 @@
         <div class="header">
             <div class="rightTopHeader">
                 <!-- Open Menu Button -->
-                <a (click)='menuClicked()' #openMenu class="open-menu">
+                <a #openMenu (click)='menuClicked()' id="open-menu"  class="open-menu">
                     <!-- Buttons Bars -->
                     <span class="span-1"></span>
                     <span class="span-2"></span>
@@ -13,11 +13,11 @@
             </div><!-- end rightTopHeader -->
         </div><!-- end header -->
         <!-- Menu Fixed Container -->
-        <div #menu class="menu-fixed-container">
+        <div #menu class="menu-fixed-container" id="menu-fixed-container">
             <!-- Menu Fixed Centred Container -->
             <nav>
                 <!-- Menu Fixed Close Button -->
-                <div class="x-filter">
+                <div class="x-filter" (click)="xClicked()">
                     <span></span>
                     <span></span>
                 </div>
@@ -46,7 +46,7 @@
                     </li>
                 </ul>
                 <!-- Menu Fixed Close Button -->
-                <div class="x-filter">
+                <div class="x-filter" (click)="xClicked()">
                     <span></span>
                     <span></span>
                 </div>

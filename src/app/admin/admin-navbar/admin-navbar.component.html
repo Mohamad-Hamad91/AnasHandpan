@@ -31,7 +31,7 @@
 
         </p-menubar>
     </div>
-    <div>
+    <div *ngIf="sideBarShow">
         <p-sidebar [(visible)]="sideBarShow" class="sideBarWidth" [showCloseIcon]="false">
             <h2 style="font-weight: lighter" class="p-text-center">{{ username }}</h2>
             <p-menu #menu [model]="sidebarItems" [style]="{ border: 'none' }"></p-menu>

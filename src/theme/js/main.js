@@ -335,20 +335,20 @@ jQuery('.breadcrumb.breadcrumb-video-content').each(function () {
     /***********************************************************************************************/
     /* MENU */
     /***********************************************************************************************/
-    jQuery('.open-menu').on('click', function () {
+    // jQuery('.open-menu').on('click', function () {
 
-      jQuery(this).toggleClass('active');
-      jQuery('.menu-fixed-container').toggleClass('open');
+      // jQuery(this).toggleClass('active');
+      // jQuery('.menu-fixed-container').toggleClass('open');
 
-    });
+    // });
 
-    jQuery('.x-filter').on('click', function () {
+    // jQuery('.x-filter').on('click', function () {
 
-      jQuery('.open-menu').toggleClass('active');
+    //   jQuery('.open-menu').toggleClass('active');
 
-      jQuery('.menu-fixed-container').toggleClass('open');
+    //   jQuery('.menu-fixed-container').toggleClass('open');
 
-    });
+    // });
 
     jQuery('.menu-fixed-container > nav > ul > li > a').on('click', function () {
 
@@ -365,11 +365,11 @@ jQuery('.breadcrumb.breadcrumb-video-content').each(function () {
 
     });
 
-    // jQuery('.menu-fixed-container nav ul li .sub-menu').parent().find('> a').on('click', function (e) {
+    jQuery('.menu-fixed-container nav ul li .sub-menu').parent().find('> a').on('click', function (e) {
 
-    //   e.preventDefault();
+      e.preventDefault();
 
-    // });
+    });
     /***********************************************************************************************/
     /* END MENU */
     /***********************************************************************************************/

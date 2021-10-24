@@ -41,6 +41,19 @@ export class AdminNavbarComponent implements OnInit {
     this.sideBarShow = true;
     this.sidebarItems = [
       {
+        label: 'General',
+        items: [
+          {
+            label: 'Home',
+            icon: 'pi pi-home',
+            routerLink: ['/'],
+            command: () => {
+              this._router.navigate(['/']);
+            },
+          }
+        ]
+      },
+      {
         label: 'Manage Parties',
         items: [
           {
