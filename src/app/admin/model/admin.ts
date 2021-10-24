@@ -1,3 +1,4 @@
+import { BaseRequest } from "./baseRequest";
 import { BaseResponse } from "./baseResponse";
 
 export class Role {
@@ -8,14 +9,11 @@ export class Role {
 export class RoleRes extends BaseResponse {
     Data!: {
         List: Role[];
+        TotalCount: number;
     };
-    TotalCount!: number;
 }
 
-export class AdminsReq {
-    PageNumber!: number;
-    PageSize!: number;
-}
+export class AdminsReq extends BaseRequest { }
 
 export class Admin {
     Id!: string;
@@ -24,15 +22,15 @@ export class Admin {
     ConfirmPassword!: string;
     RoleId!: number;
     Role: Role | undefined;
-  isEditable: unknown;
-  RoleName: any;
+    isEditable: unknown;
+    RoleName: any;
 }
 
 export class AdminsRes extends BaseResponse {
     Data!: {
         List: Admin[];
+        TotalCount: number;
     };
-    TotalCount!: number;
 }
 
 export class AddAdminRes extends BaseResponse {

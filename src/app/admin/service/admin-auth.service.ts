@@ -15,4 +15,8 @@ export class AdminAuthService {
   login(data : LoginReq): Observable<LoginRes> {
     return this._http.post<LoginRes>(this._thisURL + 'login', data);
   }
+
+  logout() {
+    return this._http.post<any>(this._thisURL + 'logout', {});
+  }
 }

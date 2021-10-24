@@ -19,6 +19,9 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
+import {PaginatorModule} from 'primeng/paginator';
+import {ToolbarModule} from 'primeng/toolbar';
+import {DialogModule} from 'primeng/dialog';
 //#endregion primeng
 
 //#region modules
@@ -91,9 +94,12 @@ import { UsersComponent } from './admin/users/users.component';
     MenuModule,
     ButtonModule,
     ConfirmDialogModule,
+    DialogModule,
     ProgressBarModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    PaginatorModule,
+    ToolbarModule
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

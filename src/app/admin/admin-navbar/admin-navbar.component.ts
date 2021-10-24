@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { AdminAuthService } from '../service/admin-auth.service';
 
 @Component({
   selector: 'admin-navbar',
@@ -16,7 +17,7 @@ export class AdminNavbarComponent implements OnInit {
   username: string | null = localStorage.getItem('username');
   role: string | null = localStorage.getItem('role');
   @ViewChild('menu') menu: any;
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _authService: AdminAuthService) { }
 
   ngOnInit(): void {
     this.username = localStorage.getItem('username');
@@ -78,8 +79,12 @@ export class AdminNavbarComponent implements OnInit {
   }
 
   logout() {
-    localStorage.clear();
-    this._router.navigate(['/']);
+    this._authService
+      .logout()
+      .subscribe(res => {
+        localStorage.clear();
+        this._router.navigate(['/']);
+      }, er => { });
   }
 
 }

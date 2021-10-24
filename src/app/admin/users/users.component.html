@@ -1,1 +1,62 @@
-<p>users works!</p>
+<p-toast></p-toast>
+
+<p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+<div class="card">
+    <p-toolbar styleClass="p-mb-4">
+        <ng-template pTemplate="left">
+
+        </ng-template>
+
+        <ng-template pTemplate="right">
+            <p-paginator *ngIf="!waiting" [rows]="params.PageSize" [totalRecords]="totalRecords"
+                [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+        </ng-template>
+    </p-toolbar>
+</div>
+<div class="p-grid">
+    <div class="card p-col-12">
+        <p-table #dt dataKey="Id" [value]="users" [columns]="cols" styleClass="p-datatable-gridlines"
+            [resizableColumns]="true" responsive="true" [scrollable]="true" scrollHeight="400px"
+            [reorderableColumns]="true" [loading]="waiting" [style]="{ width: '100%' }">
+            <ng-template pTemplate="colgroup">
+                <colgroup>
+                    <col *ngFor="let col of cols">
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="caption">
+                <div class="p-mb-4">
+                    <button type="button" pButton pRipple icon="pi pi-filter-slash" (click)="clearFilter()"
+                        class="p-ml-6 clearFilter" pTooltip="clearFilter" *ngIf="filtersNo>0"
+                        tooltipPosition="bottom"></button>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="{{col.field}}" pResizableColumn pReorderableColumn class="p-text-{{col.align}}"
+                        *ngFor="let col of cols">
+                        {{col.header}}
+                        <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                    </th>
+                    <th>Action </th>
+                </tr>
+                <tr>
+                    <th pResizableColumn class="autocomplete" *ngFor="let col of cols">
+                        <input pInputText type="text" [(ngModel)]="criteria[col.field]" [style]="{width:'90%'}"
+                            (input)="filterChange($any($event.target).value, col.field)" class="filterInputCss" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr>
+                    <td pReorderableRowHandle *ngFor="let col of cols">
+                        {{ col.field != 'JoinDate' ? row[col.field] : row[col.field] | date }}
+                    </td>
+                    <td>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

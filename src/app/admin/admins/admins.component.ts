@@ -14,9 +14,16 @@ export class AdminsComponent implements OnInit {
   waiting: boolean = false;
   cols: TableColumn[] = new Array();
   roles: Role[] = new Array();
-  params: AdminsReq = {PageNumber: 1, PageSize: 25};
+  params: AdminsReq = { PageNumber: 1, PageSize: 10 };
+  totalRecords: number = 0;
   admins: Admin[] = new Array();
+  adminsTemp: Admin[] = new Array();
   originalVal: any;
+  criteria: any = {};
+  filtersNo: number = 0;
+  submitted: boolean;
+  dialog: boolean;
+  admin: Admin;
 
   constructor(private _adminsService: AdminsService, private confirmationService: ConfirmationService,
     private _messageService: MessageService) { }
@@ -43,15 +50,19 @@ export class AdminsComponent implements OnInit {
   }// end of init
 
   getData(): void {
+    this.waiting = true;
     this._adminsService
       .getAdmins(this.params)
       .subscribe(res => {
         this.admins = res.Data.List;
+        this.totalRecords = +res?.Data?.TotalCount;
+        debugger;
         this.admins.forEach(admin => {
           admin.Role = this.roles.find(role => role.Id === admin.RoleId);
           admin.RoleName = admin.Role.Title;
         });
         this.waiting = false;
+        this.adminsTemp = [...this.admins];
       }, er => { this.waiting = false; });
   }
 
@@ -60,14 +71,6 @@ export class AdminsComponent implements OnInit {
       .getRoles()
       .subscribe(res => {
         this.roles = res.Data?.List;
-        this.waiting = false;
-      }, er => { this.waiting = false; });
-  }
-
-  addAdmin(admin: Admin): void {
-    this._adminsService
-      .addAdmin(admin)
-      .subscribe(res => {
         this.waiting = false;
       }, er => { this.waiting = false; });
   }
@@ -114,6 +117,85 @@ export class AdminsComponent implements OnInit {
     row.RoleId = this.originalVal;
     row.RoleName = this.roles.filter(row => row.Id == this.originalVal)[0]?.Title;
     row.isEditable = false;
+  }
+
+  filterChange(query, colName) {
+    this.waiting = true;
+    debugger;
+    if (!query || !query?.toString()?.trim()) {
+      this.filtersNo--;
+      delete this.criteria[colName];
+      if (Object.keys(this.criteria).length < 1) {
+        this.admins = [...this.adminsTemp];
+        this.filtersNo = 0;
+      } else {
+        for (const key in this.criteria) {
+          if (Object.prototype.hasOwnProperty.call(this.criteria, key)) {
+            const element = this.criteria[key];
+            this.admins = this.adminsTemp.filter(value => value[key]?.toString().toLowerCase().includes(element.toString().toLowerCase()));
+          }
+        }
+      }
+    } else {
+      this.filtersNo++;
+      this.admins = [...this.adminsTemp];
+      for (const key in this.criteria) {
+        if (Object.prototype.hasOwnProperty.call(this.criteria, key)) {
+          const element = this.criteria[key];
+          this.admins = this.admins.filter(value => value[key]?.toString().toLowerCase().includes(element.toString().toLowerCase()));
+        }
+      } // end of for each criteria field
+    }
+    this.waiting = false;
+
+  }
+
+  clearFilter() {
+    this.criteria = {};
+    this.admins = [...this.adminsTemp];
+    this.filtersNo = 0;
+  }
+
+  paginate(event) {
+    //event.first = Index of the first record
+    //event.rows = Number of rows to display in new page
+    //event.page = Index of the new page
+    //event.pageCount = Total number of pages
+    this.params.PageSize = event.rows;
+    this.params.PageNumber = event.page + 1;
+    debugger;
+    this.getData();
+  }
+
+  openNew() {
+    this.admin = new Admin();
+    this.submitted = false;
+    this.dialog = true;
+  }
+
+  hideDialog() {
+    this.dialog = false;
+    this.submitted = false;
+  }
+
+  save() {
+    this.submitted = true;
+    this.waiting = true;
+    this._adminsService
+      .addAdmin(this.admin)
+      .subscribe(res => {
+        this.admin.Id = res.Data.Id;
+        this.admin.Role = this.roles.find(role => role.Id === this.admin.RoleId);
+        this.admin.RoleName = this.admin.Role.Title;
+        this.admins.push(this.admin);
+        this.adminsTemp.push(this.admin);
+        this.waiting = false;
+        this.dialog = false;
+        this.admin = new Admin();
+        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Admin Created', life: 3000 });
+      }, er => {
+        this.waiting = false;
+      });
   }
 
 
