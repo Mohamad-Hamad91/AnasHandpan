@@ -74,7 +74,20 @@ export class AdminNavbarComponent implements OnInit {
             },
           }
         ]
-      }
+      },
+      {
+        label: 'Website',
+        items: [
+          {
+            label: 'Social Links',
+            icon: 'pi pi-facebook',
+            routerLink: ['/dashboard/social-media'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          }
+        ]
+      },
     ];
   }
 

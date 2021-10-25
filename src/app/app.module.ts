@@ -51,6 +51,7 @@ import { LogoutComponent } from './website/logout/logout.component';
 import { SessionInterceptor } from './session.interceptor';
 import { AdminsComponent } from './admin/admins/admins.component';
 import { UsersComponent } from './admin/users/users.component';
+import { SocialMediaComponent } from './admin/social-media/social-media.component';
 //#endregion components
 
 //#region Other
@@ -79,6 +80,7 @@ import { UsersComponent } from './admin/users/users.component';
     LogoutComponent,
     AdminsComponent,
     UsersComponent,
+    SocialMediaComponent,
   ],
   imports: [
     BrowserModule,
