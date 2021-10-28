@@ -1,15 +1,15 @@
-<app-top-header></app-top-header>
+<app-top-header (Navigate)="navigateTo($event)"></app-top-header>
 <div class="home">
     <section class="app-cover">
         <app-cover></app-cover>
     </section>
-    <section class="app-albums">
+    <section #Albums class="app-albums">
         <app-albums></app-albums>
     </section>
-    <section>
+    <section #Events>
         <app-events></app-events>
     </section>
-    <section>
+    <section #News>
         <app-news></app-news>
     </section>
 </div>

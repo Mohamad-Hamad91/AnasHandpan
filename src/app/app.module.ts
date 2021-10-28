@@ -22,6 +22,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import {PaginatorModule} from 'primeng/paginator';
 import {ToolbarModule} from 'primeng/toolbar';
 import {DialogModule} from 'primeng/dialog';
+import {InputSwitchModule} from 'primeng/inputswitch';
 //#endregion primeng
 
 //#region modules
@@ -52,6 +53,7 @@ import { SessionInterceptor } from './session.interceptor';
 import { AdminsComponent } from './admin/admins/admins.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
+import { SectionsComponent } from './admin/sections/sections.component';
 //#endregion components
 
 //#region Other
@@ -81,6 +83,7 @@ import { SocialMediaComponent } from './admin/social-media/social-media.componen
     AdminsComponent,
     UsersComponent,
     SocialMediaComponent,
+    SectionsComponent,
   ],
   imports: [
     BrowserModule,
@@ -101,7 +104,8 @@ import { SocialMediaComponent } from './admin/social-media/social-media.componen
     TableModule,
     DropdownModule,
     PaginatorModule,
-    ToolbarModule
+    ToolbarModule,
+    InputSwitchModule
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

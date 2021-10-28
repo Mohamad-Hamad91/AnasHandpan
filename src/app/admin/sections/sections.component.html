@@ -1,0 +1,23 @@
+<div class="p-xs-10 p-xs-offset-1 p-md-8 p-md-offset-2">
+    <div class="card" style="padding: 20px;">
+        <p-toast></p-toast>
+        <h5 class=" p-text-center"> Manage About us Section </h5>
+        <form class="p-fluid" (ngSubmit)="submitHandler()">
+            <div class="p-fluid">
+                <div *ngFor="let key of sections" class="p-field p-grid">
+                    <label for="aboutTitle" class="p-col-12 p-mb-2 p-md-2 p-mb-md-0"> {{key}}
+                        <p-inputSwitch [name]="key" [(ngModel)]="data[key]"
+                        trueValue="1" falseValue="0"></p-inputSwitch>
+                    </label>
+                </div>
+                <div class="p-field p-grid">
+                    <div class="p-xs-col-5 ">
+                        <button type="submit" mat-raised-button class="btn bt-secondary">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

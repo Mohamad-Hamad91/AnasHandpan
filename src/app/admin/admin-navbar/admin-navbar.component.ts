@@ -79,6 +79,14 @@ export class AdminNavbarComponent implements OnInit {
         label: 'Website',
         items: [
           {
+            label: 'Sections',
+            icon: 'pi pi-table',
+            routerLink: ['/dashboard/sections'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
             label: 'Social Links',
             icon: 'pi pi-facebook',
             routerLink: ['/dashboard/social-media'],
