@@ -19,10 +19,11 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { TableModule } from 'primeng/table';
 import { DropdownModule } from 'primeng/dropdown';
-import {PaginatorModule} from 'primeng/paginator';
-import {ToolbarModule} from 'primeng/toolbar';
-import {DialogModule} from 'primeng/dialog';
-import {InputSwitchModule} from 'primeng/inputswitch';
+import { PaginatorModule } from 'primeng/paginator';
+import { ToolbarModule } from 'primeng/toolbar';
+import { DialogModule } from 'primeng/dialog';
+import { InputSwitchModule } from 'primeng/inputswitch';
+import {CalendarModule} from 'primeng/calendar';
 //#endregion primeng
 
 //#region modules
@@ -54,6 +55,11 @@ import { AdminsComponent } from './admin/admins/admins.component';
 import { UsersComponent } from './admin/users/users.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
 import { SectionsComponent } from './admin/sections/sections.component';
+import { CoverManagementComponent } from './admin/cover-management/cover-management.component';
+import { PersonalInfoManagementComponent } from './admin/personal-info-management/personal-info-management.component';
+import { MusicManagementComponent } from './admin/music-management/music-management.component';
+import { AlbumsManagementComponent } from './admin/albums-management/albums-management.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
 //#endregion components
 
 //#region Other
@@ -84,6 +90,11 @@ import { SectionsComponent } from './admin/sections/sections.component';
     UsersComponent,
     SocialMediaComponent,
     SectionsComponent,
+    CoverManagementComponent,
+    PersonalInfoManagementComponent,
+    MusicManagementComponent,
+    AlbumsManagementComponent,
+    CourseManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -105,7 +116,8 @@ import { SectionsComponent } from './admin/sections/sections.component';
     DropdownModule,
     PaginatorModule,
     ToolbarModule,
-    InputSwitchModule
+    InputSwitchModule,
+    CalendarModule
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

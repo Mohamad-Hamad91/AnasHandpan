@@ -87,13 +87,53 @@ export class AdminNavbarComponent implements OnInit {
             },
           },
           {
+            label: 'Cover Photo',
+            icon: 'pi pi-image',
+            routerLink: ['/dashboard/cover'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
+            label: 'Personal Info',
+            icon: 'pi pi-user',
+            routerLink: ['/dashboard/personal-info'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
             label: 'Social Links',
             icon: 'pi pi-facebook',
             routerLink: ['/dashboard/social-media'],
             command: () => {
               this.sideBarShow = false;
             },
-          }
+          },
+          {
+            label: 'Music',
+            icon: 'fa fa-music',
+            routerLink: ['/dashboard/music'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
+            label: 'Albums',
+            icon: 'fa fa-album-collection',
+            routerLink: ['/dashboard/albums'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
+            label: 'Courses',
+            icon: 'fa fa-pen',
+            routerLink: ['/dashboard/courses'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
         ]
       },
     ];

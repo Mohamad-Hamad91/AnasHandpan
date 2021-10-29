@@ -1,0 +1,12 @@
+<p-toast></p-toast>
+<div class="container">
+    <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+    <div class="col-8">
+        <div class="p-field">
+            <label for="cover">Cover Photo</label>
+            <input type="text" pInputText name="CoverPhoto" id="CoverPhoto" [(ngModel)]="data.CoverPhoto" required
+                autofocus />
+        </div>
+        <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
+    </div>
+</div>

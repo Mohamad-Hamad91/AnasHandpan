@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminsComponent } from './admin/admins/admins.component';
+import { AlbumsManagementComponent } from './admin/albums-management/albums-management.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { CoverManagementComponent } from './admin/cover-management/cover-management.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
+import { MusicManagementComponent } from './admin/music-management/music-management.component';
+import { PersonalInfoManagementComponent } from './admin/personal-info-management/personal-info-management.component';
 import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
 import { UsersComponent } from './admin/users/users.component';
@@ -32,8 +37,13 @@ const routes: Routes = [
     path: 'dashboard', component: DashboardComponent, children: [
       { path: 'admins', component: AdminsComponent },
       { path: 'users', component: UsersComponent },
+      { path: 'cover', component: CoverManagementComponent },
+      { path: 'personal-info', component: PersonalInfoManagementComponent },
       { path: 'sections', component: SectionsComponent },
-      { path: 'social-media', component: SocialMediaComponent }
+      { path: 'social-media', component: SocialMediaComponent },
+      { path: 'music', component: MusicManagementComponent },
+      { path: 'albums', component: AlbumsManagementComponent },
+      { path: 'courses', component: CourseManagementComponent }
     ]
   },
   //#endregion Admin section

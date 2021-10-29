@@ -1,0 +1,129 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+                        (click)="openNew()"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <p-paginator *ngIf="!waiting" [rows]="params.PageSize" [totalRecords]="totalRecords"
+                        [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+                </ng-template>
+            </p-toolbar>
+        </div>
+        <p-table #dt dataKey="Id" [value]="data" [columns]="cols" styleClass="p-datatable-gridlines"
+            [resizableColumns]="true" responsive="true" [scrollable]="true" scrollHeight="400px"
+            [reorderableColumns]="true" [loading]="waiting">
+            <ng-template pTemplate="colgroup">
+                <colgroup>
+                    <col *ngFor="let col of cols">
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="caption">
+                <div class="p-mb-4">
+                    <button type="button" pButton pRipple icon="pi pi-filter-slash" (click)="clearFilter()"
+                        class="p-ml-6 clearFilter" pTooltip="clearFilter" *ngIf="filtersNo>0"
+                        tooltipPosition="bottom"></button>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="{{col.field}}" pResizableColumn pReorderableColumn class="p-text-{{col.align}}"
+                        *ngFor="let col of cols">
+                        {{col.header}}
+                        <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                    </th>
+                    <th>Action </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of cols" pResizableColumn class="autocomplete">
+                        <input pInputText type="text" [(ngModel)]="criteria[col.field]" [style]="{width:'90%'}"
+                            (input)="filterChange($any($event.target).value, col.field)" class="filterInputCss" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr>
+                    <td pReorderableRowHandle *ngFor="let col of cols">
+                        <div *ngIf="!row.isEditable && col.field != 'ReleaseDate' && col.field != 'AppearInHomePage'">
+                            {{ row[col.field] }}
+                        </div>
+                        <div *ngIf="!row.isEditable && col.field == 'ReleaseDate'">
+                            {{ row[col.field] | date}}
+                        </div>
+                        <div *ngIf="!row.isEditable && col.field == 'AppearInHomePage' && row[col.field] == '1'">
+                            <span class="pi pi-check"></span>
+                        </div>
+                        <div *ngIf="!row.isEditable && col.field == 'AppearInHomePage' && row[col.field] != '1'">
+                            <span class="pi pi-times"></span>
+                        </div>
+                        <div *ngIf="row.isEditable && col.field != 'ReleaseDate' && col.field != 'AppearInHomePage'">
+                            <input type="text" pInputText id="col.field" [(ngModel)]="row[col.field]" />
+                        </div>
+                        <div *ngIf="row.isEditable && col.field == 'ReleaseDate'">
+                            <p-calendar [(ngModel)]="row[col.field]" dateFormat="dd.mm.yy" appendTo="body"></p-calendar>
+                        </div>
+                        <div *ngIf="row.isEditable && col.field == 'AppearInHomePage'">
+                            <p-inputSwitch [name]="key" [(ngModel)]="row[col.field]" trueValue="1" falseValue="0"></p-inputSwitch>
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable" pTooltip="Update"
+                            tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-save" (click)="update(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable" pTooltip="Save"
+                            tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-times" (click)="cancel(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable" pTooltip="Cancel"
+                            tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-trash" (click)="delete(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable && row.Id"
+                            pTooltip="Delete" tooltipPosition="bottom"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Add a new Record" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="item.Name" required autofocus />
+            <small class="p-error" *ngIf="submitted && !item.Name">Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Photo">Photo</label>
+            <input type="text" pInputText id="Photo" [(ngModel)]="item.Photo" required />
+            <small class="p-error" *ngIf="submitted && !item.Photo">Photo is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Genre">Genre</label>
+            <input type="text" pInputText id="Genre" [(ngModel)]="item.Genre" required />
+            <small class="p-error" *ngIf="submitted && !item.Genre">Genre is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="ReleaseDate">ReleaseDate</label>
+            <p-calendar [(ngModel)]="item.ReleaseDate" dateFormat="dd.mm.yy" appendTo="body"></p-calendar>
+        </div>
+        <div class="p-field">
+            <label for="AppearInHomePage">AppearInHomePage</label> &nbsp;&nbsp;
+            <p-inputSwitch [name]="key" [(ngModel)]="item.AppearInHomePage" trueValue="1" falseValue="0"></p-inputSwitch>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>
