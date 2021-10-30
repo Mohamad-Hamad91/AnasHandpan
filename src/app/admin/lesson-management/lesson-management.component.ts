@@ -1,36 +1,46 @@
+import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
-import { Course, CourseReq } from '../model/course';
+import { Lesson, LessonReq } from '../model/lesson';
 import { TableColumn } from '../model/tableColumn';
 import { CourseService } from '../service/course.service';
 
 @Component({
-  selector: 'app-course-management',
-  templateUrl: './course-management.component.html',
-  styleUrls: ['./course-management.component.less']
+  selector: 'app-lesson-management',
+  templateUrl: './lesson-management.component.html',
+  styleUrls: ['./lesson-management.component.less']
 })
-export class CourseManagementComponent implements OnInit {
-
+export class LessonManagementComponent implements OnInit {
+  CourseId: string;
   waiting: boolean = false;
   cols: TableColumn[] = new Array();
-  params: CourseReq = { PageNumber: 1, PageSize: 10 };
+  params: LessonReq = new LessonReq();
   totalRecords: number = 0;
-  data: Course[] = new Array();
-  dataTemp: Course[] = new Array();
+  data: Lesson[] = new Array();
+  dataTemp: Lesson[] = new Array();
   originalVal: any;
   criteria: any = {};
   filtersNo: number = 0;
   submitted: boolean;
   dialog: boolean;
-  item: Course;
+  item: Lesson;
 
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService, private _route: Router) { }
+    private _messageService: MessageService, private _route: Router, private _activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
 
+    this._activatedRouter.params.subscribe(parameters => {
+      this.CourseId = this._activatedRouter.snapshot.params.id;
+      this.params = { PageNumber: 1, PageSize: 25, CourseId: this.CourseId };
+    });
+
     this.cols = [
+      {
+        header: 'Order',
+        field: 'SortOrder',
+      },
       {
         header: 'Title',
         field: 'Title',
@@ -40,24 +50,12 @@ export class CourseManagementComponent implements OnInit {
         field: 'Photo',
       },
       {
-        header: 'Price',
-        field: 'Price',
-      },
-      {
-        header: 'Brief',
-        field: 'Brief',
+        header: 'Video',
+        field: 'Video',
       },
       {
         header: 'Description',
         field: 'Description',
-      },
-      {
-        header: 'Demo',
-        field: 'Demo',
-      },
-      {
-        header: 'AppearInHomePage',
-        field: 'AppearInHomePage',
       }
     ];
 
@@ -68,7 +66,7 @@ export class CourseManagementComponent implements OnInit {
   getData(): void {
     this.waiting = true;
     this._courseService
-      .get(this.params)
+      .getLesson(this.params)
       .subscribe(res => {
         this.data = res.Data.List;
         this.totalRecords = +res?.Data?.TotalCount;
@@ -77,12 +75,12 @@ export class CourseManagementComponent implements OnInit {
       }, er => { this.waiting = false; });
   }
 
-  update(record: Course): void {
+  update(record: Lesson): void {
     this.waiting = true;
     const temp: any = { ...record };
-    temp.Price = temp.Price.toString();
+    temp.SortOrder = temp.SortOrder.toString();
     this._courseService
-      .update(temp)
+      .updateLesson(temp)
       .subscribe(res => {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
@@ -90,13 +88,13 @@ export class CourseManagementComponent implements OnInit {
       }, er => { this.waiting = false; });
   }
 
-  delete(record: Course): void {
+  delete(record: Lesson): void {
     this.confirmationService.confirm({
       message: `Are you sure that you want to delete admin ${record.Title}?`,
       accept: () => {
         this.waiting = true;
         this._courseService
-          .delete(record.Id)
+          .deleteLesson(record.Id)
           .subscribe(res => {
             this.data = this.data.filter(row => row.Id !== record.Id);
             this.waiting = false;
@@ -107,14 +105,13 @@ export class CourseManagementComponent implements OnInit {
   }
 
 
-  editRow(row: Course) {
+  editRow(row: Lesson) {
     this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
     this.originalVal = { ...row };
     row.isEditable = true;
   }
 
-  cancel(row: Course) {
-    debugger;
+  cancel(row: Lesson) {
     row = { ...this.originalVal };
     this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
   }
@@ -168,7 +165,8 @@ export class CourseManagementComponent implements OnInit {
   }
 
   openNew() {
-    this.item = new Course();
+    this.item = new Lesson();
+    this.item.CourseId = this.CourseId;
     this.submitted = false;
     this.dialog = true;
   }
@@ -182,28 +180,20 @@ export class CourseManagementComponent implements OnInit {
     this.submitted = true;
     this.waiting = true;
     const temp: any = { ...this.item };
-    temp.Price = temp.Price.toString();
+    temp.SortOrder = temp.SortOrder.toString();
     this._courseService
-      .add(temp)
+      .addLesson(temp)
       .subscribe(res => {
         this.item.Id = res.Data.Id;
         this.data.push(this.item);
         this.dataTemp.push(this.item);
         this.waiting = false;
         this.dialog = false;
-        this.item = new Course();
+        this.item = new Lesson();
         this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
       }, er => {
         this.waiting = false;
       });
-  }
-
-  goToLessons(row: Course) {
-    this._route.navigate([`/dashboard/lessons/${row.Id}`]);
-  }
-
-  goToEnrollments(row: Course) {
-    this._route.navigate([`/dashboard/enrollment/${row.Id}`]);
   }
 
 }

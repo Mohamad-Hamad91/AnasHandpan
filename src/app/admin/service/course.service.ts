@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { AddCourseRes, Course, CourseReq, CourseRes } from '../model/course';
+import { EnrollmentReq, EnrollmentRes } from '../model/enrollment';
+import { AddLessonRes, Lesson, LessonReq, LessonRes } from '../model/lesson';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +30,30 @@ export class CourseService {
 
   delete(id: string) {
     return this._http.delete<any>(this._thisURL + 'courses/' + id);
+  }
+
+  //#region Lessons
+  getLesson(params: LessonReq): Observable<LessonRes> {
+    return this._http.get<LessonRes>(this._thisURL + 'lessons',
+      { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize).append('CourseId', params.CourseId) });
+  }
+
+  addLesson(data: Lesson): Observable<AddLessonRes> {
+    return this._http.post<AddLessonRes>(this._thisURL + 'lessons', data);
+  }
+
+  updateLesson(data: Lesson): Observable<AddLessonRes> {
+    return this._http.put<AddLessonRes>(this._thisURL + 'lessons/' + data.Id, data);
+  }
+
+  deleteLesson(id: string) {
+    return this._http.delete<any>(this._thisURL + 'lessons/' + id);
+  }
+  //#endregion Lessons
+
+  getEnrollments(params: EnrollmentReq): Observable<EnrollmentRes> {
+    return this._http.get<EnrollmentRes>(this._thisURL + 'enrollments',
+      { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize).append('CourseId', params.CourseId) });
   }
 
 }

@@ -60,6 +60,8 @@ import { PersonalInfoManagementComponent } from './admin/personal-info-managemen
 import { MusicManagementComponent } from './admin/music-management/music-management.component';
 import { AlbumsManagementComponent } from './admin/albums-management/albums-management.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { LessonManagementComponent } from './admin/lesson-management/lesson-management.component';
+import { EnrollmentManagementComponent } from './admin/enrollment-management/enrollment-management.component';
 //#endregion components
 
 //#region Other
@@ -94,7 +96,9 @@ import { CourseManagementComponent } from './admin/course-management/course-mana
     PersonalInfoManagementComponent,
     MusicManagementComponent,
     AlbumsManagementComponent,
-    CourseManagementComponent
+    CourseManagementComponent,
+    LessonManagementComponent,
+    EnrollmentManagementComponent
   ],
   imports: [
     BrowserModule,
