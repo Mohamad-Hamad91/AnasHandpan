@@ -7,8 +7,10 @@ import { CourseManagementComponent } from './admin/course-management/course-mana
 import { CoverManagementComponent } from './admin/cover-management/cover-management.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
 import { EnrollmentManagementComponent } from './admin/enrollment-management/enrollment-management.component';
+import { EventManagementComponent } from './admin/event-management/event-management.component';
 import { LessonManagementComponent } from './admin/lesson-management/lesson-management.component';
 import { MusicManagementComponent } from './admin/music-management/music-management.component';
+import { NewsManagementComponent } from './admin/news-management/news-management.component';
 import { PersonalInfoManagementComponent } from './admin/personal-info-management/personal-info-management.component';
 import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
@@ -45,6 +47,8 @@ const routes: Routes = [
       { path: 'social-media', component: SocialMediaComponent },
       { path: 'music', component: MusicManagementComponent },
       { path: 'albums', component: AlbumsManagementComponent },
+      { path: 'news', component: NewsManagementComponent },
+      { path: 'events', component: EventManagementComponent },
       { path: 'courses', component: CourseManagementComponent },
       { path: 'lessons/:id', component: LessonManagementComponent },
       { path: 'enrollment/:id', component: EnrollmentManagementComponent }

@@ -62,6 +62,8 @@ import { AlbumsManagementComponent } from './admin/albums-management/albums-mana
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
 import { LessonManagementComponent } from './admin/lesson-management/lesson-management.component';
 import { EnrollmentManagementComponent } from './admin/enrollment-management/enrollment-management.component';
+import { NewsManagementComponent } from './admin/news-management/news-management.component';
+import { EventManagementComponent } from './admin/event-management/event-management.component';
 //#endregion components
 
 //#region Other
@@ -98,7 +100,9 @@ import { EnrollmentManagementComponent } from './admin/enrollment-management/enr
     AlbumsManagementComponent,
     CourseManagementComponent,
     LessonManagementComponent,
-    EnrollmentManagementComponent
+    EnrollmentManagementComponent,
+    NewsManagementComponent,
+    EventManagementComponent
   ],
   imports: [
     BrowserModule,

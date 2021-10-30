@@ -127,6 +127,22 @@ export class AdminNavbarComponent implements OnInit {
             },
           },
           {
+            label: 'News',
+            icon: 'fa fa-newspaper-o',
+            routerLink: ['/dashboard/news'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
+            label: 'Events',
+            icon: 'fa fa-calendar',
+            routerLink: ['/dashboard/events'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
             label: 'Courses',
             icon: 'fa fa-pen',
             routerLink: ['/dashboard/courses'],
