@@ -1,16 +1,22 @@
-<app-top-header (Navigate)="navigateTo($event)"></app-top-header>
+<app-top-header *ngIf="data.SideMenu" [data]="data.SideMenu" (Navigate)="navigateTo($event)"></app-top-header>
 <div class="home">
-    <section class="app-cover">
-        <app-cover></app-cover>
+    <section class="app-cover" *ngIf="data.PersonalInfo">
+        <app-cover [data]="data"></app-cover>
     </section>
-    <section #Albums class="app-albums">
-        <app-albums></app-albums>
+    <section #Albums *ngIf="data.SideMenu?.Albums == '1'" class="app-albums">
+        <app-albums [data]="data.Albums"></app-albums>
     </section>
-    <section #Events>
-        <app-events></app-events>
+    <section #Courses *ngIf="data.SideMenu?.Courses == '1'">
+        <app-courses [data]="data.Courses"></app-courses>
     </section>
-    <section #News>
-        <app-news></app-news>
+    <section #Events *ngIf="data.SideMenu?.Events == '1'">
+        <app-events [data]="data.Events"></app-events>
+    </section>
+    <section #News *ngIf="data.SideMenu?.News == '1'">
+        <app-news [data]="data.News"></app-news>
+    </section>
+    <section #Products *ngIf="data.SideMenu?.Products == '1'">
+        <app-products [data]="data.Products"></app-products>
     </section>
 </div>
-<app-footer></app-footer>
+<app-footer [data]="data.SocialMediaLinks" *ngIf="data.SocialMediaLinks"></app-footer>

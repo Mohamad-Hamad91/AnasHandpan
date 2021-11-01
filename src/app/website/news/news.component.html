@@ -1,5 +1,6 @@
-<!-- =============== START HOME-BLOG SECTION ================ -->	
-<section class="padding hide-section background-properties blogHomeSection" style="background-image: url(assets/img/blog/homeBlog.png);">	
+<!-- =============== START HOME-BLOG SECTION ================ -->
+<section class="padding hide-section background-properties blogHomeSection"
+    style="background-image: url(assets/img/blog/homeBlog.png);">
     <div class="container">
         <div class="row">
             <div class="sectionTitle paddingBottom">
@@ -7,75 +8,30 @@
                 <h2><a href="blogGrid.html">News</a></h2>
                 <span class="heading-b3"></span>
             </div><!-- end sectionTtile -->
-            <div class="col-sm-4">
-                <div class="blogBox">	
+            <div class="col-sm-4" *ngFor="let news of data">
+                <div class="blogBox">
                     <div class="imgBox"><img src="assets/img/blog/homeGalPost.png" alt="box-img"></div>
                     <div class="blogBoxContent">
                         <div class="blogHeader">
-                            <h1><a href="blogSingle.html">Gallery Post</a></h1>
+                            <h1><a href="#">{{news.Title}}</a></h1>
                         </div>
                         <div class="admin-list clearfix">
                             <ul>
-                                <li><a href="#">08 dec 2016</a>&nbsp;/&nbsp;</li>
-                                <li><a href="#">By Admin</a></li>
+                                <li><a href="#">{{news.Date | date}}</a></li>
+                                <!-- <li><a href="#">By Admin</a></li> -->
                             </ul>
                         </div><!-- end admin-list -->
                         <div class="blogParagraph">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                        </div><!--end blogParagraph  -->
-                        <div class="rmButton">
-                            <a href="#">Read More</a>
-                        </div>			
-                    </div><!-- end blogBoxContent -->
-                </div><!-- end blogBox -->
-            </div><!-- end col-sm-4 -->	
-            <div class="col-sm-4">
-                <div class="blogBox">	
-                    <div class="videoBox"><iframe src="https://player.vimeo.com/video/145837856" width="600" height="410"  ></iframe></div>
-                    <div class="blogBoxContent">
-                        <div class="blogHeader">
-                            <h1><a href="blogSingle.html">Video Post</a></h1>
+                            <p>{{news.Brief}}</p>
                         </div>
-                        <div class="admin-list clearfix">
-                            <ul>
-                                <li><a href="#">28 apr 2016</a>&nbsp;/&nbsp;</li>
-                                <li><a href="#">By Admin</a></li>
-                            </ul>
-                        </div><!-- end admin-list -->
-                        <div class="blogParagraph">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                        </div><!--end blogParagraph  -->
+                        <!--end blogParagraph  -->
                         <div class="rmButton">
                             <a href="#">Read More</a>
-                        </div>			
-                    </div><!-- end blogBoxContent -->
-                </div><!-- end blogBox -->
-            </div><!-- end col-sm-4 -->	
-            <div class="col-sm-4">
-                <div class="blogBox">	
-                    <div class="soundcloudBox"><iframe height="203" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/73595878&amp;color=bb9b69&amp;show_artwork=false&amp;auto_play=false&amp;hide_related=false&amp;show_comments=false&amp;show_user=false&amp;show_reposts=false"></iframe></div>
-                    <div class="blogBoxContent">
-                        <div class="blogHeader">
-                            <h1><a href="blogSingle.html">Soundcloud Post</a></h1>
                         </div>
-                        <div class="admin-list clearfix">
-                            <ul>
-                                <li><a href="#">08 dec 2016</a>&nbsp;/&nbsp;</li>
-                                <li><a href="#">By Admin</a></li>
-                            </ul>
-                        </div><!-- end admin-list -->
-                        <div class="blogParagraph">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae.</p>
-                        </div><!--end blogParagraph  -->
-                        <div class="rmButton">
-                            <a href="#">Read More</a>
-                        </div>			
                     </div><!-- end blogBoxContent -->
                 </div><!-- end blogBox -->
-            </div><!-- end col-sm-4 -->	
-        </div><!-- end container -->	
-    </div><!-- end row -->	
+            </div><!-- end col-sm-4 -->
+        </div><!-- end container -->
+    </div><!-- end row -->
 </section>
-<!-- =============== END HOME-NLOG SECTION ================ -->	
-
-
+<!-- =============== END HOME-NLOG SECTION ================ -->

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Cover } from '../model/home';
 
 @Component({
   selector: 'app-cover',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cover.component.less']
 })
 export class CoverComponent implements OnInit {
+
+  @Input('data') data: Cover = new Cover();
 
   constructor() { }
 

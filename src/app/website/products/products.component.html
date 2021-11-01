@@ -1,0 +1,42 @@
+<!-- =============== START HOME-SHOP SECTION ================ -->
+<section class="shopHomePage shopHomePadding hide-section">
+    <div class="shopSection">
+        <div class="container-fluid">
+        <div class="shopContent">
+            <div class="sectionTitle paddingBottom">
+                <span class="heading-t3"></span>
+                <h2><a href="shop.html">Shop Online</a></h2>
+                <span class="heading-b3"></span>
+            </div><!-- end sectionTtile -->	
+            <div class="row">
+                <nav class="shop-products">
+                    <ul class="clearfix">
+                        <li class="col-sm-3" *ngFor="let product of data">
+                            <figure>
+                                <figcaption>
+                                    <img src="assets/img/shop/shopProduct.png" alt="">
+                                </figcaption>
+                                <div class="content">
+                                    <div class="shopHover">
+                                        <div class="price">
+                                            &pound; 
+                                            {{product.Price | currency}}
+                                        </div>
+                                        <div  class="proTitle">
+                                            <a href="shopSingle.html">{{product.Title}}</a>
+                                        </div>
+                                        <!-- <div class="product">Hoodie Aqura</div> -->
+                                        <a href="shopSingle.html" class="icon-button shopIcon"><i class="fa fa-shopping-cart"></i><span></span></a>
+                                         <a href="shopSingle.html" class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </li>
+                    </ul>
+                </nav><!-- end shop-products -->
+            </div><!-- end row -->
+        </div><!-- end shopContent -->
+    </div>
+    </div>
+</section>
+<!-- =============== END HOME-SHOP SECTION ================ -->

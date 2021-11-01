@@ -12,45 +12,18 @@
                     <table>
                         <tr class="tableEventsTitle">
                             <th class="date">Date</th>
+                            <th class="tickets">Title</th>
                             <th class="venue">Venue</th>
                             <th class="location">Location</th>
-                            <th class="tickets">Tickets</th>
+                            
                             <th></th>
                         </tr>
-                        <tr>
-                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="singleEvent.html">Mar 06</a></td>
-                            <td class="aqura-location"><a href="singleEvent.html">Central Park</a></td>
-                            <td class="aqura-city"><a href="singleEvent.html">Cluj Napoca, Bontida Romania</a></td>
-                            <td class="aqura-tickets"><a href="singleEvent.html">Tickets</a></td>
-                            <td class="aqura-vip"><a href="singleEvent.html">RSVP</a></td>
-                        </tr>
-                        <tr>
-                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="singleEvent.html">Mar 06</a></td>
-                            <td class="aqura-location"><a href="singleEvent.html">Central Park</a></td>
-                            <td class="aqura-city"><a href="singleEvent.html">Cluj Napoca, Bontida Romania</a></td>
-                            <td class="aqura-tickets"><a href="singleEvent.html">Tickets</a></td>
-                            <td class="aqura-vip"><a href="singleEvent.html">RSVP</a></td>
-                        </tr>
-                        <tr>
-                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="singleEvent.html">Mar 06</a></td>
-                            <td class="aqura-location"><a href="singleEvent.html">Central Park</a></td>
-                            <td class="aqura-city"><a href="singleEvent.html">Cluj Napoca, Bontida Romania</a></td>
-                            <td class="aqura-tickets"><a href="singleEvent.html">Tickets</a></td>
-                            <td class="aqura-vip"><a href="singleEvent.html">RSVP</a></td>
-                        </tr>
-                        <tr>
-                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="singleEvent.html">Mar 06</a></td>
-                            <td class="aqura-location"><a href="singleEvent.html">Central Park</a></td>
-                            <td class="aqura-city"><a href="singleEvent.html">Cluj Napoca, Bontida Romania</a></td>
-                            <td class="aqura-tickets"><a href="singleEvent.html">Tickets</a></td>
-                            <td class="aqura-vip"><a href="singleEvent.html">RSVP</a></td>
-                        </tr>
-                        <tr>
-                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="singleEvent.html">Mar 06</a></td>
-                            <td class="aqura-location"><a href="singleEvent.html">Central Park</a></td>
-                            <td class="aqura-city"><a href="singleEvent.html">Cluj Napoca, Bontida Romania</a></td>
-                            <td class="aqura-tickets"><a href="singleEvent.html">Tickets</a></td>
-                            <td class="aqura-vip"><a href="singleEvent.html">RSVP</a></td>
+                        <tr *ngFor="let e of data">
+                            <td class="aqura-date"><a href="#"><i class="fa fa-plus"></i></a><a href="#">{{e.Date | date}}</a></td>
+                            <td class="aqura-location"><a href="#">{{e.Title}}</a></td>
+                            <td class="aqura-city"><a href="#">{{e.Venue}}</a></td>
+                            <td class="aqura-tickets"><a href="#">{{e.Location}}</a></td>
+                            <td class="aqura-vip"><a href="#">RSVP</a></td>
                         </tr>
                     </table>
                 </div><!-- end col-sm-12 -->

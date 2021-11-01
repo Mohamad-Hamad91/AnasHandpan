@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { News } from '../model/news';
 
 @Component({
   selector: 'app-news',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./news.component.less']
 })
 export class NewsComponent implements OnInit {
+
+  @Input('data') data: News[] = new Array();
 
   constructor() { }
 

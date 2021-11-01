@@ -64,6 +64,9 @@ import { LessonManagementComponent } from './admin/lesson-management/lesson-mana
 import { EnrollmentManagementComponent } from './admin/enrollment-management/enrollment-management.component';
 import { NewsManagementComponent } from './admin/news-management/news-management.component';
 import { EventManagementComponent } from './admin/event-management/event-management.component';
+import { ProductManagementComponent } from './admin/product-management/product-management.component';
+import { ProductsComponent } from './website/products/products.component';
+import { CoursesComponent } from './website/courses/courses.component';
 //#endregion components
 
 //#region Other
@@ -102,7 +105,10 @@ import { EventManagementComponent } from './admin/event-management/event-managem
     LessonManagementComponent,
     EnrollmentManagementComponent,
     NewsManagementComponent,
-    EventManagementComponent
+    EventManagementComponent,
+    ProductManagementComponent,
+    ProductsComponent,
+    CoursesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Home } from '../model/home';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-home',
@@ -15,9 +17,12 @@ export class HomeComponent implements OnInit {
   @ViewChild('Events', { static: false }) Events;
   @ViewChild('News', { static: false }) News;
 
-  constructor() { }
+  data: Home = new Home();
+
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
+    this._dataService.get().subscribe(res => this.data = res.Data);
   }
 
   navigateTo(element: string) {

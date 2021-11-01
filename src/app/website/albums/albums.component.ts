@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Album } from '../model/album';
 
 @Component({
   selector: 'app-albums',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./albums.component.less']
 })
 export class AlbumsComponent implements OnInit {
+
+  @Input('data') data: Album[] = new Array();
 
   constructor() { }
 

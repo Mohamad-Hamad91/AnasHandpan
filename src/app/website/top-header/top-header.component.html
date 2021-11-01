@@ -30,8 +30,8 @@
                         </a>
                     </li>
                     <li *ngFor="let section of sections">
-                        <a (click)="navigateTo(section.name)">
-                            {{section.name}}
+                        <a (click)="navigateTo(section)">
+                            {{section}}
                         </a>
                     </li>
                     <li *ngIf="!isLoggedin">

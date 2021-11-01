@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { SocialLinks } from '../model/socialLinks';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
+  @Input('data') data: SocialLinks[] = new Array();
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  scrollToTop() {
+    window.scroll(0,0);
   }
 
 }

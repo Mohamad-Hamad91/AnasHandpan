@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Sections } from '../model/sections';
 
 @Component({
   selector: 'app-top-header',
@@ -8,24 +9,23 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class TopHeaderComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedin: boolean = false;
-  sections: { name: string; view: number }[] = new Array();
+  sections: string[] = new Array();
 
   @Output() Navigate = new EventEmitter();
+
+  @Input('data') data: Sections = new Sections();
 
   constructor() { }
 
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem('role') === '1';
     this.isLoggedin = !!localStorage.getItem('role');
-    this.sections = [
-      // { name: 'Courses', view: 1 },
-      // { name: 'MyCourses', view: 1 },
-      // { name: 'Products', view: 1 },
-      // { name: 'MyOrders', view: 1 },
-      { name: 'Albums', view: 1 },
-      { name: 'Events', view: 1 },
-      { name: 'News', view: 1 },
-    ];
+    debugger;
+    for (const key in this.data) {
+      if (this.data[key] === '1') {
+        this.sections.push(key);
+      }
+    }
   }
 
   menuClicked() {
