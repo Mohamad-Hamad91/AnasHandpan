@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CoverRes } from '../model/cover';
 import { PersonalInfoRes } from '../model/personalInfo';
+import { UploadRes } from '../model/upload';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,10 @@ export class DataService {
 
   updatePersonal(data: { PersonalInfo: string }): Observable<PersonalInfoRes> {
     return this._http.put<PersonalInfoRes>(this._thisURL + 'personalInfo', data);
+  }
+
+  upload(data: FormData): Observable<UploadRes>{
+    return this._http.post<UploadRes>(this._thisURL + 'uploadPublicFile', data);
   }
 
 }

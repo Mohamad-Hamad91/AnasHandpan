@@ -23,7 +23,8 @@ import { PaginatorModule } from 'primeng/paginator';
 import { ToolbarModule } from 'primeng/toolbar';
 import { DialogModule } from 'primeng/dialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
-import {CalendarModule} from 'primeng/calendar';
+import { CalendarModule } from 'primeng/calendar';
+import { FileUploadModule } from 'primeng/fileupload';
 //#endregion primeng
 
 //#region modules
@@ -131,7 +132,9 @@ import { CoursesComponent } from './website/courses/courses.component';
     PaginatorModule,
     ToolbarModule,
     InputSwitchModule,
-    CalendarModule
+    CalendarModule,
+    FileUploadModule
+
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -11,6 +12,7 @@ export class CoverManagementComponent implements OnInit {
 
   data: { CoverPhoto: string };
   waiting: boolean;
+  baseURL: string = environment.baseURL;
 
   constructor(private _dataService: DataService, private _messageService: MessageService) { }
 
@@ -29,11 +31,25 @@ export class CoverManagementComponent implements OnInit {
   }
 
   update() {
+    this.waiting = true;
     this._dataService
       .update(this.data)
       .subscribe(res => {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
+      }, er => this.waiting = false);
+  }
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.data.CoverPhoto = res.Data.Url;
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
       }, er => this.waiting = false);
   }
 
