@@ -53,11 +53,14 @@
             <ng-template pTemplate="body" let-row>
                 <tr>
                     <td pReorderableRowHandle *ngFor="let col of cols">
-                        <div *ngIf="!row.isEditable && col.field != 'Date'">
+                        <div *ngIf="!row.isEditable && col.field != 'Date' && col.field != 'Photo'">
                             {{ row[col.field] }}
                         </div>
                         <div *ngIf="col.field == 'Date'">
                             {{ row[col.field] | date}}
+                        </div>
+                        <div *ngIf="col.field == 'Photo'">
+                            <img [src]="baseURL + row.Photo" alt="Course photo" width="50">
                         </div>
                         <div *ngIf="row.isEditable && col.field != 'Date'">
                             <input type="text" pInputText id="col.field" [(ngModel)]="row[col.field]" />
@@ -90,8 +93,9 @@
     </div>
 </div>
 
-<p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Add a new Record" [modal]="true" styleClass="p-fluid">
+<p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Manage Record" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
         <div class="p-field">
             <label for="Title">Title</label>
             <input type="text" pInputText id="Title" [(ngModel)]="item.Title" required autofocus />
@@ -99,8 +103,10 @@
         </div>
         <div class="p-field">
             <label for="Photo">Photo</label>
-            <input type="text" pInputText id="Photo" [(ngModel)]="item.Photo" required autofocus />
-            <small class="p-error" *ngIf="submitted && !item.Photo">Photo is required.</small>
+            <img [src]="baseURL + item.Photo" width="50" alt="">
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="image/*"
+                maxFileSize="15000000">
+            </p-fileUpload>
         </div>
         <div class="p-field">
             <label for="Brief">Brief</label>
@@ -116,6 +122,52 @@
 
     <ng-template pTemplate="footer">
         <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="photosDialog" [style]="{width: '450px'}" header="Manage Photos" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="p-field">
+            <label for="Photo">Add Photo</label>
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUploadPhoto($event)" accept="image/*"
+                maxFileSize="15000000">
+            </p-fileUpload>
+        </div>
+        <ul>
+            <li *ngFor="let photo of item.Photos; let i = index">
+                <img [src]="baseURL + photo" alt="photo" width="50">
+                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-text" (click)="deletePhoto(i)"></button>
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hidePhotosDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>
+
+
+<p-dialog [(visible)]="videosDialog" [style]="{width: '450px'}" header="Manage Videos" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="p-field">
+            <label for="Photo">Add Video</label>
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUploadVideo($event)" accept="video/*"
+                maxFileSize="150000000">
+            </p-fileUpload>
+        </div>
+        <ul>
+            <li *ngFor="let video of item.Videos; let i = index">
+                <video [src]="baseURL + video"  width="150"></video>
+                <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-text" (click)="deleteVideo(i)"></button>
+            </li>
+        </ul>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideVideosDialog()"></button>
         <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
     </ng-template>
 </p-dialog>

@@ -18,6 +18,10 @@ export class NewsService {
       { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize) });
   }
 
+  getOne(id: string): Observable<AddNewsRes> {
+    return this._http.get<AddNewsRes>(this._thisURL + 'news/' + id);
+  }
+
   add(data: News): Observable<AddNewsRes> {
     return this._http.post<AddNewsRes>(this._thisURL + 'news', data);
   }
