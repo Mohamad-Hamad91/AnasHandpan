@@ -10,7 +10,7 @@
             </div><!-- end sectionTtile -->
             <div class="col-sm-4" *ngFor="let news of data">
                 <div class="blogBox">
-                    <div class="imgBox"><img src="assets/img/blog/homeGalPost.png" alt="box-img"></div>
+                    <div class="imgBox"><img  [src]="baseURL + news.Photo" alt="box-img"></div>
                     <div class="blogBoxContent">
                         <div class="blogHeader">
                             <h1><a href="#">{{news.Title}}</a></h1>

@@ -20,7 +20,7 @@ export class TopHeaderComponent implements OnInit {
   ngOnInit(): void {
     this.isAdmin = localStorage.getItem('role') === '1';
     this.isLoggedin = !!localStorage.getItem('role');
-    debugger;
+    // debugger;
     for (const key in this.data) {
       if (this.data[key] === '1') {
         this.sections.push(key);

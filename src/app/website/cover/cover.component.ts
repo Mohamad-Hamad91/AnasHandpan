@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Cover } from '../model/home';
 
 @Component({
@@ -9,6 +10,7 @@ import { Cover } from '../model/home';
 export class CoverComponent implements OnInit {
 
   @Input('data') data: Cover = new Cover();
+  baseURL = environment.baseURL;
 
   constructor() { }
 

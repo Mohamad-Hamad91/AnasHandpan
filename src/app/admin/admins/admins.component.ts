@@ -56,7 +56,7 @@ export class AdminsComponent implements OnInit {
       .subscribe(res => {
         this.admins = res.Data.List;
         this.totalRecords = +res?.Data?.TotalCount;
-        debugger;
+        // debugger;
         this.admins.forEach(admin => {
           admin.Role = this.roles.find(role => role.Id === admin.RoleId);
           admin.RoleName = admin.Role.Title;
@@ -121,7 +121,7 @@ export class AdminsComponent implements OnInit {
 
   filterChange(query, colName) {
     this.waiting = true;
-    debugger;
+    // debugger;
     if (!query || !query?.toString()?.trim()) {
       this.filtersNo--;
       delete this.criteria[colName];
@@ -163,7 +163,7 @@ export class AdminsComponent implements OnInit {
     //event.pageCount = Total number of pages
     this.params.PageSize = event.rows;
     this.params.PageNumber = event.page + 1;
-    debugger;
+    // debugger;
     this.getData();
   }
 

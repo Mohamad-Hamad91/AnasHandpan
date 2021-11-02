@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { News } from '../model/news';
 
 @Component({
@@ -9,6 +10,7 @@ import { News } from '../model/news';
 export class NewsComponent implements OnInit {
 
   @Input('data') data: News[] = new Array();
+  baseURL: string = environment.baseURL;
 
   constructor() { }
 

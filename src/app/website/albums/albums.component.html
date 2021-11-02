@@ -5,7 +5,7 @@
             <div class="col-sm-12">
                 <div class="sectionTitle paddingBottom">
                     <span class="heading-t3"></span>
-                    <h2><a href="albumsFullBackground.html">Albums</a></h2>
+                    <h2><a href="#">Albums</a></h2>
                     <span class="heading-b3"></span>
                 </div><!-- end sectionTtile -->
             </div><!-- end col-sm-12 -->
@@ -15,8 +15,8 @@
                 <li class="col-md-3 col-sm-3 col-xs-12" *ngFor="let album of data">
                     <div class="album-icon">
                         <span class="thumbs-album">
-                            <a href="albumsSingle1.html"><img width="270" height="270"
-                                    src="assets/img/albums/albumCover.png"
+                            <a href="#"><img width="270" height="270"
+                                    [src]="baseURL + album.Photo"
                                     class="attachment-album-thumbnail wp-post-image" alt="album-cover-1"></a>
                         </span>
                         <span class="disk"></span>

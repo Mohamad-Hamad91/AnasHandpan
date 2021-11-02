@@ -30,7 +30,7 @@ export class SectionsComponent implements OnInit {
   }
 
   submitHandler() {
-    debugger;
+    // debugger;
     this.waiting = true;
     this.dataService.update(this.data)
     .subscribe(res=> {

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Course } from '../model/course';
 
 @Component({
@@ -9,7 +10,8 @@ import { Course } from '../model/course';
 export class CoursesComponent implements OnInit {
 
   @Input('data') data: Course[];
-  
+  baseURL = environment.baseURL;
+
   constructor() { }
 
   ngOnInit(): void {

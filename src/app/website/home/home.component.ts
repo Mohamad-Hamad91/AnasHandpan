@@ -26,7 +26,7 @@ export class HomeComponent implements OnInit {
   }
 
   navigateTo(element: string) {
-    debugger;
+    // debugger;
     this[element].nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 

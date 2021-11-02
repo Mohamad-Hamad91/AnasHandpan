@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Album } from '../model/album';
 
 @Component({
@@ -9,6 +10,7 @@ import { Album } from '../model/album';
 export class AlbumsComponent implements OnInit {
 
   @Input('data') data: Album[] = new Array();
+  baseURL = environment.baseURL;
 
   constructor() { }
 

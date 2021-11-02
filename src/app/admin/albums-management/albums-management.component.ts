@@ -106,14 +106,14 @@ export class AlbumsManagementComponent implements OnInit {
   }
 
   cancel(row: Album) {
-    debugger;
+    // debugger;
     row = { ...this.originalVal };
     this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
   }
 
   filterChange(query, colName) {
     this.waiting = true;
-    debugger;
+    // debugger;
     if (!query || !query?.toString()?.trim()) {
       this.filtersNo--;
       delete this.criteria[colName];
@@ -155,7 +155,7 @@ export class AlbumsManagementComponent implements OnInit {
     //event.pageCount = Total number of pages
     this.params.PageSize = event.rows;
     this.params.PageNumber = event.page + 1;
-    debugger;
+    // debugger;
     this.getData();
   }
 

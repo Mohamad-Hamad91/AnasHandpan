@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Product } from '../model/product';
 
 @Component({
@@ -9,6 +10,7 @@ import { Product } from '../model/product';
 export class ProductsComponent implements OnInit {
 
   @Input('data') data: Product[] = new Array();
+  baseURL: string = environment.baseURL;
   
   constructor() { }
 

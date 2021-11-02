@@ -58,7 +58,7 @@ export class UsersComponent implements OnInit {
 
   filterChange(query, colName) {
     this.waiting = true;
-    debugger;
+    // debugger;
     if (!query || !query?.toString()?.trim()) {
       this.filtersNo--;
       delete this.criteria[colName];

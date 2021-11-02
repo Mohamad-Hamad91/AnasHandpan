@@ -14,7 +14,7 @@
                         <li class="col-sm-3" *ngFor="let product of data">
                             <figure>
                                 <figcaption>
-                                    <img src="assets/img/shop/shopProduct.png" alt="">
+                                    <img [src]="baseURL + product.Photo"  alt="">
                                 </figcaption>
                                 <div class="content">
                                     <div class="shopHover">

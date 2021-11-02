@@ -315,7 +315,7 @@ jQuery('.breadcrumb.breadcrumb-video-content').each(function () {
           'background-position': '50% ' + actualScroll + 'px'
         });
 
-        console.log(actualScroll);
+        // console.log(actualScroll);
 
       });
 
