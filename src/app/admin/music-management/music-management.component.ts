@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { Music, MusicReq } from '../model/music';
 import { TableColumn } from '../model/tableColumn';
+import { DataService } from '../service/data.service';
 import { MusicService } from '../service/music.service';
 
 @Component({
@@ -25,7 +26,7 @@ export class MusicManagementComponent implements OnInit {
   music: Music;
 
   constructor(private _musicService: MusicService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService) { }
+    private _messageService: MessageService, private _dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -38,10 +39,10 @@ export class MusicManagementComponent implements OnInit {
         header: 'Name',
         field: 'Name',
       },
-      {
-        header: 'Url',
-        field: 'Url',
-      }
+      // {
+      //   header: 'Url',
+      //   field: 'Url',
+      // }
     ];
 
     this.getData();
@@ -68,6 +69,8 @@ export class MusicManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        this.dialog = false;
+        this.music = new Music();
       }, er => { this.waiting = false; });
   }
 
@@ -89,14 +92,17 @@ export class MusicManagementComponent implements OnInit {
 
 
   editRow(row: Music) {
-    this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    this.originalVal = { ...row };
-    row.isEditable = true;
+    // this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
+    // this.originalVal = { ...row };
+    // row.isEditable = true;
+    this.music = row;
+    this.submitted = false;
+    this.dialog = true;
   }
 
   cancel(row: Music) {
     // debugger;
-    row = {...this.originalVal};
+    row = { ...this.originalVal };
     this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
   }
 
@@ -162,20 +168,38 @@ export class MusicManagementComponent implements OnInit {
   save() {
     this.submitted = true;
     this.waiting = true;
-    this._musicService
-      .add(this.music)
-      .subscribe(res => {
-        this.music.Id = res.Data.Id;
-        this.data.push(this.music);
-        this.dataTemp.push(this.music);
-        this.waiting = false;
-        this.dialog = false;
-        this.music = new Music();
-        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
-      }, er => {
-        this.waiting = false;
-      });
+    if (this.music.Id) {
+      this.update(this.music);
+    } else {
+      this._musicService
+        .add(this.music)
+        .subscribe(res => {
+          this.music.Id = res.Data.Id;
+          this.data.push(this.music);
+          this.dataTemp.push(this.music);
+          this.waiting = false;
+          this.dialog = false;
+          this.music = new Music();
+          this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
+        }, er => {
+          this.waiting = false;
+        });
+    }
   }
 
+
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.music.Url = res.Data.Url;
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
 
 }

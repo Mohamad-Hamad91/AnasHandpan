@@ -82,6 +82,7 @@
 
 <p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Add a new Record" [modal]="true" styleClass="p-fluid">
     <ng-template pTemplate="content">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
         <div class="p-field">
             <label for="name">Name</label>
             <input type="text" pInputText id="name" [(ngModel)]="music.Name" required autofocus />
@@ -95,8 +96,11 @@
         </div>
         <div class="p-field">
             <label for="Url">Url</label>
-            <input type="Url" pInputText id="Url" [(ngModel)]="music.Url" required />
-            <small class="p-error" *ngIf="submitted && !music.Url">Url is required.</small>
+            <!-- <input type="Url" pInputText id="Url" [(ngModel)]="music.Url" required />
+            <small class="p-error" *ngIf="submitted && !music.Url">Url is required.</small> -->
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="audio/*"
+            maxFileSize="55000000">
+        </p-fileUpload>
         </div>
     </ng-template>
 

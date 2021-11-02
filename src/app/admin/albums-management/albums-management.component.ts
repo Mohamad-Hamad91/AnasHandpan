@@ -82,6 +82,8 @@ export class AlbumsManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        this.dialog = false;
+        this.item = new Album();
       }, er => { this.waiting = false; });
   }
 
