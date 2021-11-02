@@ -18,6 +18,10 @@ export class EventService {
       { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize) });
   }
 
+  getOne(id: string): Observable<AddEventRes> {
+    return this._http.get<AddEventRes>(this._thisURL + 'events/' + id);
+  }
+
   add(data: Events): Observable<AddEventRes> {
     return this._http.post<AddEventRes>(this._thisURL + 'events', data);
   }

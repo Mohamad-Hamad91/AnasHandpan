@@ -62,9 +62,9 @@
                         <div *ngIf="col.field == 'Photo'">
                             <img [src]="baseURL + row.Photo" alt="Course photo" width="50">
                         </div>
-                        <div *ngIf="row.isEditable && col.field != 'Date'">
+                        <!-- <div *ngIf="row.isEditable && col.field != 'Date'">
                             <input type="text" pInputText id="col.field" [(ngModel)]="row[col.field]" />
-                        </div>
+                        </div> -->
                     </td>
                     <td>
                         <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"

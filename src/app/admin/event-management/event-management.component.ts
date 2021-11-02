@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { EventReq, Events } from '../model/event';
 import { TableColumn } from '../model/tableColumn';
+import { DataService } from '../service/data.service';
 import { EventService } from '../service/event.service';
 
 @Component({
@@ -24,9 +26,12 @@ export class EventManagementComponent implements OnInit {
   submitted: boolean;
   dialog: boolean;
   item: Events;
+  videosDialog: boolean;
+  photosDialog: boolean;
+  baseURL: string = environment.baseURL;
 
   constructor(private _eventsService: EventService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService, private _route: Router) { }
+    private _messageService: MessageService, private _route: Router, private _dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -47,10 +52,10 @@ export class EventManagementComponent implements OnInit {
         header: 'Location',
         field: 'Location',
       },
-      {
-        header: 'Description',
-        field: 'Description',
-      },
+      // {
+      //   header: 'Description',
+      //   field: 'Description',
+      // },
       {
         header: 'Date',
         field: 'Date',
@@ -82,6 +87,13 @@ export class EventManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        let i = this.data.findIndex(row => row.Id == this.item.Id);
+        this.data[i] = res.Data;
+        this.data = [...this.data];
+        this.item = new Events();
+        this.dialog = false;
+        this.photosDialog = false;
+        this.videosDialog = false;
       }, er => { this.waiting = false; });
   }
 
@@ -103,9 +115,15 @@ export class EventManagementComponent implements OnInit {
 
 
   editRow(row: Events) {
-    this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    this.originalVal = { ...row };
-    row.isEditable = true;
+    this.submitted = false;
+    this.waiting = true;
+    this.item = row;
+    this._eventsService.getOne(row.Id)
+      .subscribe(res => {
+        this.item = res.Data;
+        this.waiting = false;
+        this.dialog = true;
+      }, er => this.waiting = false);
   }
 
   cancel(row: Events) {
@@ -172,30 +190,105 @@ export class EventManagementComponent implements OnInit {
     this.submitted = false;
   }
 
+  hidePhotosDialog() {
+    this.photosDialog = false;
+    this.submitted = false;
+  }
+
+  hideVideosDialog() {
+    this.videosDialog = false;
+    this.submitted = false;
+  }
+
   save() {
     this.submitted = true;
     this.waiting = true;
-    this._eventsService
-      .add(this.item)
+    if (this.item.Id) {
+      this.update(this.item);
+    } else {
+      this._eventsService
+        .add(this.item)
+        .subscribe(res => {
+          this.item.Id = res.Data.Id;
+          this.data.push(this.item);
+          this.dataTemp.push(this.item);
+          this.waiting = false;
+          this.dialog = false;
+          this.item = new Events();
+          this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
+        }, er => {
+          this.waiting = false;
+        });
+    }
+  }
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
       .subscribe(res => {
-        this.item.Id = res.Data.Id;
-        this.data.push(this.item);
-        this.dataTemp.push(this.item);
+        this.item.Photo = res.Data.Url;
         this.waiting = false;
-        this.dialog = false;
-        this.item = new Events();
-        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
-      }, er => {
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
+
+  onUploadPhoto(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.item.Photos.push(res.Data.Url);
         this.waiting = false;
-      });
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
+
+  onUploadVideo(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.item.Videos.push(res.Data.Url);
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
   }
 
   managePhotos(row: Events) {
+    this.submitted = false;
+    this.waiting = true;
+    this._eventsService.getOne(row.Id)
+      .subscribe(res => {
+        this.item = res.Data;
+        this.photosDialog = true;
+        this.waiting = false;
+      }, er => this.waiting = false);
+  }
 
+  deletePhoto(index: number) {
+    delete this.item.Photos[index];
+  }
+
+  deleteVideo(index: number) {
+    delete this.item.Videos[index];
   }
 
   manageVideos(row: Events) {
-
+    this.submitted = false;
+    this.waiting = true;
+    this._eventsService.getOne(row.Id)
+      .subscribe(res => {
+        this.item = res.Data;
+        this.videosDialog = true;
+        this.waiting = false;
+      }, er => this.waiting = false);
   }
 
 }
