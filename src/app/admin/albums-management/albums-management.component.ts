@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { Album, AlbumReq } from '../model/albums';
 import { TableColumn } from '../model/tableColumn';
 import { AlbumService } from '../service/album.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-albums-management',
@@ -23,9 +25,10 @@ export class AlbumsManagementComponent implements OnInit {
   submitted: boolean;
   dialog: boolean;
   item: Album;
+  baseURL: string = environment.baseURL;
 
   constructor(private _albumService: AlbumService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService) { }
+    private _messageService: MessageService, private _dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -100,9 +103,12 @@ export class AlbumsManagementComponent implements OnInit {
 
 
   editRow(row: Album) {
-    this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    this.originalVal = { ...row };
-    row.isEditable = true;
+    // this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
+    // this.originalVal = { ...row };
+    // row.isEditable = true;
+    this.item = row;
+    this.submitted = false;
+    this.dialog = true;
   }
 
   cancel(row: Album) {
@@ -173,7 +179,10 @@ export class AlbumsManagementComponent implements OnInit {
   save() {
     this.submitted = true;
     this.waiting = true;
-    this._albumService
+    if(this.item.Id) {
+      this.update(this.item);
+    }else {
+      this._albumService
       .add(this.item)
       .subscribe(res => {
         this.item.Id = res.Data.Id;
@@ -186,7 +195,21 @@ export class AlbumsManagementComponent implements OnInit {
       }, er => {
         this.waiting = false;
       });
+    }
   }
 
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.item.Photo = res.Data.Url;
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
 
 }
