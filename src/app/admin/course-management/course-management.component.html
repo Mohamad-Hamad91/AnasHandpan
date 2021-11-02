@@ -53,10 +53,19 @@
             <ng-template pTemplate="body" let-row>
                 <tr>
                     <td pReorderableRowHandle *ngFor="let col of cols">
-                        <div *ngIf="!row.isEditable && col.field != 'AppearInHomePage'">
+                        <div *ngIf="col.field != 'AppearInHomePage' && col.field != 'Photo'">
                             {{ row[col.field] }}
                         </div>
-                        <div *ngIf="row.isEditable && col.field != 'Price' && col.field != 'AppearInHomePage'">
+                        <div *ngIf="col.field == 'AppearInHomePage' && row[col.field] == '1'">
+                            <span class="pi pi-check"></span>
+                        </div>
+                        <div *ngIf="col.field == 'AppearInHomePage' && row[col.field] != '1'">
+                            <span class="pi pi-times"></span>
+                        </div>
+                        <div *ngIf="col.field == 'Photo'">
+                            <img [src]="baseURL + row.Photo" alt="Course photo" width="50">
+                        </div>
+                        <!-- <div *ngIf="row.isEditable && col.field != 'Price' && col.field != 'AppearInHomePage'">
                             <input type="text" pInputText id="col.field" [(ngModel)]="row[col.field]" />
                         </div>
                         <div *ngIf="row.isEditable && col.field == 'AppearInHomePage'">
@@ -66,7 +75,7 @@
                         <div *ngIf="row.isEditable && col.field == 'Price'">
                             <p-inputNumber type="number" pInputText mode="decimal" [useGrouping]="yes"
                                 [(ngModel)]="row[col.field]" required></p-inputNumber>
-                        </div>
+                        </div> -->
                     </td>
                     <td>
                         <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"
@@ -104,8 +113,10 @@
         </div>
         <div class="p-field">
             <label for="Photo">Photo</label>
-            <input type="text" pInputText id="Photo" [(ngModel)]="item.Photo" required autofocus />
-            <small class="p-error" *ngIf="submitted && !item.Photo">Photo is required.</small>
+            <img [src]="baseURL + item.Photo" width="50" alt="">
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="image/*"
+                maxFileSize="15000000">
+            </p-fileUpload>
         </div>
         <div class="p-field">
             <label for="Price">Price</label>

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { Course, CourseReq } from '../model/course';
 import { TableColumn } from '../model/tableColumn';
 import { CourseService } from '../service/course.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-course-management',
@@ -24,9 +26,10 @@ export class CourseManagementComponent implements OnInit {
   submitted: boolean;
   dialog: boolean;
   item: Course;
+  baseURL: string = environment.baseURL;
 
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService, private _route: Router) { }
+    private _messageService: MessageService, private _route: Router, private _dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -87,6 +90,8 @@ export class CourseManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        this.dialog = false;
+        this.item = new Course();
       }, er => { this.waiting = false; });
   }
 
@@ -108,9 +113,12 @@ export class CourseManagementComponent implements OnInit {
 
 
   editRow(row: Course) {
-    this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    this.originalVal = { ...row };
-    row.isEditable = true;
+    // this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
+    // this.originalVal = { ...row };
+    // row.isEditable = true;
+    this.item = row;
+    this.submitted = false;
+    this.dialog = true;
   }
 
   cancel(row: Course) {
@@ -183,19 +191,37 @@ export class CourseManagementComponent implements OnInit {
     this.waiting = true;
     const temp: any = { ...this.item };
     temp.Price = temp.Price.toString();
-    this._courseService
-      .add(temp)
+    if (this.item.Id) {
+      this.update(this.item);
+    } else {
+      this._courseService
+        .add(temp)
+        .subscribe(res => {
+          this.item.Id = res.Data.Id;
+          this.data.push(this.item);
+          this.dataTemp.push(this.item);
+          this.waiting = false;
+          this.dialog = false;
+          this.item = new Course();
+          this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
+        }, er => {
+          this.waiting = false;
+        });
+    }
+  }
+
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
       .subscribe(res => {
-        this.item.Id = res.Data.Id;
-        this.data.push(this.item);
-        this.dataTemp.push(this.item);
+        this.item.Photo = res.Data.Url;
         this.waiting = false;
-        this.dialog = false;
-        this.item = new Course();
-        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
-      }, er => {
-        this.waiting = false;
-      });
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
   }
 
   goToLessons(row: Course) {

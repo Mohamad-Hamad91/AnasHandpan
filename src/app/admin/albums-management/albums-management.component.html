@@ -113,7 +113,7 @@
             <small class="p-error" *ngIf="submitted && !item.Photo">Photo is required.</small> -->
             <img [src]="baseURL + item.Photo" width="50" alt="">
             <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="image/*"
-                maxFileSize="1000000">
+                maxFileSize="15000000">
             </p-fileUpload>
         </div>
         <div class="p-field">
