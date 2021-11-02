@@ -2,9 +2,11 @@ import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { environment } from 'src/environments/environment';
 import { Lesson, LessonReq } from '../model/lesson';
 import { TableColumn } from '../model/tableColumn';
 import { CourseService } from '../service/course.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-lesson-management',
@@ -26,8 +28,11 @@ export class LessonManagementComponent implements OnInit {
   dialog: boolean;
   item: Lesson;
 
+  baseURL: string = environment.baseURL;
+
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService, private _route: Router, private _activatedRouter: ActivatedRoute) { }
+    private _messageService: MessageService, private _route: Router, private _activatedRouter: ActivatedRoute,
+    private _dataService: DataService) { }
 
   ngOnInit(): void {
 
@@ -49,14 +54,14 @@ export class LessonManagementComponent implements OnInit {
         header: 'Photo',
         field: 'Photo',
       },
-      {
-        header: 'Video',
-        field: 'Video',
-      },
-      {
-        header: 'Description',
-        field: 'Description',
-      }
+      // {
+      //   header: 'Video',
+      //   field: 'Video',
+      // },
+      // {
+      //   header: 'Description',
+      //   field: 'Description',
+      // }
     ];
 
     this.getData();
@@ -85,6 +90,11 @@ export class LessonManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        let i = this.data.findIndex(row => row.Id == this.item.Id);
+        this.data[i] = res.Data;
+        this.data = [...this.data];
+        this.item = new Lesson();
+        this.dialog = false;
       }, er => { this.waiting = false; });
   }
 
@@ -106,9 +116,15 @@ export class LessonManagementComponent implements OnInit {
 
 
   editRow(row: Lesson) {
-    this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    this.originalVal = { ...row };
-    row.isEditable = true;
+    this.submitted = false;
+    this.waiting = true;
+    this.item = row;
+    this._courseService.getOneLesson(row.Id)
+      .subscribe(res => {
+        this.item = res.Data;
+        this.waiting = false;
+        this.dialog = true;
+      }, er => this.waiting = false);
   }
 
   cancel(row: Lesson) {
@@ -181,19 +197,49 @@ export class LessonManagementComponent implements OnInit {
     this.waiting = true;
     const temp: any = { ...this.item };
     temp.SortOrder = temp.SortOrder.toString();
-    this._courseService
-      .addLesson(temp)
+    if (this.item.Id) {
+      this.update(temp);
+    } else {
+      this._courseService
+        .addLesson(temp)
+        .subscribe(res => {
+          this.item.Id = res.Data.Id;
+          this.data.push(this.item);
+          this.dataTemp.push(this.item);
+          this.waiting = false;
+          this.dialog = false;
+          this.item = new Lesson();
+          this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
+        }, er => {
+          this.waiting = false;
+        });
+    }
+  }
+
+  onUpload(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
       .subscribe(res => {
-        this.item.Id = res.Data.Id;
-        this.data.push(this.item);
-        this.dataTemp.push(this.item);
+        this.item.Photo = res.Data.Url;
         this.waiting = false;
-        this.dialog = false;
-        this.item = new Lesson();
-        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
-      }, er => {
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
+
+  onUploadVideo(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.uploadProtected(formData, this.CourseId)
+      .subscribe(res => {
+        this.item.Video = res.Data.Url;
         this.waiting = false;
-      });
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
   }
 
 }

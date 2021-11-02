@@ -38,6 +38,10 @@ export class CourseService {
       { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize).append('CourseId', params.CourseId) });
   }
 
+  getOneLesson(id: string): Observable<AddLessonRes> {
+    return this._http.get<AddLessonRes>(this._thisURL + 'lessons/' + id);
+  }
+
   addLesson(data: Lesson): Observable<AddLessonRes> {
     return this._http.post<AddLessonRes>(this._thisURL + 'lessons', data);
   }

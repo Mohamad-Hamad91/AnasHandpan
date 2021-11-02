@@ -35,4 +35,8 @@ export class DataService {
     return this._http.post<UploadRes>(this._thisURL + 'uploadPublicFile', data);
   }
 
+  uploadProtected(data: FormData, id: string): Observable<UploadRes>{
+    return this._http.post<UploadRes>(this._thisURL + 'uploadProtectedFile/' + id, data);
+  }
+
 }
