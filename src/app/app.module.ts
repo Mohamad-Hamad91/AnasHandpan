@@ -68,6 +68,7 @@ import { EventManagementComponent } from './admin/event-management/event-managem
 import { ProductManagementComponent } from './admin/product-management/product-management.component';
 import { ProductsComponent } from './website/products/products.component';
 import { CoursesComponent } from './website/courses/courses.component';
+import { SongManagementComponent } from './admin/song-management/song-management.component';
 //#endregion components
 
 //#region Other
@@ -109,7 +110,8 @@ import { CoursesComponent } from './website/courses/courses.component';
     EventManagementComponent,
     ProductManagementComponent,
     ProductsComponent,
-    CoursesComponent
+    CoursesComponent,
+    SongManagementComponent
   ],
   imports: [
     BrowserModule,

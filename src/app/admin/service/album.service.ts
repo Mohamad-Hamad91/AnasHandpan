@@ -18,6 +18,11 @@ export class AlbumService {
       { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize) });
   }
 
+  getOne(id: string): Observable<AddAlbumRes> {
+    return this._http.get<AddAlbumRes>(this._thisURL + 'albums/' + id);
+  }
+
+
   add(data: Album): Observable<AddAlbumRes> {
     return this._http.post<AddAlbumRes>(this._thisURL + 'albums', data);
   }

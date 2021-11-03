@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ConfirmationService, MessageService } from 'primeng/api';
 import { environment } from 'src/environments/environment';
 import { Album, AlbumReq } from '../model/albums';
@@ -28,7 +29,7 @@ export class AlbumsManagementComponent implements OnInit {
   baseURL: string = environment.baseURL;
 
   constructor(private _albumService: AlbumService, private confirmationService: ConfirmationService,
-    private _messageService: MessageService, private _dataService: DataService) { }
+    private _messageService: MessageService, private _dataService: DataService, private _route: Router) { }
 
   ngOnInit(): void {
 
@@ -105,12 +106,15 @@ export class AlbumsManagementComponent implements OnInit {
 
 
   editRow(row: Album) {
-    // this.data.filter(row => row.isEditable).map(r => { r.isEditable = false; return r });
-    // this.originalVal = { ...row };
-    // row.isEditable = true;
-    this.item = row;
     this.submitted = false;
-    this.dialog = true;
+    this.waiting = true;
+    this.item = row;
+    this._albumService.getOne(row.Id)
+      .subscribe(res => {
+        this.item = res.Data;
+        this.waiting = false;
+        this.dialog = true;
+      }, er => this.waiting = false);
   }
 
   cancel(row: Album) {
@@ -181,22 +185,22 @@ export class AlbumsManagementComponent implements OnInit {
   save() {
     this.submitted = true;
     this.waiting = true;
-    if(this.item.Id) {
+    if (this.item.Id) {
       this.update(this.item);
-    }else {
+    } else {
       this._albumService
-      .add(this.item)
-      .subscribe(res => {
-        this.item.Id = res.Data.Id;
-        this.data.push(this.item);
-        this.dataTemp.push(this.item);
-        this.waiting = false;
-        this.dialog = false;
-        this.item = new Album();
-        this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
-      }, er => {
-        this.waiting = false;
-      });
+        .add(this.item)
+        .subscribe(res => {
+          this.item.Id = res.Data.Id;
+          this.data.push(this.item);
+          this.dataTemp.push(this.item);
+          this.waiting = false;
+          this.dialog = false;
+          this.item = new Album();
+          this._messageService.add({ severity: 'success', summary: 'Successful', detail: 'Created Successfully', life: 3000 });
+        }, er => {
+          this.waiting = false;
+        });
     }
   }
 
@@ -212,6 +216,10 @@ export class AlbumsManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
       }, er => this.waiting = false);
+  }
+
+  gtoToSongs(row: Album) {
+    this._route.navigate(['dashboard/songs/' + row.Id]);
   }
 
 }

@@ -53,7 +53,8 @@
             <ng-template pTemplate="body" let-row>
                 <tr>
                     <td pReorderableRowHandle *ngFor="let col of cols">
-                        <div *ngIf="!row.isEditable && col.field != 'ReleaseDate' && col.field != 'AppearInHomePage' && col.field != 'Photo'">
+                        <div
+                            *ngIf="!row.isEditable && col.field != 'ReleaseDate' && col.field != 'AppearInHomePage' && col.field != 'Photo'">
                             {{ row[col.field] }}
                         </div>
                         <div *ngIf="!row.isEditable && col.field == 'ReleaseDate'">
@@ -92,6 +93,9 @@
                         <button type="button" pButton pRipple icon="pi pi-trash" (click)="delete(row)"
                             class="p-button-rounded p-button-warning" *ngIf="!row.isEditable && row.Id"
                             pTooltip="Delete" tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="fa fa-music" (click)="gtoToSongs(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable && row.Id" pTooltip="Songs"
+                            tooltipPosition="bottom"></button>
                     </td>
                 </tr>
             </ng-template>

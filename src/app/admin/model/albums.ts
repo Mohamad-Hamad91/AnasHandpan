@@ -22,4 +22,11 @@ export class Album {
     ReleaseDate: Date;
     AppearInHomePage: number;
     isEditable: boolean;
+    Songs: Song[];
+}
+
+export class Song {
+    Name: string;
+    Url: string;
+    SortOrder: number;
 }

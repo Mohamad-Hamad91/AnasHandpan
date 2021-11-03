@@ -15,6 +15,7 @@ import { PersonalInfoManagementComponent } from './admin/personal-info-managemen
 import { ProductManagementComponent } from './admin/product-management/product-management.component';
 import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
+import { SongManagementComponent } from './admin/song-management/song-management.component';
 import { UsersComponent } from './admin/users/users.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
       { path: 'social-media', component: SocialMediaComponent },
       { path: 'music', component: MusicManagementComponent },
       { path: 'albums', component: AlbumsManagementComponent },
+      { path: 'songs/:id', component: SongManagementComponent },
       { path: 'news', component: NewsManagementComponent },
       { path: 'events', component: EventManagementComponent },
       { path: 'courses', component: CourseManagementComponent },
