@@ -27,10 +27,33 @@ export class Product {
     Photos: string[];
     Places: Place[];
     isEditable: boolean;
+    Orders: Orders = new Orders();
 }
 
 export class Place {
     Name: string;
     Location: string;
     Photo: string;
+}
+
+
+export class Orders {
+    List: Order[] = new Array();
+    TotlaCount: number;
+}
+export class Order {
+    Id: string;
+    Quantity: number;
+    Color: string;
+    ProductId: string;
+    ProductTitle: string;
+    ProductPhoto: string;
+    ProductPrice: string;
+    UserId: string;
+    UserFullName: string;
+    UserEmail: string;
+    UserPhone: string;
+    Date: string;
+    LastOrderStatusDate: Date;
+    LastOrderStatusTitle: string;
 }

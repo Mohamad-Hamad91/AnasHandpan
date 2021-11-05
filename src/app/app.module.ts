@@ -69,6 +69,9 @@ import { ProductManagementComponent } from './admin/product-management/product-m
 import { ProductsComponent } from './website/products/products.component';
 import { CoursesComponent } from './website/courses/courses.component';
 import { SongManagementComponent } from './admin/song-management/song-management.component';
+import { ProducPlacesManagementComponent } from './admin/produc-places-management/produc-places-management.component';
+import { ProductOrdersManagementComponent } from './admin/product-orders-management/product-orders-management.component';
+import { MusicPlayerComponent } from './website/music-player/music-player.component';
 //#endregion components
 
 //#region Other
@@ -111,7 +114,10 @@ import { SongManagementComponent } from './admin/song-management/song-management
     ProductManagementComponent,
     ProductsComponent,
     CoursesComponent,
-    SongManagementComponent
+    SongManagementComponent,
+    ProducPlacesManagementComponent,
+    ProductOrdersManagementComponent,
+    MusicPlayerComponent
   ],
   imports: [
     BrowserModule,

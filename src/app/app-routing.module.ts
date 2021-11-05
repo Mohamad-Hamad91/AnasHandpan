@@ -12,7 +12,9 @@ import { LessonManagementComponent } from './admin/lesson-management/lesson-mana
 import { MusicManagementComponent } from './admin/music-management/music-management.component';
 import { NewsManagementComponent } from './admin/news-management/news-management.component';
 import { PersonalInfoManagementComponent } from './admin/personal-info-management/personal-info-management.component';
+import { ProducPlacesManagementComponent } from './admin/produc-places-management/produc-places-management.component';
 import { ProductManagementComponent } from './admin/product-management/product-management.component';
+import { ProductOrdersManagementComponent } from './admin/product-orders-management/product-orders-management.component';
 import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
 import { SongManagementComponent } from './admin/song-management/song-management.component';
@@ -56,6 +58,8 @@ const routes: Routes = [
       { path: 'lessons/:id', component: LessonManagementComponent },
       { path: 'enrollment/:id', component: EnrollmentManagementComponent },
       { path: 'products', component: ProductManagementComponent },
+      { path: 'places/:id', component: ProducPlacesManagementComponent },
+      { path: 'orders/:id', component: ProductOrdersManagementComponent },
     ]
   },
   //#endregion Admin section

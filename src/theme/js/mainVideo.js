@@ -585,15 +585,15 @@ jQuery(document).ready(function(){
         jQuery(this).parent().find('.trak-duration').text(time);
     });
 
-    jQuery('.jplayerButton').on('click', function(){
+    // jQuery('.jplayerButton').on('click', function(){
 
-      jQuery(this).toggleClass('active');
+    //   jQuery(this).toggleClass('active');
 
-      jQuery('.playlist-wrapper').fadeToggle('open');
+    //   jQuery('.playlist-wrapper').fadeToggle('open');
 
-      jQuery('body').toggleClass('opacityPlaylist');
+    //   jQuery('body').toggleClass('opacityPlaylist');
 
-    });
+    // });
     /***********************************************************************************************/
     /* END JPLAYER */
     /***********************************************************************************************/

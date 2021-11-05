@@ -18,6 +18,10 @@ export class ProductsService {
       { params: (new HttpParams()).set('PageNumber', params.PageNumber).append('PageSize', params.PageSize) });
   }
 
+  getOne(id: string): Observable<AddProductRes> {
+    return this._http.get<AddProductRes>(this._thisURL + 'products/' + id);
+  }
+
   add(data: Product): Observable<AddProductRes> {
     return this._http.post<AddProductRes>(this._thisURL + 'products', data);
   }

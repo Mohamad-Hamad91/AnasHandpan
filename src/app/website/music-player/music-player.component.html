@@ -1,0 +1,104 @@
+<!-- =============== START PLAYER ================ -->
+<div id="main-music-player" class="main-music-player active">
+    <a class="hide-player-button" (click)="hideClicked()">
+        <i class="fa fa-plus"></i>
+        <i class="fa fa-minus"></i>
+    </a>
+    <div id="mesh-main-player" class="jp-jplayer"></div>
+    <audio preload="auto" crossOrigin="anonymous" #audioElement style="display: hidden;"
+        src="{{baseURL + defaultTrack?.Url}}"></audio>
+    <div id="mesh-main-player-content" class="mesh-main-player" role="application" aria-label="media player">
+        <div class="container">
+            <div class="row">
+                <div class="left-player-side">
+                    <div class="mesh-prev">
+                        <i class="fa fa-step-backward" (click)="backward()"></i>
+                    </div>
+                    <div id="play" class="mesh-play" (click)="play()" *ngIf="audioStatus == 'paused'">
+                        <i class="fa fa-play"></i>
+                    </div>
+                    <div class="mesh-pause" (click)="pause()" *ngIf="audioStatus == 'playing'">
+                        <i class="fa fa-pause"></i>
+                    </div>
+                    <div class="mesh-next">
+                        <i class="fa fa-step-forward" (click)="forward()"></i>
+                    </div>
+                    <button id="playlist-toggle" class="jplayerButton" (click)="openPlayList()">
+                        <span class="span-1"></span>
+                        <span class="span-2"></span>
+                        <span class="span-3"></span>
+                    </button>
+                </div>
+                <div class="center-side" style="margin-left: 50px;">
+                    <div class="mesh-current-time" *ngIf="audioStatus == 'playing' && !isNan(currentTime)">
+                        {{floor(currentTime / 60)}}:{{floor(currentTime % 60)}}
+                    </div>
+                    <div class="mesh-seek-bar" style="width: 100%;">
+                        <div class="mesh-play-bar"
+                        [ngStyle]="{'width': (currentPercent) + '%'}">
+                        </div>
+                    </div>
+                    <div class="mesh-duration" *ngIf="audioStatus == 'playing' && !isNan(duration)">
+                        {{floor(duration / 60)}}:{{floor(duration % 60)}}
+                    </div>
+                </div>
+                <div class="right-player-side">
+                    <div class="mesh-thumbnail">
+                        <!-- <img src="assets/img/player/thumbnail.jpg" alt=""> -->
+                    </div>
+                    <div class="mesh-title">
+                        {{defaultTrack?.Name}}
+                    </div>
+                    <div class="mesh-artist">
+                        Anas
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =============== END PLAYER ================ -->
+
+<!-- =============== START PLAYLIST ================ -->
+<div class="playlist-wrapper" id="playlist-wrapper" [ngStyle]="{'display': (playListHidden) ? 'none' : 'block'}">
+    <div class="jp-playlist container">
+        <div class="about-list clearfix">
+            <span class="about-name">NAME</span>
+            <!-- <span class="about-length">LENGTH</span> -->
+            <span class="about-available">AVAILABLE ON</span>
+        </div>
+        <div *ngFor="let track of data; let i = index">
+            <div class="trak-item">
+                <div class="additional-button">
+                    <div class="center-y-table">
+                        <!-- <a href="#">
+                            <i class="fa fa-apple"></i>
+                        </a>
+                        <a href="#">
+                            <i class="fa fa-soundcloud"></i>
+                        </a> -->
+                    </div>
+                </div>
+                <div class="play-pause-button">
+                    <div class="center-y-table">
+                        <i class="fa fa-play" (click)="playThis(i)"
+                            *ngIf="trackIndex != i || audioStatus != 'playing'"></i>
+                        <i class="fa fa-pause" *ngIf="trackIndex == i && audioStatus == 'playing'"
+                            (click)="pause()"></i>
+                    </div>
+                </div>
+                <div class="name-artist">
+                    <div class="center-y-table">
+                        <h2>
+                            {{track.Name}}
+                        </h2>
+                    </div>
+                </div>
+                <!-- <time class="trak-duration">
+                    {{duration}}
+                </time> -->
+            </div>
+        </div>
+    </div>
+</div>
+<!-- =============== END PLAYLIST ================ -->
