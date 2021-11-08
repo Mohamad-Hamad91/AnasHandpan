@@ -11,6 +11,8 @@ import { EventManagementComponent } from './admin/event-management/event-managem
 import { LessonManagementComponent } from './admin/lesson-management/lesson-management.component';
 import { MusicManagementComponent } from './admin/music-management/music-management.component';
 import { NewsManagementComponent } from './admin/news-management/news-management.component';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { OrderStatusManagementComponent } from './admin/order-status-management/order-status-management.component';
 import { PersonalInfoManagementComponent } from './admin/personal-info-management/personal-info-management.component';
 import { ProducPlacesManagementComponent } from './admin/produc-places-management/produc-places-management.component';
 import { ProductManagementComponent } from './admin/product-management/product-management.component';
@@ -60,6 +62,8 @@ const routes: Routes = [
       { path: 'products', component: ProductManagementComponent },
       { path: 'places/:id', component: ProducPlacesManagementComponent },
       { path: 'orders/:id', component: ProductOrdersManagementComponent },
+      { path: 'orders-management', component: OrderManagementComponent },
+      { path: 'orders-status/:id', component: OrderStatusManagementComponent },
     ]
   },
   //#endregion Admin section

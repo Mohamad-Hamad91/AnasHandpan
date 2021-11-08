@@ -136,7 +136,10 @@
         </div>
         <div class="p-field">
             <label for="Demo">Demo</label>
-            <input type="text" pInputText id="Demo" [(ngModel)]="item.Demo" required />
+            <video [src]="baseURL + item.Demo" width="150"></video>
+            <p-fileUpload name="demo1[]" customUpload="true" (uploadHandler)="onUploadVideo($event)" accept="video/*"
+                maxFileSize="150000000">
+            </p-fileUpload>
             <small class="p-error" *ngIf="submitted && !item.Demo">Demo is required.</small>
         </div>
         <div class="p-field">

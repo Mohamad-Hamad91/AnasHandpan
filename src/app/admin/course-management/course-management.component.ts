@@ -54,10 +54,10 @@ export class CourseManagementComponent implements OnInit {
         header: 'Description',
         field: 'Description',
       },
-      {
-        header: 'Demo',
-        field: 'Demo',
-      },
+      // {
+      //   header: 'Demo',
+      //   field: 'Demo',
+      // },
       {
         header: 'AppearInHomePage',
         field: 'AppearInHomePage',
@@ -219,6 +219,19 @@ export class CourseManagementComponent implements OnInit {
     this._dataService.upload(formData)
       .subscribe(res => {
         this.item.Photo = res.Data.Url;
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
+
+  onUploadVideo(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.item.Demo = res.Data.Url;
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
       }, er => this.waiting = false);

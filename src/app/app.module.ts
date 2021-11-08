@@ -25,6 +25,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 //#endregion primeng
 
 //#region modules
@@ -72,6 +73,8 @@ import { SongManagementComponent } from './admin/song-management/song-management
 import { ProducPlacesManagementComponent } from './admin/produc-places-management/produc-places-management.component';
 import { ProductOrdersManagementComponent } from './admin/product-orders-management/product-orders-management.component';
 import { MusicPlayerComponent } from './website/music-player/music-player.component';
+import { OrderManagementComponent } from './admin/order-management/order-management.component';
+import { OrderStatusManagementComponent } from './admin/order-status-management/order-status-management.component';
 //#endregion components
 
 //#region Other
@@ -117,7 +120,9 @@ import { MusicPlayerComponent } from './website/music-player/music-player.compon
     SongManagementComponent,
     ProducPlacesManagementComponent,
     ProductOrdersManagementComponent,
-    MusicPlayerComponent
+    MusicPlayerComponent,
+    OrderManagementComponent,
+    OrderStatusManagementComponent
   ],
   imports: [
     BrowserModule,
@@ -141,8 +146,8 @@ import { MusicPlayerComponent } from './website/music-player/music-player.compon
     ToolbarModule,
     InputSwitchModule,
     CalendarModule,
-    FileUploadModule
-
+    FileUploadModule,
+    InputTextareaModule
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

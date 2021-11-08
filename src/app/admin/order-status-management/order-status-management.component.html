@@ -1,0 +1,94 @@
+<h2 class="p-text-center">{{data.ProductTitle}}</h2>
+
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+                        (click)="openNew()"></button>
+                </ng-template>
+
+                <ng-template pTemplate="right">
+                    <!-- <p-paginator *ngIf="!waiting" [rows]="params.PageSize" [totalRecords]="totalRecords"
+                        [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator> -->
+                </ng-template>
+            </p-toolbar>
+        </div>
+        <p-table #dt dataKey="Id" [value]="data.StatusHistory.List" [columns]="cols" styleClass="p-datatable-gridlines"
+            [resizableColumns]="true" responsive="true" [scrollable]="true" scrollHeight="400px"
+            [reorderableColumns]="true" [loading]="waiting">
+            <ng-template pTemplate="colgroup">
+                <colgroup>
+                    <col *ngFor="let col of cols">
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="caption">
+                <div class="p-mb-4">
+                    <button type="button" pButton pRipple icon="pi pi-filter-slash" (click)="clearFilter()"
+                        class="p-ml-6 clearFilter" pTooltip="clearFilter" *ngIf="filtersNo>0"
+                        tooltipPosition="bottom"></button>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="{{col.field}}" pResizableColumn pReorderableColumn class="p-text-{{col.align}}"
+                        *ngFor="let col of cols">
+                        {{col.header}}
+                        <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                    </th>
+                    <th>Action </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of cols" pResizableColumn class="autocomplete">
+                        <input pInputText type="text" [(ngModel)]="criteria[col.field]" [style]="{width:'90%'}"
+                            (input)="filterChange($any($event.target).value, col.field)" class="filterInputCss" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr>
+                    <td pReorderableRowHandle *ngFor="let col of cols">
+                        <div *ngIf="col.field != 'Date'">
+                            {{ row[col.field] }}
+                        </div>
+                        <div *ngIf="col.field == 'Date'">
+                            {{ row[col.field] | date}}
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" pButton pRipple icon="pi pi-trash" (click)="delete(row)"
+                            class="p-button-rounded p-button-warning" pTooltip="Delete"
+                            tooltipPosition="bottom"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Manage Record" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="p-field">
+            <label for="Title">Title</label>
+            <input type="text" pInputText id="Title" [(ngModel)]="item.Title" required autofocus />
+            <small class="p-error" *ngIf="submitted && !item.Title">Title is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Date">Date</label>
+            <p-calendar [(ngModel)]="item.Date" dateFormat="dd.mm.yy" appendTo="body"></p-calendar>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

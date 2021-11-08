@@ -151,6 +151,14 @@ export class AdminNavbarComponent implements OnInit {
             },
           },
           {
+            label: 'Orders',
+            icon: 'fa fa-gift',
+            routerLink: ['/dashboard/orders-management'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
             label: 'Courses',
             icon: 'fa fa-pen',
             routerLink: ['/dashboard/courses'],
