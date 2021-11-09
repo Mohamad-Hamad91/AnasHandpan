@@ -82,6 +82,8 @@ import { SingleEventComponent } from './website/single-event/single-event.compon
 import { SingleAlbumComponent } from './website/single-album/single-album.component';
 import { SingleCourseComponent } from './website/single-course/single-course.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
+import { AllEventsComponent } from './website/all-events/all-events.component';
+import { AllAlbumsComponent } from './website/all-albums/all-albums.component';
 //#endregion components
 
 //#region Other
@@ -136,7 +138,9 @@ import { AllNewsComponent } from './website/all-news/all-news.component';
     SingleEventComponent,
     SingleAlbumComponent,
     SingleCourseComponent,
-    AllNewsComponent
+    AllNewsComponent,
+    AllEventsComponent,
+    AllAlbumsComponent
   ],
   imports: [
     BrowserModule,

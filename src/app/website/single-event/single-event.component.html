@@ -1,1 +1,118 @@
-<p>single-event works!</p>
+<!-- =============== START EVENT SINGLE ================ -->
+<div class="singleEvent padding background-properties"
+    style="background-image: url(assets/img/events/home-events-1.jpg);">
+    <div class="container">
+        <div class="sectionTitle paddingBottom">
+            <span class="heading-t3"></span>
+            <h2>{{data.Title}}</h2>
+            <span class="heading-b3"></span>
+        </div><!-- end sectionTtile -->
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="owl-theme owl-loaded" *ngIf="currentPhoto">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage"
+                            style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 750px;">
+                            <div class="owl-item active" style="width: 750px; margin-right: 0px;">
+                                <div id="owl-item" class="owl-item">
+                                    <img alt="" [src]="baseURL + currentPhoto">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="owl-controls">
+                        <div class="owl-nav">
+                            <div class="owl-prev" (click)="prevPhoto()"><i class="fa fa-chevron-left"></i></div>
+                            <div class="owl-next" (click)="nextPhoto()"><i class="fa fa-chevron-right"></i></div>
+                        </div>
+                        <!-- <div class="owl-dots" >
+                            <div class="owl-dot active"><span></span></div>
+                        </div> -->
+                    </div>
+                </div>
+                <div class="descriptionEvent">
+                    <p>{{data.Description}}</p>
+                </div><!-- end descriptionEvent -->
+                <div class="coverEvent">
+                    <img [src]="baseURL + data.Photo" alt="">
+                </div><!-- end coverEvent -->
+                <div class="ticket">
+                    <!-- <h4>Get Your Ticket Now</h4> -->
+                    <!-- <a href="https://electriccastle.ro/tickets" target="_blank">Buy Ticket</a> -->
+                </div><!-- end ticket -->
+                <div class="author-info" *ngIf="currentVideo">
+                    <div class="owl-theme owl-loaded">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage"
+                                style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 750px;">
+                                <div class="owl-item active" style="width: 750px; margin-right: 0px;">
+                                    <div id="owl-item" class="owl-item">
+                                        <video [src]="baseURL + currentVideo" controls="true"></video>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-controls">
+                            <div class="owl-nav">
+                                <div class="owl-prev" (click)="prevVideo()"><i class="fa fa-chevron-left"></i></div>
+                                <div class="owl-next" (click)="nextVideo()"><i class="fa fa-chevron-right"></i></div>
+                            </div>
+                            <!-- <div class="owl-dots" >
+                                <div class="owl-dot active"><span></span></div>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end col-sm-8 -->
+            <div class="col-sm-3 col-sm-offset-1">
+                <div class="sidebarAlbum">
+                    <div class="widget">
+                        <h3>Details</h3>
+                        <ul>
+                            <li>Date:<span>July 14-17, 2016 </span></li>
+                            <li>Time:<span>12:00 PM </span></li>
+                            <li>Location:<span>Banffy Castle, CJ </span></li>
+                            <li>Price:<span>$ 100</span></li>
+                        </ul>
+                    </div><!-- end widget -->
+
+                    <div class="widget">
+                        <h3>Twitter</h3>
+                        <a class="twitter-timeline" href="https://twitter.com/electric_castle"
+                            data-widget-id="717713562152673280">Tweets by @electric_castle</a>
+                        <script>!function (d, s, id) { var js, fjs = d.getElementsByTagName(s)[0], p = /^http:/.test(d.location) ? 'http' : 'https'; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = p + "://platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs); } }(document, "script", "twitter-wjs");</script>
+                    </div><!-- end widget -->
+
+                    <div class="widget">
+                        <h3>Instagram</h3>
+                        <div class="instagram-widget">
+                            <ul id="instagram-sidebar-widget" class="clearfix"></ul>
+                        </div>
+                    </div><!-- end widget -->
+
+
+                    <div class="widget">
+                        <h3>Follow On</h3>
+                        <section>
+                            <ul id='services'>
+                                <li>
+                                    <div><i class="fa fa-facebook"></i></div>
+                                </li>
+                                <li>
+                                    <div><i class="fa fa-twitter"></i></div>
+                                </li>
+                                <li>
+                                    <div><i class="fa fa-instagram"></i></div>
+                                </li>
+                                <li>
+                                    <div><i class="fa fa-youtube"></i></div>
+                                </li>
+                            </ul>
+                        </section>
+                    </div><!-- end widget -->
+                </div><!-- end sidebarAlbum -->
+            </div><!-- end col-sm-3 col-sm-offset-1 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</div>
+<!-- =============== END EVENT SINGLE ================ -->

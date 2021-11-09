@@ -21,6 +21,7 @@ import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
 import { SongManagementComponent } from './admin/song-management/song-management.component';
 import { UsersComponent } from './admin/users/users.component';
+import { AllEventsComponent } from './website/all-events/all-events.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
 import { DetailsComponent } from './website/details/details.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   {
     path: 'details', component: DetailsComponent, children: [
       { path: 'all-news', component: AllNewsComponent },
+      { path: 'all-events', component: AllEventsComponent },
       { path: 'single-news/:id', component: SingleNewsComponent },
       { path: 'single-event/:id', component: SingleEventComponent },
       { path: 'single-album/:id', component: SingleAlbumComponent },

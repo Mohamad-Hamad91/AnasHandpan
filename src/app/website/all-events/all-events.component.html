@@ -1,0 +1,35 @@
+<!-- =============== START EVENTS SECTION-1 ================ -->
+<section style="background-image: url(assets/img/subHeader/header.png);" class="background-properties padding">
+    <div class="tableEvents">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sectionTitle paddingBottom">
+                        <span class="heading-t3"></span>
+                        <h2>Events</h2>
+                        <span class="heading-b3"></span>
+                    </div><!-- end sectionTtile -->
+                    <table>
+                        <tr class="tableEventsTitle">
+                            <th class="date">Date</th>
+                            <th class="venue">Venue</th>
+                            <th class="location">Location</th>
+                            <th class="tickets">Title</th>
+                        </tr>
+                        <tr *ngFor="let e of data">
+                            <td class="aqura-date"><a [routerLink]="'/details/single-event/' + e.Id">
+                                <i class="fa fa-plus"></i></a><a [routerLink]="'/details/single-event/' + e.Id">{{e.Date | date}}</a></td>
+                            <td class="aqura-location"><a [routerLink]="'/details/single-event/' + e.Id">{{e.Venue}}</a></td>
+                            <td class="aqura-city"><a [routerLink]="'/details/single-event/' + e.Id">{{e.Location}}</a></td>
+                            <td class="aqura-tickets"><a [routerLink]="'/details/single-event/' + e.Id">{{e.Title}}</a></td>
+                        </tr>
+                    </table>
+                </div><!-- end col-sm-12 -->
+                <div class="container">
+                    <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+                </div>
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end tableEvents -->
+</section>
+<!-- =============== END EVENTS SECTION-1 ================ -->
