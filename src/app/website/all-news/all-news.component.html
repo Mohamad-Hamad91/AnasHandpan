@@ -1,1 +1,60 @@
-<p>all-news works!</p>
+<!-- =============== START BLOG FILTER ================ -->
+<section class="aquraFilter padding" id="content">
+    <div class="container">
+        <!-- start blog-filter-category -->
+        <!-- <div class="categories"> -->
+
+        <!-- <ul class="clearfix" data-option-key="filter">
+                <li><a href="#"><i class="fa fa-filter"></i></a></li>
+                <li> <a href="#" class="selected" data-option-value="*">All</a></li>
+                <li> <a href="#" data-option-value=".news">News</a></li>
+                <li> <a href="#" data-option-value=".audio">Audio</a></li>
+                <li> <a href="#" data-option-value=".cloud">Soundcloud</a></li>
+                <li> <a href="#" data-option-value=".video">Video</a></li>
+                <li> <a href="#" data-option-value=".gallery">Gallery</a></li>
+                <li> <a href="#" data-option-value=".standard">Standard</a></li>
+            </ul> -->
+        <!-- </div> -->
+        <!--end categories-->
+        <!-- end blog-filter-category -->
+
+        <!-- start filter -->
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+                <div class="aqura-filter-content">
+                    <ul class="clearfix">
+                        <li class="col-sm-4 col-xs-12 standard " *ngFor="let news of data">
+                            <div class="blogBox">
+                                <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
+                                <div class="blogBoxContent">
+                                    <div class="blogHeader">
+                                        <h1><a [routerLink]="'/details/single-news/' + news.Id">{{news.Title}}</a></h1>
+                                    </div>
+                                    <div class="admin-list clearfix">
+                                        <ul>
+                                            <li><a [routerLink]="'/details/single-news/' + news.Id">{{news.Date |
+                                                    date}}</a></li>
+                                            <!-- <li><a href="#">By Admin</a></li> -->
+                                        </ul>
+                                    </div><!-- end admin-list -->
+                                    <div class="blogParagraph">
+                                        <p>{{news.Brief}}</p>
+                                    </div>
+                                    <!--end blogParagraph  -->
+                                    <div class="rmButton">
+                                        <a [routerLink]="'/details/single-news/' + news.Id">Read More</a>
+                                    </div>
+                                </div><!-- end blogBoxContent -->
+                            </div><!-- end blogBox -->
+                        </li><!-- end col-sm-4 col-xs-12 -->
+                    </ul>
+                </div><!-- end aqura-filter-cotent -->
+            </div><!-- end col-sm-12 -->
+        </div><!-- end row -->
+        <div class="container">
+            <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+        </div>
+        <!-- end filter -->
+    </div><!-- end container -->
+</section>
+<!-- =============== END BLOG FILTER ================ -->

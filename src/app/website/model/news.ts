@@ -1,5 +1,8 @@
+import { BaseRequest } from "src/app/admin/model/baseRequest";
 import { BaseResponse } from "./baseResponse";
 
+
+export class NewReq extends BaseRequest {}
 export class News {
     Id: string;
     Title: string;
@@ -8,6 +11,12 @@ export class News {
     Date: Date;
 }
 
+export class NewsRes extends BaseResponse {
+    Data: {
+        List: News[];
+        TotalCount: number;
+    };
+}
 
 export class SingleNewsRes extends BaseResponse {
     Data: SingleNews;
