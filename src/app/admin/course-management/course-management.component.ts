@@ -239,10 +239,12 @@ export class CourseManagementComponent implements OnInit {
 
   goToLessons(row: Course) {
     this._route.navigate([`/dashboard/lessons/${row.Id}`]);
+    localStorage.setItem('CourseTitle', row.Title);
   }
 
   goToEnrollments(row: Course) {
     this._route.navigate([`/dashboard/enrollment/${row.Id}`]);
+    localStorage.setItem('CourseTitle', row.Title);
   }
 
 }

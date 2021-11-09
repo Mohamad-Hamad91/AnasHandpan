@@ -56,11 +56,11 @@
   position: relative;
   z-index: 1;
 }
-.owl-carousel .owl-stage {
+.owl-stage {
   position: relative;
   -ms-touch-action: pan-Y;
 }
-.owl-carousel .owl-stage:after {
+.owl-stage:after {
   content: ".";
   display: block;
   clear: both;
@@ -68,15 +68,15 @@
   line-height: 0;
   height: 0;
 }
-.owl-carousel .owl-stage-outer {
+.owl-stage-outer {
   position: relative;
   overflow: hidden;
   /* fix for flashing background */
   -webkit-transform: translate3d(0px, 0px, 0px);
 }
-.owl-carousel .owl-controls .owl-nav .owl-prev,
-.owl-carousel .owl-controls .owl-nav .owl-next,
-.owl-carousel .owl-controls .owl-dot {
+.owl-controls .owl-nav .owl-prev,
+.owl-controls .owl-nav .owl-next,
+.owl-controls .owl-dot {
   cursor: pointer;
   cursor: hand;
   -webkit-user-select: none;
@@ -85,7 +85,7 @@
   -ms-user-select: none;
   user-select: none;
 }
-.owl-carousel.owl-loaded {
+.owl-loaded {
   display: block;
 }
 .owl-carousel.owl-loading {
@@ -98,7 +98,7 @@
 .owl-carousel .owl-refresh .owl-item {
   display: none;
 }
-.owl-carousel .owl-item {
+.owl-item {
   position: relative;
   min-height: 1px;
   float: left;
@@ -212,13 +212,16 @@
   z-index: 1;
 }
 
-.owl-controls .owl-prev {
-    position: absolute;
+.owl-prev {
+    position: relative;
     width: 5.7rem;
     height: 5.1rem;
-    top: 50%;
+    top: 20%;
+    margin-top: -30%;
+    margin-bottom: 30%;
     display: block!important;
-    left: 0;
+    left: 1%;
+    margin-right: auto;
     text-align: center;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
@@ -250,12 +253,15 @@
     }
 }
 
-.owl-controls .owl-next {
-    position: absolute;
+.owl-next {
+    position: relative;
     width: 5.7rem;
     height: 5.1rem;
-    top: 50%;
-    right: 0;
+    top: 20%;
+    right: 1%;
+    margin-top: -37%;
+    margin-bottom: 37%;
+    margin-left: auto;
     display: block!important;
     background: rgba(0, 0, 0, 0.3);
     -webkit-transition-property: width, background, color, opacity;

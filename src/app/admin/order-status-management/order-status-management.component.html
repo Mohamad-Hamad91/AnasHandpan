@@ -1,4 +1,10 @@
-<h2 class="p-text-center">{{data.ProductTitle}}</h2>
+<div class="container">
+    <h3 class="p-text-center">Title: {{data.ProductTitle}}</h3>
+    <h4 class="p-text-center">User Email: {{data.UserEmail}} - Date: {{data.Date | date}}</h4>
+    <!-- <h4 class="p-text-center">Status: {{data.LastOrderStatusTitle}}</h4> -->
+</div>
+
+<br>
 
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
 </p-confirmDialog>

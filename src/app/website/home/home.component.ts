@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Home } from '../model/home';
 import { DataService } from '../service/data.service';
 
@@ -18,15 +19,21 @@ export class HomeComponent implements OnInit {
   @ViewChild('News', { static: false }) News;
 
   data: Home = new Home();
+  section: string;
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: DataService, private _activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this._dataService.get().subscribe(res => this.data = res.Data);
+    this._dataService.get().subscribe(res => {
+      this.data = res.Data;
+      setTimeout(() => {
+        this.section = this._activatedRoute.snapshot.params.section;
+        if (this.section && this.section.trim()) this.navigateTo(this.section);
+      }, 500);
+    });
   }
 
   navigateTo(element: string) {
-    // debugger;
     this[element].nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 

@@ -29,12 +29,15 @@ export class LessonManagementComponent implements OnInit {
   item: Lesson;
 
   baseURL: string = environment.baseURL;
+  CourseTitle: string;
 
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
     private _messageService: MessageService, private _route: Router, private _activatedRouter: ActivatedRoute,
     private _dataService: DataService) { }
 
   ngOnInit(): void {
+
+    this.CourseTitle = localStorage.getItem('CourseTitle');
 
     this._activatedRouter.params.subscribe(parameters => {
       this.CourseId = this._activatedRouter.snapshot.params.id;

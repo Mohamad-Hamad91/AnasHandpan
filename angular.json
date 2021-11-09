@@ -44,8 +44,6 @@
               "src/theme/js/jquery.js",
               "src/theme/js/bootstrap.min.js",
               "src/theme/js/plugins.js",
-              "src/theme/js/mainScrollGalleryJs.js",
-              "src/theme/js/mainVideo.js",
               "src/theme/js/placeholder.js",
               "src/theme/js/main.js"
             ]

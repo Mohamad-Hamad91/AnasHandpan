@@ -21,11 +21,14 @@ export class EnrollmentManagementComponent implements OnInit {
   dataTemp: Enrollment[] = new Array();
   criteria: any = {};
   filtersNo: number = 0;
+  CourseTitle: string;
 
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
     private _messageService: MessageService, private _route: Router, private _activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
+
+    this.CourseTitle = localStorage.getItem('CourseTitle');
 
     this._activatedRouter.params.subscribe(parameters => {
       this.CourseId = this._activatedRouter.snapshot.params.id;

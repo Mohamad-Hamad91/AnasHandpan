@@ -5,20 +5,20 @@
         <div class="row">
             <div class="sectionTitle paddingBottom">
                 <span class="heading-t3"></span>
-                <h2><a href="blogGrid.html">News</a></h2>
+                <h2><a routerLink="/details/all-news">News</a></h2>
                 <span class="heading-b3"></span>
             </div><!-- end sectionTtile -->
             <div class="col-sm-4" *ngFor="let news of data">
                 <div class="blogBox">
-                    <div class="imgBox"><img  [src]="baseURL + news.Photo" alt="box-img"></div>
+                    <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
                     <div class="blogBoxContent">
                         <div class="blogHeader">
-                            <h1><a href="#">{{news.Title}}</a></h1>
+                            <h1><a [routerLink]="'/details/single-news/' + news.Id">{{news.Title}}</a></h1>
                         </div>
                         <div class="admin-list clearfix">
                             <ul>
-                                <li><a href="#">{{news.Date | date}}</a></li>
-                                <!-- <li><a href="#">By Admin</a></li> -->
+                                <li><a [routerLink]="'/details/single-news/' + news.Id">{{news.Date | date}}</a></li>
+                                <!-- <li><a [routerLink]="'/details/single-news/' + news.Id">By Admin</a></li> -->
                             </ul>
                         </div><!-- end admin-list -->
                         <div class="blogParagraph">
@@ -26,7 +26,7 @@
                         </div>
                         <!--end blogParagraph  -->
                         <div class="rmButton">
-                            <a href="#">Read More</a>
+                            <a [routerLink]="'/details/single-news/' + news.Id">Read More</a>
                         </div>
                     </div><!-- end blogBoxContent -->
                 </div><!-- end blogBox -->

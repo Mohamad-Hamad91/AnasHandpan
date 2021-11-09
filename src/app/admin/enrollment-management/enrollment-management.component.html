@@ -1,6 +1,10 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
 </p-confirmDialog>
 <p-toast></p-toast>
+<div class="container">
+    <h3>Course: {{CourseTitle}}</h3>
+</div>
+
 <div class="p-grid">
     <div class="p-col-12">
         <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>

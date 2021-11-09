@@ -75,6 +75,13 @@ import { ProductOrdersManagementComponent } from './admin/product-orders-managem
 import { MusicPlayerComponent } from './website/music-player/music-player.component';
 import { OrderManagementComponent } from './admin/order-management/order-management.component';
 import { OrderStatusManagementComponent } from './admin/order-status-management/order-status-management.component';
+import { SingleNewsComponent } from './website/single-news/single-news.component';
+import { DetailsComponent } from './website/details/details.component';
+import { BreadcrumbComponent } from './website/breadcrumb/breadcrumb.component';
+import { SingleEventComponent } from './website/single-event/single-event.component';
+import { SingleAlbumComponent } from './website/single-album/single-album.component';
+import { SingleCourseComponent } from './website/single-course/single-course.component';
+import { AllNewsComponent } from './website/all-news/all-news.component';
 //#endregion components
 
 //#region Other
@@ -122,7 +129,14 @@ import { OrderStatusManagementComponent } from './admin/order-status-management/
     ProductOrdersManagementComponent,
     MusicPlayerComponent,
     OrderManagementComponent,
-    OrderStatusManagementComponent
+    OrderStatusManagementComponent,
+    SingleNewsComponent,
+    DetailsComponent,
+    BreadcrumbComponent,
+    SingleEventComponent,
+    SingleAlbumComponent,
+    SingleCourseComponent,
+    AllNewsComponent
   ],
   imports: [
     BrowserModule,
