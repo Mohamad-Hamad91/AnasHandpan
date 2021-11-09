@@ -1,1 +1,35 @@
-<p>all-albums works!</p>
+<!-- =============== START GALLERY SECTION ================ -->
+<section class="padding gallerySection" id="content">
+    <div class="container" style="padding:0;">
+        <div class="col-sm-12">
+            <!-- Content Container -->
+            <div class="content-container clearfix">
+                <!-- Single Album Container -->
+                <div class="single-photo-album-container">
+                    <div class="row">
+                        <!-- Single Album Article -->
+                        <article class="col-sm-4" *ngFor="let a of data">
+                            <!-- Single Album Contant Container -->
+                            <figure>
+                                <!-- Single Album Image -->
+                                <figcaption>
+                                    <div class="hovereffect">
+                                        <img class="img-responsive" [src]="baseURL + a.Photo" alt="">
+                                        <div class="overlay">
+                                            <a [routerLink]="'/details/single-album/' + a.Id" class="info">{{a.Name}}
+                                                <br> {{a.Genre}}/ {{a.ReleaseDate | date}}</a>
+                                        </div>
+                                    </div>
+                                </figcaption>
+                            </figure>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end container -->
+    <div class="container">
+        <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+    </div>
+</section>
+<!-- =============== END GALLERY SECTION ================ -->

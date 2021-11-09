@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { AlbumReq } from 'src/app/admin/model/albums';
+import { environment } from 'src/environments/environment';
+import { Album } from '../model/album';
+import { AlbumService } from '../service/album.service';
 
 @Component({
   selector: 'app-all-albums',
@@ -7,9 +11,32 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AllAlbumsComponent implements OnInit {
 
-  constructor() { }
+  data: Album[] = new Array();
+  params: AlbumReq = { PageNumber: 1, PageSize: 9 };
+  waiting: boolean = true;
+  baseURL: string = environment.baseURL;
+  totlaCount: number = 0;
+
+  constructor(private _dataService: AlbumService) { }
 
   ngOnInit(): void {
+    this.getData();
   }
+
+  getData() {
+    this.waiting = true;
+    this._dataService.getAll(this.params)
+      .subscribe(res => {
+        this.data.push(...res.Data.List);
+        this.totlaCount = +res.Data.TotalCount;
+        this.waiting = false;
+      }, er => this.waiting = false);
+  }
+
+  loadMore() {
+    this.params.PageNumber++;
+    this.getData();
+  }
+
 
 }
