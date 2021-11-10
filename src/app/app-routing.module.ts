@@ -24,6 +24,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { AllAlbumsComponent } from './website/all-albums/all-albums.component';
 import { AllEventsComponent } from './website/all-events/all-events.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
+import { AllProductsComponent } from './website/all-products/all-products.component';
 import { DetailsComponent } from './website/details/details.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
@@ -35,6 +36,7 @@ import { SingleAlbumComponent } from './website/single-album/single-album.compon
 import { SingleCourseComponent } from './website/single-course/single-course.component';
 import { SingleEventComponent } from './website/single-event/single-event.component';
 import { SingleNewsComponent } from './website/single-news/single-news.component';
+import { SingleProductComponent } from './website/single-product/single-product.component';
 import { VerifyComponent } from './website/verify/verify.component';
 
 const routes: Routes = [
@@ -47,9 +49,11 @@ const routes: Routes = [
       { path: 'all-news', component: AllNewsComponent },
       { path: 'all-events', component: AllEventsComponent },
       { path: 'all-albums', component: AllAlbumsComponent },
+      { path: 'all-products', component: AllProductsComponent },
       { path: 'single-news/:id', component: SingleNewsComponent },
       { path: 'single-event/:id', component: SingleEventComponent },
       { path: 'single-album/:id', component: SingleAlbumComponent },
+      { path: 'single-product/:id', component: SingleProductComponent },
       { path: 'single-course/:id', component: SingleCourseComponent },
     ]
   },

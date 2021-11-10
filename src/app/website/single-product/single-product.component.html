@@ -1,0 +1,151 @@
+<p-toast></p-toast>
+<!-- =============== START SHOP-SINGLE SECTION ================ -->
+<section class="paddingShopSingle">
+    <div class="container">
+        <div class="row">
+            <div class="clothing">
+                <div class="col-sm-7 ">
+                    <a [href]="baseURL + data.Photo" class="lightbox">
+                        <img [src]="baseURL + data.Photo" alt="">
+                    </a>
+                    <div class="products">
+                        <a *ngFor="let p of data.Photos" [href]="baseURL + p" class="lightbox">
+                            <img [src]="baseURL + p" alt="" style="width: 145px;">
+                        </a>
+                    </div><!-- end products -->
+                </div><!-- end col-sm-8 -->
+            </div><!-- end clothing -->
+            <div class="col-sm-5">
+                <div class="productDetails">
+                    <nav>
+                        <a routerLink="/details/all-products">Back to Shopping</a>
+                        <i class="fa fa-angle-double-right"></i>
+                        {{data.Title}}
+                    </nav>
+                    <h1>{{data.Title}}</h1>
+                    <div class="productRating">
+                        <p class="price">{{data.Price | currency}}</p>
+                    </div><!-- end productRating -->
+                    <table class="variations" *ngIf="data.AcceptColor == 1">
+                        <tbody>
+                            <!-- <tr>
+                                <td class="label"><label for="size">Size</label></td>
+                                <td class="value"><select id="size" name="attribute_size"
+                                        data-attribute_name="attribute_size">
+                                        <option value="">Choose an option…</option>
+                                        <option value="small" class="attached enabled">S</option>
+                                        <option value="medium" class="attached enabled">M</option>
+                                        <option value="large" class="attached enabled">L</option>
+                                    </select></td>
+                            </tr> -->
+                            <tr>
+                                <td class="label"><label for="colors">Colors</label></td>
+                                <td class="value">
+                                    <select [(ngModel)]="order.Color" id="colors" name="attribute_colors"
+                                        data-attribute_name="attribute_colors">
+                                        <option value="">Choose an option…</option>
+                                        <option style="color: black;" value="Black" class="attached enabled">Black
+                                            &nbsp; &#9751;
+                                        </option>
+                                        <option style="color: yellow;" value="Yellow" class="attached enabled">yellow
+                                            &nbsp; &#9751;
+                                        </option>
+                                        <option style="color: purple;" value="Purple" class="attached enabled">Purple
+                                            &nbsp; &#9751;
+                                        </option>
+                                        <option style="color: green;" value="Green" class="attached enabled">Green
+                                            &nbsp; &#9751;
+                                        </option>
+                                        <option style="color: red;" value="Red" class="attached enabled">Red &nbsp;
+                                            &#9751;</option>
+                                        <option style="color: blue;" value="Blue" class="attached enabled">Blue &nbsp;
+                                            &#9751;</option>
+                                        <option style="color: cyan;" value="Cyan" class="attached enabled">Cyan &nbsp;
+                                            &#9751;</option>
+                                    </select>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="product-quantity woocommerce cart shop_table">
+                        <div class="quantity buttons_added" *ngIf="data.AcceptQuantity == 1">
+                            <input [(ngModel)]="order.Quantity" type="number" step="1" min="1" name="quantity" value="1"
+                                title="Qty" class="input-text qty text">
+                        </div>
+                        <button class="single_add_to_cart_button button alt buttonTT" (click)="addOrder()"
+                            *ngIf="isLoggedIn && role == 'USER'">
+                            Order
+                        </button>
+                        <p *ngIf="!isLoggedIn || role != 'USER'">
+                            Please <a routerLink="/login">Login</a> to Order this item.</p>
+                    </div><!-- end product-quantity -->
+                    <!-- <div class="productMeta">
+                        <span class="skuWrapper">SKU: <span class="sku">15121993</span>.</span>
+                        <div class="meta-list">
+                            <span class="metaListHead">Category: </span><a href="#">Hoodie unisex, Original
+                                T.Brothers.</a>
+                        </div>
+                        <div class="metaList">
+                            <span class="metaListSpan">Tagged with: </span><a href="#">bookend,</a> <a href="#"
+                                rel="tag">furniture,</a> <a href="#">home</a>
+                        </div>
+                    </div> -->
+                </div><!-- end productDetails -->
+            </div><!-- end col-sm-4 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>
+<!-- =============== END SHOP-SINGLE SECTION ================ -->
+
+<!-- =============== START SHOP TAB ================ -->
+<section>
+    <div class="shopTab">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div>
+                        <!-- Nav tabs -->
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active firstTab">
+                                <a href="#home" role="tab" data-toggle="tab">Description</a>
+                            </li>
+                            <li role="presentation">
+                                <a href="#reviews" class="reviews" role="tab" data-toggle="tab">Places</a>
+                            </li>
+                        </ul>
+
+                        <!-- Tab panes -->
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="home">
+                                {{data.Description}}
+                            </div>
+
+                            <div role="tabpanel" class="tab-pane" id="reviews">
+                                <div class="col-sm-8">
+                                    <table class="variations">
+                                        <thead>
+                                            <th>Name</th>
+                                            <th>Location</th>
+                                            <th>Photo</th>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let p of data.Places">
+                                                <td class="value">{{p.Name}} </td>
+                                                <td class="value">{{p.Location}} </td>
+                                                <td class="value">
+                                                    <a [href]="baseURL + p.Photo" class="lightbox">
+                                                        <img [src]="baseURL + p.Thumbnail" alt="" width="50"></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- end col-sm-12 -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end shopTap -->
+</section>
+<!-- =============== END SHOP TAB ================ -->
