@@ -1,0 +1,46 @@
+<section class="albumSingle padding background-properties"
+    style="background-image:url(assets/img/subHeader/header.png);">
+    <div class="container">
+        <div class="sectionTitle paddingBottom">
+            <span class="heading-t3"></span>
+            <h2>My Orders</h2>
+            <span class="heading-b3"></span>
+        </div><!-- end sectionTtile -->
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="jp-playlist">
+                    <div class="about-list clearfix">
+                        <span style="text-align: center;width: 28rem;" class="about-length">Product</span>
+                        <span style="text-align: center;width: 28rem;"  class="about-length">Price</span>
+                        <span style="text-align: center;width: 28rem;"  class="about-length">Quantity</span>
+                        <span style="text-align: center;width: 28rem;"  class="about-length">Date</span>
+                    </div>
+                    <div *ngFor="let item of data; let i = index">
+                        <div class="trak-item">
+                            <div class="name-artist" style="width: 28rem;text-align: center;">
+                                <div class="center-y-table">
+                                    {{item.ProductTitle}}
+                                </div>
+                            </div>
+                            <div class="name-artist" style="width: 28rem;text-align: center;">
+                                <div class="center-y-table">
+                                    {{item.ProductPrice | currency}}
+                                </div>
+                            </div>
+                            <div class="name-artist" style="width: 28rem;text-align: center;">
+                                <div class="center-y-table">
+                                    {{item.Quantity}}
+                                </div>
+                            </div>
+                            <div class="name-artist" style="width: 28rem;text-align: center;">
+                                <div class="center-y-table">
+                                    {{item.Date | date}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end-col-sm-8 -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section>

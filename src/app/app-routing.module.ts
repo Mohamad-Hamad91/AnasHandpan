@@ -31,6 +31,8 @@ import { ForgetPassComponent } from './website/forget-pass/forget-pass.component
 import { HomeComponent } from './website/home/home.component';
 import { LoginComponent } from './website/login/login.component';
 import { LogoutComponent } from './website/logout/logout.component';
+import { MyCoursesComponent } from './website/my-courses/my-courses.component';
+import { MyOrdersComponent } from './website/my-orders/my-orders.component';
 import { RegisterComponent } from './website/register/register.component';
 import { SingleAlbumComponent } from './website/single-album/single-album.component';
 import { SingleCourseComponent } from './website/single-course/single-course.component';
@@ -46,6 +48,8 @@ const routes: Routes = [
   { path: 'home/:section', component: HomeComponent },
   {
     path: 'details', component: DetailsComponent, children: [
+      { path: 'MyOrders', component: MyOrdersComponent },
+      { path: 'MyCourses', component: MyCoursesComponent },
       { path: 'all-news', component: AllNewsComponent },
       { path: 'all-events', component: AllEventsComponent },
       { path: 'all-albums', component: AllAlbumsComponent },

@@ -10,6 +10,7 @@ export class TopHeaderComponent implements OnInit {
   isAdmin: boolean = false;
   isLoggedin: boolean = false;
   sections: string[] = new Array();
+  role: string;
 
   @Output() Navigate = new EventEmitter();
 
@@ -18,12 +19,14 @@ export class TopHeaderComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.isAdmin = localStorage.getItem('role') === '1';
-    this.isLoggedin = !!localStorage.getItem('role');
-    // debugger;
+    this.role = localStorage.getItem('role');
+    this.isAdmin = this.role === '1';
+    this.isLoggedin = !!this.role;
     for (const key in this.data) {
       if (this.data[key] === '1') {
-        this.sections.push(key);
+        if (key == 'MyCourses' || key == 'MyOrders') {
+          if (this.isLoggedin || this.role === 'USER') this.sections.push(key);
+        } else this.sections.push(key);
       }
     }
   }

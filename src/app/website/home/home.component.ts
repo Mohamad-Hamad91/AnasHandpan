@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Home } from '../model/home';
 import { DataService } from '../service/data.service';
 
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   data: Home = new Home();
   section: string;
 
-  constructor(private _dataService: DataService, private _activatedRoute: ActivatedRoute) { }
+  constructor(private _dataService: DataService, private _activatedRoute: ActivatedRoute,
+    private _router: Router) { }
 
   ngOnInit(): void {
     this._dataService.get().subscribe(res => {
@@ -34,7 +35,11 @@ export class HomeComponent implements OnInit {
   }
 
   navigateTo(element: string) {
-    this[element].nativeElement.scrollIntoView({ behavior: "smooth" });
+    debugger;
+    if (element === 'MyCourses' || element === 'MyOrders')
+      this._router.navigate(['/details/' + element]);
+    else
+      this[element].nativeElement.scrollIntoView({ behavior: "smooth" });
   }
 
 }
