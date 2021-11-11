@@ -2,41 +2,43 @@
 <section class="shopHomePage shopHomePadding hide-section">
     <div class="shopSection">
         <div class="container-fluid">
-        <div class="shopContent">
-            <div class="sectionTitle paddingBottom">
-                <span class="heading-t3"></span>
-                <h2><a href="shop.html">Courses</a></h2>
-                <span class="heading-b3"></span>
-            </div><!-- end sectionTtile -->	
-            <div class="row">
-                <nav class="shop-products">
-                    <ul class="clearfix">
-                        <li class="col-sm-3" *ngFor="let course of data">
-                            <figure>
-                                <figcaption>
-                                    <img [src]="baseURL + course.Photo" alt="">
-                                </figcaption>
-                                <div class="content">
-                                    <div class="shopHover">
-                                        <div class="price">
-                                            <!-- &pound;  -->
-                                            {{course.Price | currency}}
+            <div class="shopContent">
+                <div class="sectionTitle paddingBottom">
+                    <span class="heading-t3"></span>
+                    <h2><a routerLink="/details/all-courses">Courses</a></h2>
+                    <span class="heading-b3"></span>
+                </div><!-- end sectionTtile -->
+                <div class="row">
+                    <nav class="shop-products">
+                        <ul class="clearfix">
+                            <li class="col-sm-3" *ngFor="let course of data">
+                                <figure>
+                                    <figcaption>
+                                        <img [src]="baseURL + course.Photo" alt="">
+                                    </figcaption>
+                                    <div class="content">
+                                        <div class="shopHover">
+                                            <div class="price">
+                                                <!-- &pound;  -->
+                                                {{course.Price | currency}}
+                                            </div>
+                                            <div class="proTitle">
+                                                <a [routerLink]="'/details/single-course/' + course.Id">{{course.Title}}</a>
+                                            </div>
+                                            <div class="product">{{course.Brief}}</div>
+                                            <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
+                                                    class="fa fa-shopping-cart"></i><span></span></a>
+                                            <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
+                                                    class="fa fa-info"></i><span></span></a>
                                         </div>
-                                        <div  class="proTitle">
-                                            <a href="#">{{course.Title}}</a>
-                                        </div>
-                                        <div class="product">{{course.Brief}}</div>
-                                        <a href="#" class="icon-button shopIcon"><i class="fa fa-shopping-cart"></i><span></span></a>
-                                         <a href="#" class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
                                     </div>
-                                </div>
-                            </figure>
-                        </li>
-                    </ul>
-                </nav><!-- end shop-products -->
-            </div><!-- end row -->
-        </div><!-- end shopContent -->
-    </div>
+                                </figure>
+                            </li>
+                        </ul>
+                    </nav><!-- end shop-products -->
+                </div><!-- end row -->
+            </div><!-- end shopContent -->
+        </div>
     </div>
 </section>
 <!-- =============== END HOME-SHOP SECTION ================ -->

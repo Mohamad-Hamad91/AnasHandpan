@@ -22,6 +22,7 @@ import { SocialMediaComponent } from './admin/social-media/social-media.componen
 import { SongManagementComponent } from './admin/song-management/song-management.component';
 import { UsersComponent } from './admin/users/users.component';
 import { AllAlbumsComponent } from './website/all-albums/all-albums.component';
+import { AllCoursesComponent } from './website/all-courses/all-courses.component';
 import { AllEventsComponent } from './website/all-events/all-events.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
 import { AllProductsComponent } from './website/all-products/all-products.component';
@@ -54,6 +55,7 @@ const routes: Routes = [
       { path: 'all-events', component: AllEventsComponent },
       { path: 'all-albums', component: AllAlbumsComponent },
       { path: 'all-products', component: AllProductsComponent },
+      { path: 'all-courses', component: AllCoursesComponent },
       { path: 'single-news/:id', component: SingleNewsComponent },
       { path: 'single-event/:id', component: SingleEventComponent },
       { path: 'single-album/:id', component: SingleAlbumComponent },
