@@ -1,6 +1,11 @@
 <!-- =============== START BLOG FILTER ================ -->
 <section class="aquraFilter padding" id="content">
     <div class="container">
+        <div class="sectionTitle paddingBottom">
+            <span class="heading-t3"></span>
+            <h2>News</h2>
+            <span class="heading-b3"></span>
+        </div>
         <!-- start blog-filter-category -->
         <!-- <div class="categories"> -->
 
@@ -51,7 +56,7 @@
                 </div><!-- end aqura-filter-cotent -->
             </div><!-- end col-sm-12 -->
         </div><!-- end row -->
-        <div class="container">
+        <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
             <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
         </div>
         <!-- end filter -->

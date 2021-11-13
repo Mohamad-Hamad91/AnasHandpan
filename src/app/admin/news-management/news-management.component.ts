@@ -269,11 +269,11 @@ export class NewsManagementComponent implements OnInit {
   }
 
   deletePhoto(index: number) {
-    delete this.item.Photos[index];
+    this.item.Photos = [...this.item.Photos.filter((rec, i) => i != index)];
   }
 
   deleteVideo(index: number) {
-    delete this.item.Videos[index];
+    this.item.Videos = [...this.item.Videos.filter((rec, i) => i != index)];
   }
 
   manageVideos(row: News) {

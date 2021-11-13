@@ -83,6 +83,9 @@ export class AlbumsManagementComponent implements OnInit {
         this.waiting = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
         record.isEditable = false;
+        let i = this.data.findIndex(row => row.Id == this.item.Id);
+        this.data[i] = res.Data;
+        this.data = [...this.data];
         this.dialog = false;
         this.item = new Album();
       }, er => { this.waiting = false; });
@@ -112,6 +115,7 @@ export class AlbumsManagementComponent implements OnInit {
     this._albumService.getOne(row.Id)
       .subscribe(res => {
         this.item = res.Data;
+        this.item.ReleaseDate = new Date(this.item.ReleaseDate);
         this.waiting = false;
         this.dialog = true;
       }, er => this.waiting = false);

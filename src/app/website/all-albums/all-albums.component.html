@@ -3,6 +3,11 @@
     <div class="container" style="padding:0;">
         <div class="col-sm-12">
             <!-- Content Container -->
+            <div class="sectionTitle paddingBottom">
+                <span class="heading-t3"></span>
+                <h2>Albums</h2>
+                <span class="heading-b3"></span>
+            </div>
             <div class="content-container clearfix">
                 <!-- Single Album Container -->
                 <div class="single-photo-album-container">
@@ -28,7 +33,7 @@
             </div>
         </div>
     </div><!-- end container -->
-    <div class="container">
+    <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
         <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
     </div>
 </section>

@@ -13,7 +13,7 @@ export class MusicPlayerComponent implements OnInit {
   @ViewChild('audioElement', { static: false }) audioElement: ElementRef;
   baseURL = environment.baseURL;
   defaultTrack: Music = new Music();
-  hidden: boolean = false;
+  hidden: boolean = true;
   playListHidden: boolean = true;
   audioStatus: 'playing' | 'paused' = 'paused';
   trackIndex: number = 0;

@@ -13,6 +13,7 @@ export class CoverManagementComponent implements OnInit {
   data: { CoverPhoto: string };
   waiting: boolean;
   baseURL: string = environment.baseURL;
+  canSave: boolean = false;
 
   constructor(private _dataService: DataService, private _messageService: MessageService) { }
 
@@ -36,6 +37,7 @@ export class CoverManagementComponent implements OnInit {
       .update(this.data)
       .subscribe(res => {
         this.waiting = false;
+        this.canSave = false;
         this._messageService.add({ severity: 'success', summary: 'Updated Successfully!' });
       }, er => this.waiting = false);
   }
@@ -49,6 +51,7 @@ export class CoverManagementComponent implements OnInit {
       .subscribe(res => {
         this.data.CoverPhoto = res.Data.Url;
         this.waiting = false;
+        this.canSave = true;
         this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
       }, er => this.waiting = false);
   }

@@ -55,7 +55,7 @@ export class AdminNavbarComponent implements OnInit {
         ]
       },
       {
-        label: 'Manage Parties',
+        label: 'Parties',
         items: [
           {
             label: 'Manage Admins',
@@ -77,6 +77,7 @@ export class AdminNavbarComponent implements OnInit {
       },
       {
         label: 'Website',
+        // icon: 'pi pi-globe',
         items: [
           {
             label: 'Sections',

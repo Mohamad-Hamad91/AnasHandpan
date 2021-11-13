@@ -3,6 +3,11 @@
     <div class="container-fluid">
         <div class="row" style="padding-bottom:0!important;">
             <div class="col-sm-12">
+                <div class="sectionTitle paddingBottom" style="margin-top: 5vh;">
+                    <span class="heading-t3"></span>
+                    <h2>Courses</h2>
+                    <span class="heading-b3"></span>
+                </div>
                 <div class="row">
                     <nav class="shop-products">
                         <ul class="clearfix">
@@ -20,8 +25,11 @@
                                                 <a [routerLink]="'/details/single-course/' + c.Id">{{c.Title}}</a>
                                                 <a [routerLink]="'/details/single-course/' + c.Id">{{c.Brief}}</a>
                                             </div>
-                                            <a [routerLink]="'/details/single-course/' + c.Id" class="icon-button shopIcon"><i class="fa fa-shopping-cart"></i><span></span></a>
-                                             <a [routerLink]="'/details/single-course/' + c.Id" class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
+                                            <a [routerLink]="'/details/single-course/' + c.Id"
+                                                class="icon-button shopIcon"><i
+                                                    class="fa fa-shopping-cart"></i><span></span></a>
+                                            <a [routerLink]="'/details/single-course/' + c.Id"
+                                                class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
                                         </div>
                                     </div>
                                 </figure>
@@ -31,7 +39,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
             <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
         </div>
     </div>

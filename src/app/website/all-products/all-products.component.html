@@ -1,6 +1,11 @@
 <!-- =============== START SHOP SECTION ================ -->
 <section id="content">
     <div class="container-fluid">
+        <div class="sectionTitle paddingBottom" style="margin-top: 5vh;">
+            <span class="heading-t3"></span>
+            <h2>Products</h2>
+            <span class="heading-b3"></span>
+        </div>
         <div class="row" style="padding-bottom:0!important;">
             <div class="col-sm-12">
                 <div class="row">
@@ -31,7 +36,7 @@
                 </div>
             </div>
         </div>
-        <div class="container">
+        <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
             <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
         </div>
     </div>

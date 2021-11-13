@@ -1,7 +1,11 @@
 <p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
 </p-confirmDialog>
 <p-toast></p-toast>
+<div class="p-col-12">
+    <h1 style="text-align: center;">{{data.Name}}</h1>
+</div>
 <div class="p-grid">
+
     <div class="p-col-12">
         <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
         <div class="card">
@@ -59,11 +63,11 @@
                     </td>
                     <td>
                         <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"
-                            class="p-button-rounded p-button-warning"  pTooltip="Update"
+                            class="p-button-rounded p-button-warning" pTooltip="Update"
                             tooltipPosition="bottom"></button> &nbsp; &nbsp;
                         <button type="button" pButton pRipple icon="pi pi-trash" (click)="delete(row)"
-                            class="p-button-rounded p-button-warning" 
-                            pTooltip="Delete" tooltipPosition="bottom"></button>
+                            class="p-button-rounded p-button-warning" pTooltip="Delete"
+                            tooltipPosition="bottom"></button>
                     </td>
                 </tr>
             </ng-template>

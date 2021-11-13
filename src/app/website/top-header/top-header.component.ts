@@ -25,7 +25,7 @@ export class TopHeaderComponent implements OnInit {
     for (const key in this.data) {
       if (this.data[key] === '1') {
         if (key == 'MyCourses' || key == 'MyOrders') {
-          if (this.isLoggedin || this.role === 'USER') this.sections.push(key);
+          if (this.isLoggedin && this.role === 'USER') this.sections.push(key);
         } else this.sections.push(key);
       }
     }
