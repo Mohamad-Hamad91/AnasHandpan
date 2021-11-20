@@ -4,7 +4,7 @@
         <div class="header">
             <div class="rightTopHeader">
                 <!-- Open Menu Button -->
-                <a #openMenu (click)='menuClicked()' id="open-menu"  class="open-menu">
+                <a #openMenu (click)='menuClicked()' id="open-menu" class="open-menu">
                     <!-- Buttons Bars -->
                     <span class="span-1"></span>
                     <span class="span-2"></span>
@@ -42,6 +42,11 @@
                     <li *ngIf="!isLoggedin">
                         <a routerLink="/register">
                             Register
+                        </a>
+                    </li>
+                    <li *ngIf="isLoggedin">
+                        <a (click)="navigateTo('Profile')">
+                            My Profile
                         </a>
                     </li>
                     <li *ngIf="isLoggedin">

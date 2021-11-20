@@ -34,6 +34,7 @@ import { LoginComponent } from './website/login/login.component';
 import { LogoutComponent } from './website/logout/logout.component';
 import { MyCoursesComponent } from './website/my-courses/my-courses.component';
 import { MyOrdersComponent } from './website/my-orders/my-orders.component';
+import { ProfileComponent } from './website/profile/profile.component';
 import { RegisterComponent } from './website/register/register.component';
 import { SingleAlbumComponent } from './website/single-album/single-album.component';
 import { SingleCourseComponent } from './website/single-course/single-course.component';
@@ -49,6 +50,7 @@ const routes: Routes = [
   { path: 'home/:section', component: HomeComponent },
   {
     path: 'details', component: DetailsComponent, children: [
+      { path: 'Profile', component: ProfileComponent },
       { path: 'MyOrders', component: MyOrdersComponent },
       { path: 'MyCourses', component: MyCoursesComponent },
       { path: 'all-news', component: AllNewsComponent },

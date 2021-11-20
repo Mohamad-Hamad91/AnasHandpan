@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
 
   navigateTo(element: string) {
     debugger;
-    if (element === 'MyCourses' || element === 'MyOrders')
+    if (element === 'MyCourses' || element === 'MyOrders' || element === 'Profile')
       this._router.navigate(['/details/' + element]);
     else
       this[element].nativeElement.scrollIntoView({ behavior: "smooth" });

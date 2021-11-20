@@ -89,6 +89,7 @@ import { SingleProductComponent } from './website/single-product/single-product.
 import { MyOrdersComponent } from './website/my-orders/my-orders.component';
 import { MyCoursesComponent } from './website/my-courses/my-courses.component';
 import { AllCoursesComponent } from './website/all-courses/all-courses.component';
+import { ProfileComponent } from './website/profile/profile.component';
 //#endregion components
 
 //#region Other
@@ -150,7 +151,8 @@ import { AllCoursesComponent } from './website/all-courses/all-courses.component
     SingleProductComponent,
     MyOrdersComponent,
     MyCoursesComponent,
-    AllCoursesComponent
+    AllCoursesComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

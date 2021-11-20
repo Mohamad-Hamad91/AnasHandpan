@@ -1,0 +1,30 @@
+<p-toast></p-toast>
+<section class="contactSingle padding background-properties" id="content"
+    style="background-image:url(assets/img/subHeader/header.png);">
+    <div class="container">
+        <div class="row" style="min-height: 63vh;">
+            <div class="col-sm-4">
+                <div class="contactTop">
+                    <h2>Update Profile Info</h2>
+                    <h4>Please fill the form</h4>
+                </div>
+            </div><!-- end col-sm-4 -->
+            <div class="col-sm-7 col-sm-offset-1">
+                <div class="singleBlogForm">
+                    <h2>My Profile</h2>
+                    <form class="comment-form" (ngSubmit)="update()">
+                        <input id="Email" name="Email" type="email" aria-required="true" placeholder="Email *"
+                            [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
+                        <input id="Name" name="Name" type="text" aria-required="true" placeholder="Name "
+                            [(ngModel)]="data.Name" #Name="ngModel">
+                        <input id="Phone" name="Phone" type="tel" aria-required="true" placeholder="Phone "
+                            [(ngModel)]="data.Phone" #Name="ngModel">
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" value="Submit">
+                        </p>
+                    </form>
+                </div><!-- end contactForm -->
+            </div><!-- end col-sm-7 col-sm-offset-1 -->
+        </div>
+    </div><!-- end container -->
+</section>
