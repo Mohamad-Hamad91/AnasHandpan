@@ -56,6 +56,7 @@ export class AdminNavbarComponent implements OnInit {
       },
       {
         label: 'Parties',
+        visible: localStorage.getItem('role') === '1',
         items: [
           {
             label: 'Manage Admins',
@@ -64,11 +65,13 @@ export class AdminNavbarComponent implements OnInit {
             command: () => {
               this.sideBarShow = false;
             },
+            visible: localStorage.getItem('role') === '1'
           },
           {
             label: 'Manage users',
             icon: 'pi pi-user-plus',
             routerLink: ['/dashboard/users'],
+            visible: localStorage.getItem('role') === '1',
             command: () => {
               this.sideBarShow = false;
             },
@@ -83,6 +86,7 @@ export class AdminNavbarComponent implements OnInit {
             label: 'Sections',
             icon: 'pi pi-table',
             routerLink: ['/dashboard/sections'],
+            visible: localStorage.getItem('role') === '1',
             command: () => {
               this.sideBarShow = false;
             },
@@ -147,6 +151,7 @@ export class AdminNavbarComponent implements OnInit {
             label: 'Products',
             icon: 'fa fa-gift',
             routerLink: ['/dashboard/products'],
+            visible: localStorage.getItem('role') === '1',
             command: () => {
               this.sideBarShow = false;
             },
@@ -155,6 +160,7 @@ export class AdminNavbarComponent implements OnInit {
             label: 'Orders',
             icon: 'fa fa-gift',
             routerLink: ['/dashboard/orders-management'],
+            visible: localStorage.getItem('role') === '1',
             command: () => {
               this.sideBarShow = false;
             },
@@ -163,6 +169,7 @@ export class AdminNavbarComponent implements OnInit {
             label: 'Courses',
             icon: 'fa fa-pen',
             routerLink: ['/dashboard/courses'],
+            visible: localStorage.getItem('role') === '1',
             command: () => {
               this.sideBarShow = false;
             },

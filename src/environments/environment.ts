@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseURL: 'https://anas-handpan-dev.herokuapp.com/',
-  adminURl: 'https://anas-handpan-dev.herokuapp.com/admin/',
-  userURL: 'https://anas-handpan-dev.herokuapp.com/user/',
+  baseURL: 'http://anas-dev.eu-4.evennode.com/',
+  adminURl: 'http://anas-dev.eu-4.evennode.com/admin/',
+  userURL: 'http://anas-dev.eu-4.evennode.com/user/',
 };
 
 /*

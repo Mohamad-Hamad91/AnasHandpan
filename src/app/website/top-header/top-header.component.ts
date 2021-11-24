@@ -20,7 +20,7 @@ export class TopHeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
-    this.isAdmin = this.role === '1';
+    this.isAdmin = this.role === '1' || this.role === '2';
     this.isLoggedin = !!this.role;
     for (const key in this.data) {
       if (this.data[key] === '1') {

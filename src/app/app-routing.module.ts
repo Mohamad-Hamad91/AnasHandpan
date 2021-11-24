@@ -21,6 +21,7 @@ import { SectionsComponent } from './admin/sections/sections.component';
 import { SocialMediaComponent } from './admin/social-media/social-media.component';
 import { SongManagementComponent } from './admin/song-management/song-management.component';
 import { UsersComponent } from './admin/users/users.component';
+import { AuthGaurdGuard } from './auth-gaurd.guard';
 import { AllAlbumsComponent } from './website/all-albums/all-albums.component';
 import { AllCoursesComponent } from './website/all-courses/all-courses.component';
 import { AllEventsComponent } from './website/all-events/all-events.component';
@@ -77,25 +78,82 @@ const routes: Routes = [
   { path: 'admin', component: AdminLoginComponent },
   {
     path: 'dashboard', component: DashboardComponent, children: [
-      { path: 'admins', component: AdminsComponent },
-      { path: 'users', component: UsersComponent },
-      { path: 'cover', component: CoverManagementComponent },
-      { path: 'personal-info', component: PersonalInfoManagementComponent },
-      { path: 'sections', component: SectionsComponent },
-      { path: 'social-media', component: SocialMediaComponent },
-      { path: 'music', component: MusicManagementComponent },
-      { path: 'albums', component: AlbumsManagementComponent },
-      { path: 'songs/:id', component: SongManagementComponent },
-      { path: 'news', component: NewsManagementComponent },
-      { path: 'events', component: EventManagementComponent },
-      { path: 'courses', component: CourseManagementComponent },
-      { path: 'lessons/:id', component: LessonManagementComponent },
-      { path: 'enrollment/:id', component: EnrollmentManagementComponent },
-      { path: 'products', component: ProductManagementComponent },
-      { path: 'places/:id', component: ProducPlacesManagementComponent },
-      { path: 'orders/:id', component: ProductOrdersManagementComponent },
-      { path: 'orders-management', component: OrderManagementComponent },
-      { path: 'orders-status/:id', component: OrderStatusManagementComponent },
+      {
+        path: 'admins', component: AdminsComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'users', component: UsersComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'cover', component: CoverManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'personal-info', component: PersonalInfoManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'sections', component: SectionsComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'social-media', component: SocialMediaComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'music', component: MusicManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'albums', component: AlbumsManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'songs/:id', component: SongManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'news', component: NewsManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'events', component: EventManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1', '2'] }
+      },
+      {
+        path: 'courses', component: CourseManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'lessons/:id', component: LessonManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'enrollment/:id', component: EnrollmentManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'products', component: ProductManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'places/:id', component: ProducPlacesManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'orders/:id', component: ProductOrdersManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'orders-management', component: OrderManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'orders-status/:id', component: OrderStatusManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
     ]
   },
   //#endregion Admin section
