@@ -1,7 +1,21 @@
+<app-breadcrumb style="min-height: 100vh;" [title]="data.Name" [bg]="baseURL + data.Photo"
+    [description]="data.Description"></app-breadcrumb>
+
+<!-- <section class="no-mb">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="before-FullscreenSlider"></div>
+            <div class="breadcrumb-fullscreen-parent phone-menu-bg">
+                <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay" style="background-image: url({{baseURL}}{{data.Photo}});" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
 <!-- =============== START ALBUM SINGLE ================ -->
 <section class="albumSingle padding background-properties"
-    style="background-image:url(assets/img/subHeader/header.png);">
-    <div class="container">
+    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;">
+    <div class="container" style="background-color: rgba(255, 255, 255,0.1); padding: 100px;">
         <div class="sectionTitle paddingBottom">
             <span class="heading-t3"></span>
             <h2>{{data.Name}}</h2>
@@ -97,5 +111,5 @@
 </section>
 
 <audio preload="auto" crossOrigin="anonymous" #audioElement style="display: hidden;"
-        src="{{baseURL + defaultTrack}}"></audio>
+    src="{{baseURL + defaultTrack}}"></audio>
 <!-- =============== END ALBUM SINGLE ================ -->

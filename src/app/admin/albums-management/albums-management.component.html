@@ -130,6 +130,11 @@
             <p-calendar [(ngModel)]="item.ReleaseDate" dateFormat="dd.mm.yy" appendTo="body"></p-calendar>
         </div>
         <div class="p-field">
+            <label for="Description">Description</label>
+            <textarea [rows]="5" [cols]="30" pInputTextarea autoResize="autoResize" [(ngModel)]="item.Description"
+                id="Description"></textarea>
+        </div>
+        <div class="p-field">
             <label for="AppearInHomePage">AppearInHomePage</label> &nbsp;&nbsp;
             <p-inputSwitch [name]="key" [(ngModel)]="item.AppearInHomePage" trueValue="1" falseValue="0">
             </p-inputSwitch>

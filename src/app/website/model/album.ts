@@ -7,6 +7,7 @@ export class Album {
     Photo: string;
     Genre: string;
     ReleaseDate: string;
+    Thumbnail: string;
 }
 
 export class NewReq extends BaseRequest { }
@@ -28,6 +29,7 @@ export class SingleAlbum {
     Photo: string;
     Thumbnail: string;
     Genre: string;
+    Description: string;
     ReleaseDate: string;
     Songs: Song[];
 }

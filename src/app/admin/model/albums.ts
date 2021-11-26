@@ -20,6 +20,7 @@ export class Album {
     Photo: string;
     Genre: string;
     ReleaseDate: Date;
+    Description: string;
     AppearInHomePage: number;
     isEditable: boolean;
     Songs: Song[];
