@@ -1,4 +1,4 @@
-<app-music-player *ngIf="data.Music" [data]="data.Music"></app-music-player>
+<app-music-player #player *ngIf="data.Music" [data]="data.Music"></app-music-player>
 <app-top-header *ngIf="data.SideMenu" [data]="data.SideMenu" (Navigate)="navigateTo($event)"></app-top-header>
 <div class="our-details">
     <!-- <app-breadcrumb></app-breadcrumb> -->

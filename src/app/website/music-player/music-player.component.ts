@@ -31,8 +31,14 @@ export class MusicPlayerComponent implements OnInit {
       this.duration = this.audioElement.nativeElement.duration;
       this.currentTime = this.audioElement.nativeElement.currentTime;
       this.currentPercent = (this.currentTime / this.duration) * 100;
-      if(this.audioElement.nativeElement.readyState == 4 && this.audioStatus == 'playing')
-      this.audioElement.nativeElement.play();
+      if(!this.audioElement.nativeElement.paused) this.audioStatus = 'playing';
+      // if (this.audioElement.nativeElement.readyState == 4 && this.audioStatus == 'playing') {
+      //   this.audioElement.nativeElement.play();
+      //   this.audioStatus == 'playing';
+      // }
+      //   debugger;
+      if(this.audioElement.nativeElement.paused) this.audioStatus = 'paused';
+      // else this.audioStatus == 'playing';
     }, 1000);
   }
 
@@ -67,6 +73,9 @@ export class MusicPlayerComponent implements OnInit {
     this.defaultTrack = this.data[this.trackIndex];
     this.duration = this.audioElement.nativeElement.duration;
     // this.audioElement?.nativeElement?.play();
+    setTimeout(() => {
+      this.audioElement?.nativeElement?.play();
+    }, 500);
   }
 
   forward() {
@@ -75,6 +84,9 @@ export class MusicPlayerComponent implements OnInit {
     this.defaultTrack = this.data[this.trackIndex];
     this.duration = this.audioElement.nativeElement.duration;
     // this.audioElement?.nativeElement?.play();
+    setTimeout(() => {
+      this.audioElement?.nativeElement?.play();
+    }, 500);
   }
 
   playThis(index) {
@@ -82,7 +94,7 @@ export class MusicPlayerComponent implements OnInit {
     this.defaultTrack = this.data[index];
     this.audioStatus = 'playing';
     this.duration = this.audioElement.nativeElement.duration;
-    // this.audioElement?.nativeElement?.play();
+    this.audioElement?.nativeElement?.play();
   }
 
 }

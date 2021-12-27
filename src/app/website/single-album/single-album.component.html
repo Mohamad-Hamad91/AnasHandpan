@@ -42,8 +42,8 @@
                             <div class="play-pause-button">
                                 <div class="center-y-table">
                                     <i class="fa fa-play" (click)="playThis(i)"
-                                        *ngIf="trackIndex != i || audioStatus != 'playing'"></i>
-                                    <i class="fa fa-pause" *ngIf="trackIndex == i && audioStatus == 'playing'"
+                                        *ngIf="trackIndex != i || audioStatus != 'playing' || currSrc !== (baseURL + track.Url)"></i>
+                                    <i class="fa fa-pause" *ngIf="trackIndex == i && audioStatus == 'playing' && currSrc == (baseURL + track.Url)"
                                         (click)="pause()"></i>
                                 </div>
                             </div>
@@ -110,6 +110,6 @@
     </div><!-- end container -->
 </section>
 
-<audio preload="auto" crossOrigin="anonymous" #audioElement style="display: hidden;"
-    src="{{baseURL + defaultTrack}}"></audio>
+<!-- <audio preload="auto" crossOrigin="anonymous" #audioElement style="display: hidden;"
+    src="{{baseURL + defaultTrack}}"></audio> -->
 <!-- =============== END ALBUM SINGLE ================ -->
