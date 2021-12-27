@@ -1,7 +1,7 @@
 <app-music-player *ngIf="data.Music" [data]="data.Music" ></app-music-player>
 <app-top-header *ngIf="data.SideMenu" [data]="data.SideMenu" (Navigate)="navigateTo($event)"></app-top-header>
 <div class="home">
-    <section class="app-cover" *ngIf="data.PersonalInfo">
+    <section class="app-cover" >
         <app-cover [data]="data"></app-cover>
     </section>
     <section #Albums *ngIf="data.SideMenu?.Albums == '1'" class="app-albums">
