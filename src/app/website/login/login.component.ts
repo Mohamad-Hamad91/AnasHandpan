@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { LoginReq } from '../model/login';
 import { AuthService } from '../service/auth.service';
 import 'oauthio-web';
+import { DataService } from '../service/data.service';
+import { Home } from '../model/home';
 
 declare var OAuth: any;
 @Component({
@@ -15,11 +17,17 @@ export class LoginComponent implements OnInit {
   @ViewChild('Email') Email!: HTMLFormElement;
   @ViewChild('Password') Password!: HTMLFormElement;
 
-  constructor(private _router: Router, private _authService: AuthService) {
+  headerData: Home = new Home();
+
+  constructor(private _router: Router, private _authService: AuthService,
+    private _dataService: DataService) {
 
   }
 
   ngOnInit(): void {
+    this._dataService.get().subscribe(res => {
+      this.headerData = res.Data;
+    });
   }
 
   login() {

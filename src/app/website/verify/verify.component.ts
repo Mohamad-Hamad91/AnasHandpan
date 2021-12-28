@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Home } from '../model/home';
 import { VerifyReq } from '../model/login';
 import { AuthService } from '../service/auth.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-verify',
@@ -12,12 +14,18 @@ import { AuthService } from '../service/auth.service';
 export class VerifyComponent implements OnInit {
 
   data: VerifyReq = new VerifyReq();
+  headerData: Home = new Home();
   // @ViewChild('VerificationCode') VerificationCode: HTMLFormElement;
 
-  constructor(private _authservice: AuthService, private _router: Router, private _messageService: MessageService) { }
+  constructor(private _authservice: AuthService, private _router: Router,
+     private _messageService: MessageService,
+     private _dataService: DataService) { }
 
   ngOnInit(): void {
     this.data.Email = localStorage.getItem('email');
+    this._dataService.get().subscribe(res => {
+      this.headerData = res.Data;
+    });
   }
 
   verify() {

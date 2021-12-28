@@ -1,6 +1,6 @@
 <p-toast></p-toast>
-<section class="contactSingle padding background-properties" id="content"
-    style="background-image:url(assets/img/subHeader/header.png);">
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+<section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
             <div class="col-sm-4">
@@ -20,7 +20,7 @@
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
-                        <a (click)="resend()"> Resend verification Code</a>
+                        <a (click)="resend()" style="color: black;"> Resend verification Code</a>
                     </form>
                 </div><!-- end contactForm -->
             </div><!-- end col-sm-7 col-sm-offset-1 -->

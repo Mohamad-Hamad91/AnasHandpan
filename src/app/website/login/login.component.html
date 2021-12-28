@@ -1,6 +1,6 @@
 <p-toast></p-toast>
-<section class="contactSingle padding background-properties" id="content"
-    style="background-image:url(assets/img/subHeader/header.png);">
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+<section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
             <div class="col-sm-4">
@@ -20,17 +20,21 @@
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>LOG-IN</h2>
+                    <br>
+                    <br>
                     <form class="comment-form" (ngSubmit)="login()">
                         <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
                             [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
                         <input id="Passowrd" name="Password" type="password" aria-required="true" required
                             placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
+                        <br>
                         <p class="form-submit">
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
-                        <a routerLink="/forget-password">Forget password?</a>
-                        <br>
-                        <a  routerLink="/register">Don't have an account?</a>
+                        <br><br>
+                        <a routerLink="/forget-password" style="color: black;">Forget password?</a>
+                        <br><br>
+                        <a routerLink="/register" style="color: black;">Don't have an account?</a>
                     </form>
                 </div><!-- end contactForm -->
             </div><!-- end col-sm-7 col-sm-offset-1 -->

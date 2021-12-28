@@ -1,8 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { Home } from '../model/home';
 import { RegisterReq } from '../model/login';
 import { AuthService } from '../service/auth.service';
+import { DataService } from '../service/data.service';
 
 @Component({
   selector: 'app-register',
@@ -17,9 +19,17 @@ export class RegisterComponent implements OnInit {
   @ViewChild('Phone') Phone!: HTMLFormElement;
   @ViewChild('Password') Password!: HTMLFormElement;
   @ViewChild('ConfirmPassowrd') ConfirmPassowrd!: HTMLFormElement;
-  constructor(private _router: Router, private _authService: AuthService, private _messageService: MessageService) { }
+
+  headerData: Home = new Home();
+  section: string;
+
+  constructor(private _router: Router, private _authService: AuthService,
+     private _messageService: MessageService, private _dataService: DataService) { }
 
   ngOnInit(): void {
+    this._dataService.get().subscribe(res => {
+      this.headerData = res.Data;
+    });
   }
 
   register() {

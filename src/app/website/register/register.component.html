@@ -1,6 +1,6 @@
 <p-toast></p-toast>
-<section class="contactSingle padding background-properties" id="content"
-    style="background-image:url(assets/img/subHeader/header.png);">
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+<section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
             <div class="col-sm-4">
@@ -17,17 +17,22 @@
                     <p-messages></p-messages>
                     <form class="comment-form" (ngSubmit)="register()">
                         <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
-                            [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
-                        <input id="Name" name="Name" type="Name" aria-required="true" required placeholder="Name *"
-                            [(ngModel)]="data.Name" #Name="ngModel">
+                            [(ngModel)]="data.Email" #Email="ngModel" minlength="4" autocomplete="off">
+                        <input id="Name" name="Name" type="Name" aria-required="true" minlength="4" required placeholder="Name *"
+                            [(ngModel)]="data.Name" #Name="ngModel" autocomplete="off">
                         <input id="Phone" name="Phone" type="tel" aria-required="true" required placeholder="Phone *"
-                            [(ngModel)]="data.Phone" #Phone="ngModel">
+                            [(ngModel)]="data.Phone" #Phone="ngModel" autocomplete="off">
                         <input id="Passowrd" name="Password" type="password" aria-required="true" required
-                            placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
+                            placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel" autocomplete="off">
+                        <br>
                         <input id="ConfirmPassowrd" name="ConfirmPassowrd" type="password" aria-required="true" required
-                            placeholder="ConfirmPassowrd *" [(ngModel)]="data.ConfirmPassowrd" #Password="ngModel">
-                            <a routerLink="/login">Already have an account? sign in here</a>
+                            placeholder="ConfirmPassowrd *" [(ngModel)]="data.ConfirmPassowrd" #Password="ngModel"
+                            autocomplete="off">
+                        <br><br><br>
+                        <a routerLink="/login" style="color: black; background: rgba(200,200,200,0.2);">Already have an account? sign in here</a>
+                        <br>
                         <p class="form-submit">
+                            <br>
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
                     </form>
