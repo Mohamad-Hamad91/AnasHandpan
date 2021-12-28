@@ -34,6 +34,11 @@
                             {{section}}
                         </a>
                     </li>
+                    <li>
+                        <a routerLink="/Biography">
+                            Biography
+                        </a>
+                    </li>
                     <li *ngIf="!isLoggedin">
                         <a routerLink="/admin">
                             Admin Login
@@ -59,7 +64,7 @@
                             Logout
                         </a>
                     </li>
-                    
+
                 </ul>
                 <!-- Menu Fixed Close Button -->
                 <div class="x-filter" (click)="xClicked()">

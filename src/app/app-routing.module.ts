@@ -27,6 +27,7 @@ import { AllCoursesComponent } from './website/all-courses/all-courses.component
 import { AllEventsComponent } from './website/all-events/all-events.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
 import { AllProductsComponent } from './website/all-products/all-products.component';
+import { BiographyComponent } from './website/biography/biography.component';
 import { DetailsComponent } from './website/details/details.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
@@ -49,16 +50,17 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'home/:section', component: HomeComponent },
+  { path: 'Biography', component: BiographyComponent },
   {
     path: 'details', component: DetailsComponent, children: [
       { path: 'Profile', component: ProfileComponent },
       { path: 'MyOrders', component: MyOrdersComponent },
       { path: 'MyCourses', component: MyCoursesComponent },
-      { path: 'all-news', component: AllNewsComponent },
-      { path: 'all-events', component: AllEventsComponent },
-      { path: 'all-albums', component: AllAlbumsComponent },
-      { path: 'all-products', component: AllProductsComponent },
-      { path: 'all-courses', component: AllCoursesComponent },
+      { path: 'News', component: AllNewsComponent },
+      { path: 'Events', component: AllEventsComponent },
+      { path: 'Albums', component: AllAlbumsComponent },
+      { path: 'Products', component: AllProductsComponent },
+      { path: 'Courses', component: AllCoursesComponent },
       { path: 'single-news/:id', component: SingleNewsComponent },
       { path: 'single-event/:id', component: SingleEventComponent },
       { path: 'single-album/:id', component: SingleAlbumComponent },

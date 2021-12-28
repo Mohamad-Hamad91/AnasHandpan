@@ -90,6 +90,7 @@ import { MyOrdersComponent } from './website/my-orders/my-orders.component';
 import { MyCoursesComponent } from './website/my-courses/my-courses.component';
 import { AllCoursesComponent } from './website/all-courses/all-courses.component';
 import { ProfileComponent } from './website/profile/profile.component';
+import { BiographyComponent } from './website/biography/biography.component';
 //#endregion components
 
 //#region Other
@@ -152,7 +153,8 @@ import { ProfileComponent } from './website/profile/profile.component';
     MyOrdersComponent,
     MyCoursesComponent,
     AllCoursesComponent,
-    ProfileComponent
+    ProfileComponent,
+    BiographyComponent
   ],
   imports: [
     BrowserModule,

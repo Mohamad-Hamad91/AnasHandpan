@@ -1,0 +1,206 @@
+<!-- =============== START TOP HEADER ================ -->
+<div class="topHeader">
+    <div class="header">
+        <div class="rightTopHeader">
+            <div class="cartContainer">
+            </div>
+            <!--end cartContainer  -->
+            <!-- Open Menu Button -->
+            <a #openMenu (click)='menuClicked()' id="open-menu" class="open-menu">
+                <!-- Buttons Bars -->
+                <span class="span-1"></span>
+                <span class="span-2"></span>
+                <span class="span-3"></span>
+            </a>
+        </div><!-- end rightTopHeader -->
+    </div><!-- end header -->
+    <!-- Menu Fixed Container -->
+    <div class="menu-fixed-container" id="menu-fixed-container">
+        <!-- Menu Fixed Centred Container -->
+        <nav>
+            <!-- Menu Fixed Close Button -->
+            <div class="x-filter" (click)="xClicked()">
+                <span></span>
+                <span></span>
+            </div>
+            <!-- Menu Fixed Primary List -->
+            <ul *ngIf="ready">
+                <!-- Menu Fixed Item -->
+                <!-- Menu Fixed Item -->
+                <li *ngIf="isAdmin">
+                    <a routerLink="/dashboard">
+                        Admin Dashboard
+                    </a>
+                </li>
+                <li *ngFor="let section of sections">
+                    <a (click)="navigateTo(section)">
+                        {{section}}
+                    </a>
+                </li>
+                <li >
+                    <a routerLink="/Biography">
+                        Biography
+                    </a>
+                </li>
+                <li *ngIf="!isLoggedin">
+                    <a routerLink="/admin">
+                        Admin Login
+                    </a>
+                </li>
+                <li *ngIf="!isLoggedin">
+                    <a routerLink="/login">
+                        Login
+                    </a>
+                </li>
+                <li *ngIf="!isLoggedin">
+                    <a routerLink="/register">
+                        Register
+                    </a>
+                </li>
+                <li *ngIf="isLoggedin">
+                    <a (click)="navigateTo('Profile')">
+                        My Profile
+                    </a>
+                </li>
+                <li *ngIf="isLoggedin">
+                    <a routerLink="/logout">
+                        Logout
+                    </a>
+                </li>
+            </ul>
+            <!-- Menu Fixed Close Button -->
+            <div class="x-filter" (click)="xClicked()">
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </div><!-- end menu-fixed-container -->
+    <!-- =============== STAR LOGO ================ -->
+    <div class="logo-container-top">
+        <a href="index.html"><img src="assets/img/logo/whiteLogo.png" alt="Aqura"></a>
+    </div><!-- end logo-container-top -->
+    <!-- =============== END LOGO ================ -->
+</div><!-- end topHeader -->
+<!-- =============== END TOP HEADER ================ -->
+<!-- =============== START BREADCRUMB ================ -->
+<section class="no-mb">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="before-FullscreenSlider"></div>
+            <div class="breadcrumb-fullscreen-parent phone-menu-bg">
+                <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay"
+                    style="background-image: url('assets/img/bio.jpg');" data-stellar-background-ratio="0.5"
+                    data-stellar-vertical-offset="0">
+                    <div class="breadTxt">
+                        <h1>
+                            Wanda Valdis
+                        </h1>
+                        <p>
+                            There's an old saying, 'That what doesn't kill you, makes you stronger' I don't believe
+                            that. <br> I think the things that try to kill you make you angry and sad. Strength
+                            comes<br> from the good things - your family, your friends,<br> the satisfaction of hard
+                            work.
+                        </p>
+                        <a href="#content" data-easing="easeInOutQuint" data-scroll="" data-speed="900"
+                            data-url="false">
+                            View More <i class="fa fa-angle-down"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- =============== END BREADCRUMB ================ -->
+
+<!-- =============== START BIOGRAPHY SECTION ================ -->
+<section style="background-image:url(assets/img/subHeader/header.png);" class="biography padding background-properties"
+    id="content">
+    <div class="container">
+        <div class="sectionTitle paddingBottom">
+            <span class="heading-t3"></span>
+            <h2><a href="albums.html">Biography</a></h2>
+            <span class="heading-b3"></span>
+        </div><!-- end sectionTtile -->
+        <div class="row">
+            <div class="col-sm-6">
+                <p>Emi Haze graduated from the Institute
+                    of Design in Verona with
+                    a degree in Graphic Design
+                    and Advertising Design.I live in the north-east of Italy and my huge passion is digital art.
+                    Art and painting connected to technology have always been my strongest passions. People think I am
+                    calm, quiet, sometimes introvert, really creative, inspired and perfectionist.
+                    In my opinion everything in every moment has an artistic side, the aesthetics of things, people
+                    around me...
+                    for me everything has its own importance, images, textures, sounds, fragrances, my creativity is
+                    costantly stimulated.</p>
+                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
+                    order to build,
+                    my own wide portfolio that could distinguish me both in style, technique and creativity.
+                    In my first works i focused on a graphic style based on construction and deconstruction of the human
+                    body
+                    using various tools and graphic effects that render it almost a sketch.</p>
+                <p>In my recent works I tried to merge the human body with nature or rather with the four elements of
+                    fire,
+                    air, water and earth, and even with a fifth esoteric element: the Aristotelian ether, that includes
+                    all the others,
+                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
+                    change.
+                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
+                    utopia
+                    and in which color and sensitivity have the predominant role.</p>
+                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
+                    order to build,
+                    my own wide portfolio that could distinguish me both in style, technique and creativity.
+                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
+                    change.
+                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
+                    utopia
+                    and in which color and sensitivity have the predominant role.</p>
+            </div>
+            <div class="col-sm-6">
+                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
+                    order to build,
+                    my own wide portfolio that could distinguish me both in style, technique and creativity.
+                    In my first works i focused on a graphic style based on construction and deconstruction of the human
+                    body
+                    using various tools and graphic effects that render it almost a sketch.
+                    In my recent works I tried to merge the human body with nature or rather with the four elements of
+                    fire,
+                    air, water and earth, and even with a fifth esoteric element: the Aristotelian ether, that includes
+                    all the others,
+                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
+                    change.
+                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
+                    utopia
+                    and in which color and sensitivity have the predominant role.</p>
+                <p>Photoshop is the software I prefer to conceive my works, in which I also include the digital version
+                    of hand-made elements,
+                    such as scratches and ink marks, acrylic or watercolor stains. The outcome is technically always
+                    appealing and intriguing.
+                    Music is the key of this creative process. I could mention Sigur Rós, Radiohead, Bloc Party,
+                    Coldplay, Bjork etc.
+                    I’m also fond of movies, I love every kind cinema, especially indie movies and art movies.</p>
+                <p>Emi Haze graduated from the Institute
+                    of Design in Verona with
+                    a degree in Graphic Design
+                    and Advertising Design.I live in the north-east of Italy and my huge passion is digital art.
+                    Art and painting connected to technology have always been my strongest passions. People think I am
+                    calm, quiet, sometimes introvert, really creative, inspired and perfectionist.
+                    In my opinion everything in every moment has an artistic side, the aesthetics of things, people
+                    around me...
+                    for me everything has its own importance, images, textures, sounds, fragrances, my creativity is
+                    costantly stimulated.</p>
+                <div class="signature">
+                    <a href="http://www.emihaze.com/showcase">Emili Haze:</a>
+                    <div class="imgSignuature">
+                        <img src="assets/img/content/signature.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!-- end container -->
+</section>
+<!-- =============== END BIOGRAPHY SECTION ================ -->
+
+<app-footer [data]="data.SocialMediaLinks" *ngIf="data.SocialMediaLinks"></app-footer>

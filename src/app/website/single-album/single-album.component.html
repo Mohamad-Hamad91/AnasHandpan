@@ -1,5 +1,5 @@
-<app-breadcrumb style="min-height: 100vh;" [title]="data.Name" [bg]="baseURL + data.Photo"
-    [description]="data.Description"></app-breadcrumb>
+<!-- <app-breadcrumb style="min-height: 100vh;" [title]="data.Name" [bg]="baseURL + data.Photo"
+    [description]="data.Description"></app-breadcrumb> -->
 
 <!-- <section class="no-mb">
     <div class="row">
@@ -14,8 +14,8 @@
 </section> -->
 <!-- =============== START ALBUM SINGLE ================ -->
 <section class="albumSingle padding background-properties"
-    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;">
-    <div class="container" style="background-color: rgba(255, 255, 255,0.1); padding: 100px;">
+    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 100%; min-height: 94vh">
+    <div class="container" style="background-color: rgba(255, 255, 255,0.3); padding: 100px;">
         <div class="sectionTitle paddingBottom">
             <span class="heading-t3"></span>
             <h2>{{data.Name}}</h2>
@@ -25,7 +25,7 @@
             <div class="col-sm-8">
                 <div class="jp-playlist" *ngIf="data.Songs?.length > 0">
                     <div class="about-list clearfix">
-                        <span class="about-name">NAME</span>
+                        <span class="about-name" style="color: black;">NAME</span>
                     </div>
                     <div *ngFor="let track of data.Songs; let i = index">
                         <div class="trak-item">
@@ -49,7 +49,7 @@
                             </div>
                             <div class="name-artist">
                                 <div class="center-y-table">
-                                    <h2>
+                                    <h2 style="color: black;">
                                         {{track.Name}}
                                     </h2>
                                 </div>
@@ -64,15 +64,15 @@
             <div class="col-sm-3 col-sm-offset-1">
                 <div class="sidebarAlbum">
                     <div class="widget">
-                        <h3>Details</h3>
+                        <h3 style="color: black;">Details</h3>
                         <ul>
-                            <li>Realease Date:<span>{{data.ReleaseDate | date}} </span></li>
-                            <li>Genre:<span>{{data.Genre}} </span></li>
-                            <li>Number Of Songs:<span>{{data.Songs?.length}} </span></li>
+                            <li style="color: black;">Realease Date:<span style="color: black;">{{data.ReleaseDate | date}} </span></li>
+                            <li style="color: black;">Genre:<span style="color: black;">{{data.Genre}} </span></li>
+                            <li style="color: black;">Number Of Songs:<span style="color: black;">{{data.Songs?.length}} </span></li>
                         </ul>
                     </div><!-- end widget -->
 
-                    <div class="widget">
+                    <!-- <div class="widget">
                         <h3>Available On</h3>
                         <section>
                             <ul id='services'>
@@ -103,7 +103,7 @@
                                 </li>
                             </ul>
                         </section>
-                    </div><!-- end widget -->
+                    </div> -->
                 </div><!-- end sidebarAlbum -->
             </div><!-- end col-sm-3 col-sm-offset-1 -->
         </div><!-- end row -->

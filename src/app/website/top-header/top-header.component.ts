@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Sections } from '../model/sections';
 
 @Component({
@@ -16,7 +17,7 @@ export class TopHeaderComponent implements OnInit {
 
   @Input('data') data: Sections = new Sections();
 
-  constructor() { }
+  constructor(private _router: Router) { }
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
@@ -42,7 +43,8 @@ export class TopHeaderComponent implements OnInit {
   }
 
   navigateTo(element: string) {
-    this.Navigate.emit(element);
+    // this.Navigate.emit(element);
+    this._router.navigate(['/details/' + element]);
     this.xClicked();
   }
 
