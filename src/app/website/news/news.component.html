@@ -5,10 +5,10 @@
         <div class="row">
             <div class="sectionTitle paddingBottom">
                 <span class="heading-t3"></span>
-                <h2><a routerLink="/details/all-news">News</a></h2>
+                <h2><a routerLink="/details/News">News</a></h2>
                 <span class="heading-b3"></span>
             </div><!-- end sectionTtile -->
-            <div class="col-sm-4" *ngFor="let news of data">
+            <div class="col-md-{{data.length>4? '3' : floor(12/data.length)}} col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12" *ngFor="let news of data">
                 <div class="blogBox">
                     <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
                     <div class="blogBoxContent">

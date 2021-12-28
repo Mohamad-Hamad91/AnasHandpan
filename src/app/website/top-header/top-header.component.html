@@ -29,6 +29,11 @@
                             Admin Dashboard
                         </a>
                     </li>
+                    <li>
+                        <a routerLink="/home">
+                            Home
+                        </a>
+                    </li>
                     <li *ngFor="let section of sections">
                         <a (click)="navigateTo(section)">
                             {{section}}

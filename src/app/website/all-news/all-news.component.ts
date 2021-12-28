@@ -16,6 +16,7 @@ export class AllNewsComponent implements OnInit {
   waiting: boolean = true;
   baseURL: string = environment.baseURL;
   totlaCount: number = 0;
+  floor = Math.floor;
 
   constructor(private _dataService: NewsService) { }
 

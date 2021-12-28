@@ -18,7 +18,7 @@
             <div class="col-sm-5">
                 <div class="productDetails">
                     <nav>
-                        <a routerLink="/details/all-products">Back to Shopping</a>
+                        <a routerLink="/details/Products">Back to Shopping</a>
                         <i class="fa fa-angle-double-right"></i>
                         {{data.Title}}
                     </nav>
@@ -103,45 +103,50 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active firstTab">
-                                <a href="#home" role="tab" data-toggle="tab">Description</a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#reviews" class="reviews" role="tab" data-toggle="tab">Places</a>
-                            </li>
-                        </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                {{data.Description}}
-                            </div>
-
-                            <div role="tabpanel" class="tab-pane" id="reviews">
-                                <div class="col-sm-8">
-                                    <table class="variations">
-                                        <thead>
-                                            <th>Name</th>
-                                            <th>Location</th>
-                                            <th>Photo</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let p of data.Places">
-                                                <td class="value">{{p.Name}} </td>
-                                                <td class="value">{{p.Location}} </td>
-                                                <td class="value">
-                                                    <a [href]="baseURL + p.Photo" class="lightbox">
-                                                        <img [src]="baseURL + p.Thumbnail" alt="" width="50"></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="container" style="padding: 10px;">
+                        <h3>Description</h3>
+                        {{data.Description}}
+                        <br><br>
+                    </div>
+                    <div class="container" style="padding: 10px;">
+                        <h3>Places</h3>
+                        <div class="col-sm-4" *ngFor="let p of data.Places" style="padding: 10px;">
+                            <div class="blogBox">
+                                <div class="imgBox"><img [src]="baseURL + p.Photo" alt="box-img"></div>
+                                <div class="blogBoxContent">
+                                    <div class="blogHeader">
+                                        <h3>{{p.Name}}</h3>
+                                    </div>
+                                    <div class="admin-list clearfix">
+                                    </div><!-- end admin-list -->
+                                    <div class="blogParagraph">
+                                        <p>{{p.Location}}</p>
+                                    </div>
+                                    <!--end blogParagraph  -->
+                                </div><!-- end blogBoxContent -->
+                            </div><!-- end blogBox -->
+                        </div><!-- end col-sm-4 -->
+                        <!-- <div>
+                        <div class="col-sm-8">
+                            <table class="variations">
+                                <thead>
+                                    <th>Name</th>
+                                    <th>Location</th>
+                                    <th>Photo</th>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let p of data.Places">
+                                        <td class="value">{{p.Name}} </td>
+                                        <td class="value">{{p.Location}} </td>
+                                        <td class="value">
+                                            <a [href]="baseURL + p.Photo" class="lightbox">
+                                                <img [src]="baseURL + p.Thumbnail" alt="" width="50"></a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
+                    </div> -->
                     </div>
                 </div><!-- end col-sm-12 -->
             </div><!-- end row -->

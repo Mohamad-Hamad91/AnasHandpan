@@ -28,7 +28,7 @@
             <div class="col-sm-12 col-xs-12">
                 <div class="aqura-filter-content">
                     <ul class="clearfix">
-                        <li class="col-sm-4 col-xs-12 standard " *ngFor="let news of data">
+                        <li class="col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12 standard " *ngFor="let news of data">
                             <div class="blogBox">
                                 <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
                                 <div class="blogBoxContent">

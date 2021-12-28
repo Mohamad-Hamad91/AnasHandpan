@@ -32,6 +32,11 @@
                         Admin Dashboard
                     </a>
                 </li>
+                <li>
+                    <a routerLink="/home">
+                        Home
+                    </a>
+                </li>
                 <li *ngFor="let section of sections">
                     <a (click)="navigateTo(section)">
                         {{section}}
@@ -89,7 +94,7 @@
             <div class="before-FullscreenSlider"></div>
             <div class="breadcrumb-fullscreen-parent phone-menu-bg">
                 <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay"
-                    style="background-image: url('assets/img/bio.jpg');" data-stellar-background-ratio="0.5"
+                    style="background-image: url('assets/img/bio.jpg'); min-height: 100vh;" data-stellar-background-ratio="0.5"
                     data-stellar-vertical-offset="0">
                     <div class="breadTxt">
                         <h1>

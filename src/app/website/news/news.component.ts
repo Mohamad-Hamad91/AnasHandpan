@@ -11,6 +11,7 @@ export class NewsComponent implements OnInit {
 
   @Input('data') data: News[] = new Array();
   baseURL: string = environment.baseURL;
+  floor = Math.floor;
 
   constructor() { }
 
