@@ -11,7 +11,7 @@
                 <div class="row">
                     <nav class="shop-products">
                         <ul class="clearfix">
-                            <li class="col-sm-3" *ngFor="let course of data">
+                            <li class="col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12 " *ngFor="let course of data">
                                 <figure>
                                     <figcaption>
                                         <img [src]="baseURL + course.Photo" alt="">
@@ -26,8 +26,8 @@
                                                 <a [routerLink]="'/details/single-course/' + course.Id">{{course.Title}}</a>
                                             </div>
                                             <div class="product">{{course.Brief}}</div>
-                                            <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
-                                                    class="fa fa-shopping-cart"></i><span></span></a>
+                                            <!-- <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
+                                                    class="fa fa-shopping-cart"></i><span></span></a> -->
                                             <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
                                                     class="fa fa-info"></i><span></span></a>
                                         </div>

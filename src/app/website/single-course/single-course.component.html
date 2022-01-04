@@ -18,7 +18,7 @@
             <div class="col-sm-5">
                 <div class="productDetails">
                     <nav>
-                        <a routerLink="/details/all-courses">Back to Couses</a>
+                        <a routerLink="/details/Courses">Back to Couses</a>
                         <i class="fa fa-angle-double-right"></i>
                         {{data.Title}}
                     </nav>
@@ -55,7 +55,7 @@
                             <li role="presentation" class="active firstTab">
                                 <a href="#home" role="tab" data-toggle="tab">Description</a>
                             </li>
-                            <li role="presentation">
+                            <li role="presentation" *ngIf="role === 'USER'">
                                 <a href="#reviews" class="reviews" role="tab" data-toggle="tab">Lessons</a>
                             </li>
                         </ul>

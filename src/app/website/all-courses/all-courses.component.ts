@@ -15,6 +15,7 @@ export class AllCoursesComponent implements OnInit {
   waiting: boolean = true;
   baseURL: string = environment.baseURL;
   totlaCount: number = 0;
+  floor = Math.floor;
 
   constructor(private _dataService: CourseService) { }
 

@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row" style="padding-bottom:0!important;">
             <div class="col-sm-12">
-                <div class="sectionTitle paddingBottom" style="margin-top: 5vh;">
+                <div class="sectionTitle paddingBottom" style="margin-top: 10vh;">
                     <span class="heading-t3"></span>
                     <h2>Courses</h2>
                     <span class="heading-b3"></span>
@@ -11,7 +11,7 @@
                 <div class="row">
                     <nav class="shop-products">
                         <ul class="clearfix">
-                            <li class="col-sm-4" *ngFor="let c of data">
+                            <li class="col-sm-{{data.length>3? '4' : floor(12/data.length)}} col-xs-12 " *ngFor="let c of data">
                                 <figure>
                                     <figcaption>
                                         <img [src]="baseURL + c.Photo" alt="">
@@ -25,9 +25,9 @@
                                                 <a [routerLink]="'/details/single-course/' + c.Id">{{c.Title}}</a>
                                                 <a [routerLink]="'/details/single-course/' + c.Id">{{c.Brief}}</a>
                                             </div>
-                                            <a [routerLink]="'/details/single-course/' + c.Id"
+                                            <!-- <a [routerLink]="'/details/single-course/' + c.Id"
                                                 class="icon-button shopIcon"><i
-                                                    class="fa fa-shopping-cart"></i><span></span></a>
+                                                    class="fa fa-shopping-cart"></i><span></span></a> -->
                                             <a [routerLink]="'/details/single-course/' + c.Id"
                                                 class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
                                         </div>

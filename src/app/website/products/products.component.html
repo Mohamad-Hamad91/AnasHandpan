@@ -11,7 +11,7 @@
                 <div class="row">
                     <nav class="shop-products">
                         <ul class="clearfix">
-                            <li class="col-sm-3" *ngFor="let product of data">
+                            <li class="col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12 " *ngFor="let product of data">
                                 <figure>
                                     <figcaption>
                                         <img [src]="baseURL + product.Photo" alt="">

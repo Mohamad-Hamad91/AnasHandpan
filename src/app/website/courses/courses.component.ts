@@ -11,6 +11,7 @@ export class CoursesComponent implements OnInit {
 
   @Input('data') data: Course[];
   baseURL = environment.baseURL;
+  floor = Math.floor;
 
   constructor() { }
 

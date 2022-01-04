@@ -11,7 +11,8 @@ export class ProductsComponent implements OnInit {
 
   @Input('data') data: Product[] = new Array();
   baseURL: string = environment.baseURL;
-  
+  floor = Math.floor;
+
   constructor() { }
 
   ngOnInit(): void {
