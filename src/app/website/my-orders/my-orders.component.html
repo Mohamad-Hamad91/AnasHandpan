@@ -11,9 +11,9 @@
                 <div class="jp-playlist">
                     <div class="about-list clearfix">
                         <span style="text-align: center;width: 28rem;" class="about-length">Product</span>
-                        <span style="text-align: center;width: 28rem;"  class="about-length">Price</span>
-                        <span style="text-align: center;width: 28rem;"  class="about-length">Quantity</span>
-                        <span style="text-align: center;width: 28rem;"  class="about-length">Date</span>
+                        <span style="text-align: center;width: 28rem;" class="about-length">Price</span>
+                        <span style="text-align: center;width: 28rem;" class="about-length">Quantity</span>
+                        <span style="text-align: center;width: 28rem;" class="about-length">Date</span>
                     </div>
                     <div *ngFor="let item of data; let i = index">
                         <div class="trak-item">
@@ -42,5 +42,8 @@
                 </div>
             </div><!-- end-col-sm-8 -->
         </div><!-- end row -->
+        <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
+            <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+        </div>
     </div><!-- end container -->
 </section>
