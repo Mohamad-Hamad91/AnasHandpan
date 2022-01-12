@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit {
   @ViewChild('Albums', { static: false }) Albums;
   @ViewChild('Events', { static: false }) Events;
   @ViewChild('News', { static: false }) News;
+  @ViewChild('cover', { static: false }) cover;
 
   data: Home = new Home();
   section: string;
@@ -27,6 +28,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this._dataService.get().subscribe(res => {
       this.data = res.Data;
+      // debugger;
+      this.cover.changeData(this.data);
       setTimeout(() => {
         this.section = this._activatedRoute.snapshot.params.section;
         if (this.section && this.section.trim()) this.navigateTo(this.section);

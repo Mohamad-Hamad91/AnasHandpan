@@ -195,7 +195,7 @@ jQuery('.breadcrumb.breadcrumb-video-content').each(function () {
 // < !-- =============== START STARTER JS ================ -->
 // < !-- ================================================== -->
 
-  jQuery(document).ready(function () {
+  jQuery(document).on('just_ready', function () {
 
     "use strict";
 

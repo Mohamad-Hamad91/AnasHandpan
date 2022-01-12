@@ -179,7 +179,7 @@ import { BiographyComponent } from './website/biography/biography.component';
     InputSwitchModule,
     CalendarModule,
     FileUploadModule,
-    InputTextareaModule
+    InputTextareaModule,
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,

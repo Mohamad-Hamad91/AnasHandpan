@@ -2,14 +2,16 @@
 <div class="container">
     <div class="col-8">
         <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
-        <!-- <div class="p-field">
+        <div class="p-field">
             <label for="cover">Cover Photo</label>
             <input type="text" pInputText name="CoverPhoto" id="CoverPhoto" [(ngModel)]="data.CoverPhoto" required
-                autofocus disabled />
-        </div> -->
-        <img [src]="baseURL + data.CoverPhoto" width="150" alt="">
+                autofocus />
+        </div>
+        <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
+
+        <!-- <img [src]="baseURL + data.CoverPhoto" width="150" alt="">
         <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="image/*" maxFileSize="1000000">
-        </p-fileUpload>
-        <button [disabled]="!canSave" pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
+        </p-fileUpload> -->
+        <!-- <button [disabled]="!canSave" pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button> -->
     </div>
 </div>

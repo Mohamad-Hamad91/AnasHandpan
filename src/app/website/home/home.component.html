@@ -2,7 +2,7 @@
 <app-top-header *ngIf="data.SideMenu" [data]="data.SideMenu" (Navigate)="navigateTo($event)"></app-top-header>
 <div class="home">
     <section class="app-cover" >
-        <app-cover [data]="data"></app-cover>
+        <app-cover #cover [data]="data"></app-cover>
     </section>
     <section #Albums *ngIf="data.SideMenu?.Albums == '1'" class="app-albums">
         <app-albums [data]="data.Albums"></app-albums>
