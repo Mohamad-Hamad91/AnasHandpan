@@ -4,8 +4,11 @@
     <div class="col-8">
         <div class="p-field">
             <label for="cover">Personal Information</label>
-            <input type="text" pInputText name="PersonalInfo" id="PersonalInfo" [(ngModel)]="data.PersonalInfo" required
-                autofocus />
+            <!-- <input type="text" pInputText name="PersonalInfo" id="PersonalInfo" [(ngModel)]="data.PersonalInfo" required
+                autofocus /> -->
+            <textarea type="text" pTextarea name="PersonalInfo" id="PersonalInfo" [(ngModel)]="data.PersonalInfo"
+                required autofocus rows="40"
+                style="text-transform: none;"></textarea>
         </div>
         <button pButton label="Save" icon="pi pi-check" class="p-button-text" (click)="update()"></button>
     </div>

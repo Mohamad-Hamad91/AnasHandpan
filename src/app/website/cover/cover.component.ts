@@ -15,10 +15,12 @@ export class CoverComponent implements OnInit {
   baseURL = environment.baseURL;
   videoURL: string;
   dataProperty: string;
+  title: string;;
 
   constructor(private ref: ChangeDetectorRef) { }
 
   ngOnInit(): void {
+    this.title = 'ANAS';
     // this.videoURL = this.data.CoverPhoto;
     // // this.videoURL ='9tr024y7J5U';
     // this.dataProperty = `{videoURL:'${this.videoURL}',containment:'.player',autoPlay:true, mute:true, startAt:0, opacity:1}`;

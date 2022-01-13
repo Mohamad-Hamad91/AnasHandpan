@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Sections } from '../model/sections';
+import { AuthService } from '../service/auth.service';
 
 @Component({
   selector: 'app-top-header',
@@ -17,7 +18,7 @@ export class TopHeaderComponent implements OnInit {
 
   @Input('data') data: Sections = new Sections();
 
-  constructor(private _router: Router) { }
+  constructor(private _router: Router, private _authService: AuthService) { }
 
   ngOnInit(): void {
     this.role = localStorage.getItem('role');
@@ -46,6 +47,29 @@ export class TopHeaderComponent implements OnInit {
     // this.Navigate.emit(element);
     this._router.navigate(['/details/' + element]);
     this.xClicked();
+  }
+
+  logoutConfirm() {
+    this.xClicked();
+    const elm: HTMLElement = document.getElementById('cartParent');
+    elm.style.display = 'block';
+  }
+
+  logout() {
+    this._authService
+    .logout()
+    .subscribe(res => {
+      localStorage.clear();
+      const elm: HTMLElement = document.getElementById('cartParent');
+      elm.style.display = 'none';
+      this.ngOnInit();
+      this._router.navigate(['/']);
+    }, er => { });
+  }
+
+  cancel() {
+    const elm: HTMLElement = document.getElementById('cartParent');
+    elm.style.display = 'none';
   }
 
 }

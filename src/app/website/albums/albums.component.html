@@ -12,20 +12,24 @@
         </div>
         <div class="list-albums">
             <ul class="list-feature col-md-12 col-xs-12 col-sm-12">
-                <li class="col-md-{{data.length>4? '3' : floor(12/data.length)}} col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12" *ngFor="let album of data; index as i">
-                    <div class="album-icon">
-                        <span class="thumbs-album">
-                            <a [routerLink]="'/details/single-album/' + album.Id"><img width="270" height="270"
-                                    [src]="baseURL + album.Thumbnail"
-                                    class="attachment-album-thumbnail wp-post-image" alt="album-cover-1"></a>
-                        </span>
-                        <span class="disk" style="background-image: url('{{ baseURL + album.Thumbnail }}');"></span>
-                    </div><!-- END ALBUM ICON -->
-                    <div class="name">
-                        <h3>{{album.Name}}</h3>
-                        <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
-                    </div><!-- end name -->
-                </li>
+                <div class="row">
+                    <li class="col-md-{{data.length>4? '3' : floor(12/data.length)}} col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12"
+                        *ngFor="let album of data; index as i">
+                        <div class="album-icon">
+                            <span class="thumbs-album">
+                                <a [routerLink]="'/details/single-album/' + album.Id"><img width="270" height="270"
+                                        [src]="baseURL + album.Thumbnail"
+                                        class="attachment-album-thumbnail wp-post-image" alt="album-cover-1"></a>
+                            </span>
+                            <span class="disk" style="background-image: url('{{ baseURL + album.Thumbnail }}');"></span>
+                        </div><!-- END ALBUM ICON -->
+                        <div class="name">
+                            <h3>{{album.Name}}</h3>
+                            <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
+                        </div><!-- end name -->
+                    </li>
+                </div>
+
             </ul>
         </div><!-- end list-albums -->
     </div><!-- end container -->

@@ -3,6 +3,28 @@
     <div class="topHeader" style="background-color:#eeeeee;">
         <div class="header">
             <div class="rightTopHeader">
+                <div class="cartContainer">
+                    <div class="cartParent" id="cartParent">
+                        <div class="cartItems">
+                            <ul>
+                                <li>
+                                    <div class="priceCart">
+                                        <h4 style="color: black;">Logout, Are You shure?</h4>
+                                    </div>
+                                </li>
+                            </ul>
+                            <button type="submit" class="single_add_to_cart_button button alt buttonView"
+                                (click)="logout()">
+                                Logout
+                            </button>
+                            <button type="submit" class="single_add_to_cart_button button alt buttonCheck"
+                                (click)="cancel()">
+                                Cancel
+                            </button>
+                        </div><!-- end cartItems -->
+                    </div>
+                </div>
+                <!--end cartContainer  -->
                 <!-- Open Menu Button -->
                 <a #openMenu (click)='menuClicked()' id="open-menu" class="open-menu">
                     <!-- Buttons Bars -->
@@ -65,11 +87,10 @@
                         </a>
                     </li>
                     <li *ngIf="isLoggedin">
-                        <a routerLink="/logout">
+                        <a (click)="logoutConfirm()">
                             Logout
                         </a>
                     </li>
-
                 </ul>
                 <!-- Menu Fixed Close Button -->
                 <div class="x-filter" (click)="xClicked()">

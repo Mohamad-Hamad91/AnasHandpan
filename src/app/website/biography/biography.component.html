@@ -3,6 +3,25 @@
     <div class="header">
         <div class="rightTopHeader">
             <div class="cartContainer">
+                <div class="cartParent" id="cartParent">
+                    <div class="cartItems">
+                        <ul>
+                            <li>
+                                <div class="priceCart">
+                                    <h4 style="color: black;">Logout, Are You shure?</h4>
+                                </div>
+                            </li>
+                        </ul>
+                        <button type="submit" class="single_add_to_cart_button button alt buttonView"
+                            (click)="logout()">
+                            Logout
+                        </button>
+                        <button type="submit" class="single_add_to_cart_button button alt buttonCheck"
+                            (click)="cancel()">
+                            Cancel
+                        </button>
+                    </div><!-- end cartItems -->
+                </div>
             </div>
             <!--end cartContainer  -->
             <!-- Open Menu Button -->
@@ -42,7 +61,7 @@
                         {{section}}
                     </a>
                 </li>
-                <li >
+                <li>
                     <a routerLink="/Biography">
                         Biography
                     </a>
@@ -68,7 +87,7 @@
                     </a>
                 </li>
                 <li *ngIf="isLoggedin">
-                    <a routerLink="/logout">
+                    <a (click)="logoutConfirm()">
                         Logout
                     </a>
                 </li>
@@ -94,8 +113,8 @@
             <div class="before-FullscreenSlider"></div>
             <div class="breadcrumb-fullscreen-parent phone-menu-bg">
                 <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay"
-                    style="background-image: url('assets/img/bio.jpg'); min-height: 100vh;" data-stellar-background-ratio="0.5"
-                    data-stellar-vertical-offset="0">
+                    style="background-image: url('assets/img/bio.jpg'); min-height: 100vh;"
+                    data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
                     <div class="breadTxt">
                         <h1>
                             Wanda Valdis
@@ -127,82 +146,7 @@
             <h2><a href="albums.html">Biography</a></h2>
             <span class="heading-b3"></span>
         </div><!-- end sectionTtile -->
-        <div class="row">
-            <div class="col-sm-6">
-                <p>Emi Haze graduated from the Institute
-                    of Design in Verona with
-                    a degree in Graphic Design
-                    and Advertising Design.I live in the north-east of Italy and my huge passion is digital art.
-                    Art and painting connected to technology have always been my strongest passions. People think I am
-                    calm, quiet, sometimes introvert, really creative, inspired and perfectionist.
-                    In my opinion everything in every moment has an artistic side, the aesthetics of things, people
-                    around me...
-                    for me everything has its own importance, images, textures, sounds, fragrances, my creativity is
-                    costantly stimulated.</p>
-                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
-                    order to build,
-                    my own wide portfolio that could distinguish me both in style, technique and creativity.
-                    In my first works i focused on a graphic style based on construction and deconstruction of the human
-                    body
-                    using various tools and graphic effects that render it almost a sketch.</p>
-                <p>In my recent works I tried to merge the human body with nature or rather with the four elements of
-                    fire,
-                    air, water and earth, and even with a fifth esoteric element: the Aristotelian ether, that includes
-                    all the others,
-                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
-                    change.
-                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
-                    utopia
-                    and in which color and sensitivity have the predominant role.</p>
-                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
-                    order to build,
-                    my own wide portfolio that could distinguish me both in style, technique and creativity.
-                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
-                    change.
-                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
-                    utopia
-                    and in which color and sensitivity have the predominant role.</p>
-            </div>
-            <div class="col-sm-6">
-                <p>I currently work as freelance and in the last years I focused on personal projects and creations in
-                    order to build,
-                    my own wide portfolio that could distinguish me both in style, technique and creativity.
-                    In my first works i focused on a graphic style based on construction and deconstruction of the human
-                    body
-                    using various tools and graphic effects that render it almost a sketch.
-                    In my recent works I tried to merge the human body with nature or rather with the four elements of
-                    fire,
-                    air, water and earth, and even with a fifth esoteric element: the Aristotelian ether, that includes
-                    all the others,
-                    the essence of celestial bodies, eternal and unchangeable in comparison with the earth as a place of
-                    change.
-                    The result is the vision of my imaginative world hanging between reality and fantasy, dream and
-                    utopia
-                    and in which color and sensitivity have the predominant role.</p>
-                <p>Photoshop is the software I prefer to conceive my works, in which I also include the digital version
-                    of hand-made elements,
-                    such as scratches and ink marks, acrylic or watercolor stains. The outcome is technically always
-                    appealing and intriguing.
-                    Music is the key of this creative process. I could mention Sigur Rós, Radiohead, Bloc Party,
-                    Coldplay, Bjork etc.
-                    I’m also fond of movies, I love every kind cinema, especially indie movies and art movies.</p>
-                <p>Emi Haze graduated from the Institute
-                    of Design in Verona with
-                    a degree in Graphic Design
-                    and Advertising Design.I live in the north-east of Italy and my huge passion is digital art.
-                    Art and painting connected to technology have always been my strongest passions. People think I am
-                    calm, quiet, sometimes introvert, really creative, inspired and perfectionist.
-                    In my opinion everything in every moment has an artistic side, the aesthetics of things, people
-                    around me...
-                    for me everything has its own importance, images, textures, sounds, fragrances, my creativity is
-                    costantly stimulated.</p>
-                <div class="signature">
-                    <a href="http://www.emihaze.com/showcase">Emili Haze:</a>
-                    <div class="imgSignuature">
-                        <img src="assets/img/content/signature.png" alt="">
-                    </div>
-                </div>
-            </div>
+        <div class="row" [innerHTML]="data.PersonalInfo">
         </div>
     </div><!-- end container -->
 </section>

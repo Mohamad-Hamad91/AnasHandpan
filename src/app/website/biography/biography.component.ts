@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Home } from '../model/home';
+import { AuthService } from '../service/auth.service';
 import { DataService } from '../service/data.service';
 
 @Component({
@@ -17,7 +18,8 @@ export class BiographyComponent implements OnInit {
   role: string;
   ready: boolean = false;
 
-  constructor(private _dataService: DataService, private _router: Router) { }
+  constructor(private _dataService: DataService, private _router: Router,
+    private _authService: AuthService) { }
 
   ngOnInit(): void {
     this._dataService.get().subscribe(res => {
@@ -50,6 +52,26 @@ export class BiographyComponent implements OnInit {
   navigateTo(element: string) {
     this._router.navigate(['/details/' + element]);
     this.xClicked();
+  }
+
+  logoutConfirm() {
+    this.xClicked();
+    const elm: HTMLElement = document.getElementById('cartParent');
+    elm.style.display = 'block';
+  }
+
+  logout() {
+    this._authService
+    .logout()
+    .subscribe(res => {
+      localStorage.clear();
+      this._router.navigate(['/']);
+    }, er => { });
+  }
+
+  cancel() {
+    const elm: HTMLElement = document.getElementById('cartParent');
+    elm.style.display = 'none';
   }
 
 }

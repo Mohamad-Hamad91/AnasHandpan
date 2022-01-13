@@ -131,7 +131,7 @@
         </div>
         <div class="p-field">
             <label for="Description">Description</label>
-            <input type="text" pInputText id="Description" [(ngModel)]="item.Description" required />
+            <textarea pTextarea type="text" id="Description" [(ngModel)]="item.Description" required ></textarea>
             <small class="p-error" *ngIf="submitted && !item.Description">Description is required.</small>
         </div>
         <div class="p-field">

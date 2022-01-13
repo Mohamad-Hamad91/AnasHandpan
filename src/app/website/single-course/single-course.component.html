@@ -1,98 +1,108 @@
 <p-toast></p-toast>
-<!-- =============== START SHOP-SINGLE SECTION ================ -->
-<section class="paddingShopSingle">
-    <div class="container">
-        <div class="row">
-            <div class="clothing">
-                <div class="col-sm-7 ">
-                    <a [href]="baseURL + data.Photo" class="lightbox">
-                        <img [src]="baseURL + data.Photo" alt="">
-                    </a>
-                    <!-- <div class="products">
+<section
+    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 150%; min-height: 100vh; overflow: hidden;">
+    <section class="main-content">
+        <!-- =============== START SHOP-SINGLE SECTION ================ -->
+        <section class="paddingShopSingle">
+            <div class="container">
+                <div class="row">
+                    <div class="clothing">
+                        <div class="col-sm-7 ">
+                            <a [href]="baseURL + data.Photo" class="lightbox">
+                                <!-- <img [src]="baseURL + data.Photo" alt=""> -->
+                                <video [src]="baseURL + data.Demo" controls></video>
+                            </a>
+                            <!-- <div class="products">
                         <a *ngFor="let p of data.Photos" [href]="baseURL + p" class="lightbox">
                             <img [src]="baseURL + p" alt="" style="width: 145px;">
                         </a>
                     </div> -->
-                </div><!-- end col-sm-8 -->
-            </div><!-- end clothing -->
-            <div class="col-sm-5">
-                <div class="productDetails">
-                    <nav>
-                        <a routerLink="/details/Courses">Back to Couses</a>
-                        <i class="fa fa-angle-double-right"></i>
-                        {{data.Title}}
-                    </nav>
-                    <h1>{{data.Title}}</h1>
-                    <div class="productRating">
-                        <p class="price">{{data.Price | currency}}</p>
-                    </div><!-- end productRating -->
+                        </div><!-- end col-sm-8 -->
+                    </div><!-- end clothing -->
+                    <div class="col-sm-5">
+                        <div class="productDetails">
+                            <nav>
+                                <a routerLink="/details/Courses">Back to Couses</a>
+                                <i class="fa fa-angle-double-right"></i>
+                                {{data.Title}}
+                            </nav>
+                            <h1>{{data.Title}}</h1>
+                            <p>{{data.Brief}}</p>
+                            <div class="productRating">
+                                <p class="price">{{data.Price | currency}}</p>
+                            </div><!-- end productRating -->
 
-                    <div class="product-quantity woocommerce cart shop_table">
+                            <div class="product-quantity woocommerce cart shop_table">
 
-                        <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
-                            *ngIf="isLoggedIn && role == 'USER'">
-                            Enroll
-                        </button>
-                        <p *ngIf="!isLoggedIn || role != 'USER'">
-                            Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
-                    </div><!-- end product-quantity -->
-                </div><!-- end productDetails -->
-            </div><!-- end col-sm-4 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section>
-<!-- =============== END SHOP-SINGLE SECTION ================ -->
+                                <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
+                                    *ngIf="isLoggedIn && role == 'USER' && data.IsEnrolled != 1">
+                                    Enroll
+                                </button>
+                                <p *ngIf="!isLoggedIn || role != 'USER'">
+                                    Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
+                            </div><!-- end product-quantity -->
+                        </div><!-- end productDetails -->
+                    </div><!-- end col-sm-4 -->
+                </div><!-- end row -->
+            </div><!-- end container -->
+        </section>
+        <!-- =============== END SHOP-SINGLE SECTION ================ -->
 
-<!-- =============== START SHOP TAB ================ -->
-<section>
-    <div class="shopTab">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div>
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active firstTab">
-                                <a href="#home" role="tab" data-toggle="tab">Description</a>
-                            </li>
-                            <li role="presentation" *ngIf="role === 'USER'">
-                                <a href="#reviews" class="reviews" role="tab" data-toggle="tab">Lessons</a>
-                            </li>
-                        </ul>
+        <!-- =============== START SHOP TAB ================ -->
+        <section>
+            <div class="shopTab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                <!-- Nav tabs -->
+                                <!-- <ul class="nav nav-tabs" role="tablist">
+                                    <li role="presentation" class="active firstTab">
+                                        <a href="#home" role="tab" data-toggle="tab">Description</a>
+                                    </li>
+                                    <li role="presentation">
+                                        <a href="#reviews" class="reviews" role="tab" data-toggle="tab">Lessons</a>
+                                    </li>
+                                </ul> -->
 
-                        <!-- Tab panes -->
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">
-                                <div class="app-course-demo">
-                                    <video [src]="baseURL + data.Demo" controls></video>
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <div  *ngIf="role === 'USER' && data.IsEnrolled == 1">
+                                        <div class="col-sm-8 lessons">
+                                            <h2>Lessons</h2>
+                                            <table class="variations">
+                                                <thead>
+                                                    <th>Title</th>
+                                                    <th>Photo</th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr *ngFor="let l of data.Lessons?.List">
+                                                        <td class="value">{{l.Title}} </td>
+                                                        <td class="value">
+                                                            <a [href]="baseURL + l.Photo" class="lightbox">
+                                                                <img [src]="baseURL + l.Thumbnail" alt=""
+                                                                    width="50"></a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="description">
+                                        <div class="app-course-demo">
+                                                <img [src]="baseURL + data.Photo" alt="course photo">
+                                        </div>
+                                        <span [innerHTML]="data.Description"></span>
+                                    </div>
+
+                                    
                                 </div>
-                                <p>{{data.Description}}</p>
                             </div>
-
-                            <div role="tabpanel" class="tab-pane" id="reviews">
-                                <div class="col-sm-8">
-                                    <table class="variations">
-                                        <thead>
-                                            <th>Title</th>
-                                            <th>Photo</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let l of data.Lessons">
-                                                <td class="value">{{l.Title}} </td>
-                                                <td class="value">
-                                                    <a [href]="baseURL + l.Photo" class="lightbox">
-                                                        <img [src]="baseURL + l.Thumbnail" alt="" width="50"></a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div><!-- end col-sm-12 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end shopTap -->
+                        </div><!-- end col-sm-12 -->
+                    </div><!-- end row -->
+                </div><!-- end container -->
+            </div><!-- end shopTap -->
+        </section>
+        <!-- =============== END SHOP TAB ================ -->
+    </section>
 </section>
-<!-- =============== END SHOP TAB ================ -->

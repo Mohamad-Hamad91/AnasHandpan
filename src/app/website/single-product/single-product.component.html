@@ -69,6 +69,7 @@
                     </table>
                     <div class="product-quantity woocommerce cart shop_table">
                         <div class="quantity buttons_added" *ngIf="data.AcceptQuantity == 1">
+                            <label class="label" for="quantity">Quantity</label>
                             <input [(ngModel)]="order.Quantity" type="number" step="1" min="1" name="quantity" value="1"
                                 title="Qty" class="input-text qty text">
                         </div>
@@ -79,17 +80,6 @@
                         <p *ngIf="!isLoggedIn || role != 'USER'">
                             Please <a routerLink="/login">Login</a> to Order this item.</p>
                     </div><!-- end product-quantity -->
-                    <!-- <div class="productMeta">
-                        <span class="skuWrapper">SKU: <span class="sku">15121993</span>.</span>
-                        <div class="meta-list">
-                            <span class="metaListHead">Category: </span><a href="#">Hoodie unisex, Original
-                                T.Brothers.</a>
-                        </div>
-                        <div class="metaList">
-                            <span class="metaListSpan">Tagged with: </span><a href="#">bookend,</a> <a href="#"
-                                rel="tag">furniture,</a> <a href="#">home</a>
-                        </div>
-                    </div> -->
                 </div><!-- end productDetails -->
             </div><!-- end col-sm-4 -->
         </div><!-- end row -->
@@ -126,27 +116,6 @@
                                 </div><!-- end blogBoxContent -->
                             </div><!-- end blogBox -->
                         </div><!-- end col-sm-4 -->
-                        <!-- <div>
-                        <div class="col-sm-8">
-                            <table class="variations">
-                                <thead>
-                                    <th>Name</th>
-                                    <th>Location</th>
-                                    <th>Photo</th>
-                                </thead>
-                                <tbody>
-                                    <tr *ngFor="let p of data.Places">
-                                        <td class="value">{{p.Name}} </td>
-                                        <td class="value">{{p.Location}} </td>
-                                        <td class="value">
-                                            <a [href]="baseURL + p.Photo" class="lightbox">
-                                                <img [src]="baseURL + p.Thumbnail" alt="" width="50"></a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div> -->
                     </div>
                 </div><!-- end col-sm-12 -->
             </div><!-- end row -->
