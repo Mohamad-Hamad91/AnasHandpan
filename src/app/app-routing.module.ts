@@ -41,6 +41,7 @@ import { RegisterComponent } from './website/register/register.component';
 import { SingleAlbumComponent } from './website/single-album/single-album.component';
 import { SingleCourseComponent } from './website/single-course/single-course.component';
 import { SingleEventComponent } from './website/single-event/single-event.component';
+import { SingleLessonComponent } from './website/single-lesson/single-lesson.component';
 import { SingleNewsComponent } from './website/single-news/single-news.component';
 import { SingleProductComponent } from './website/single-product/single-product.component';
 import { VerifyComponent } from './website/verify/verify.component';
@@ -66,6 +67,7 @@ const routes: Routes = [
       { path: 'single-album/:id', component: SingleAlbumComponent },
       { path: 'single-product/:id', component: SingleProductComponent },
       { path: 'single-course/:id', component: SingleCourseComponent },
+      { path: 'single-lesson/:id', component: SingleLessonComponent },
     ]
   },
   { path: 'register', component: RegisterComponent },

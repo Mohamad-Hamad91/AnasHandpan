@@ -70,5 +70,11 @@ export class Lesson {
 }
 
 export class SingleLesson {
-
+    Id: string;
+    Title: string;
+    Photo: string;
+    Thumbnail: string;
+    IsWatched: number;
+    Video: string;
+    Description: string;
 }

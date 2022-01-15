@@ -18,6 +18,7 @@ export class SingleCourseComponent implements OnInit {
   baseURL = environment.baseURL;
   role: string;
   isLoggedIn: boolean = false;
+  enrollCilcked: boolean = false;
 
   constructor(private _courseService: CourseService, private _activatedRoute: ActivatedRoute,
     private _messageService: MessageService) { }
@@ -55,6 +56,8 @@ export class SingleCourseComponent implements OnInit {
       this._courseService.enroll(this.CourseId)
         .subscribe(res => {
           this.waiting = false;
+          this.enrollCilcked = true;
+          this.data.IsEnrolled = 1;
           this._messageService.add({
             severity: 'success',
             summary: 'Done!',

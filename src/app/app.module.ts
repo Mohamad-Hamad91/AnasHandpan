@@ -91,6 +91,7 @@ import { MyCoursesComponent } from './website/my-courses/my-courses.component';
 import { AllCoursesComponent } from './website/all-courses/all-courses.component';
 import { ProfileComponent } from './website/profile/profile.component';
 import { BiographyComponent } from './website/biography/biography.component';
+import { SingleLessonComponent } from './website/single-lesson/single-lesson.component';
 //#endregion components
 
 //#region Other
@@ -154,7 +155,8 @@ import { BiographyComponent } from './website/biography/biography.component';
     MyCoursesComponent,
     AllCoursesComponent,
     ProfileComponent,
-    BiographyComponent
+    BiographyComponent,
+    SingleLessonComponent
   ],
   imports: [
     BrowserModule,

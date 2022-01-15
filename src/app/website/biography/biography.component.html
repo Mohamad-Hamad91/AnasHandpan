@@ -125,7 +125,7 @@
     </div>
 </section> -->
 <!-- =============== END BREADCRUMB ================ -->
-<app-top-header [data]="data"></app-top-header>
+<app-top-header *ngIf="data.SideMenu" [data]="data.SideMenu"></app-top-header>
 <!-- =============== START BIOGRAPHY SECTION ================ -->
 <section class="biography padding background-properties"
     id="content">

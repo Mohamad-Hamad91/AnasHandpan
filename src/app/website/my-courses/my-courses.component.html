@@ -1,1 +1,46 @@
-<p>my-courses works!</p>
+<!-- =============== START SHOP SECTION ================ -->
+<section id="content">
+    <div class="container-fluid">
+        <div class="row" style="padding-bottom:0!important;">
+            <div class="col-sm-12">
+                <div class="sectionTitle paddingBottom" style="margin-top: 10vh;">
+                    <span class="heading-t3"></span>
+                    <h2>Courses</h2>
+                    <span class="heading-b3"></span>
+                </div>
+                <div class="row">
+                    <nav class="shop-products">
+                        <ul class="clearfix">
+                            <li class="col-sm-{{data.length>3? '4' : floor(12/data.length)}} col-xs-12 "
+                                *ngFor="let c of data">
+                                <figure>
+                                    <figcaption>
+                                        <img [src]="baseURL + c.Photo" alt="">
+                                    </figcaption>
+                                    <div class="content">
+                                        <div class="shopHover">
+                                            <div class="price">
+                                                {{c.Price | currency}}
+                                            </div>
+                                            <div class="proTitle">
+                                                <a [routerLink]="'/details/single-course/' + c.Id">{{c.Title}}</a>
+                                                <a [routerLink]="'/details/single-course/' + c.Id">{{c.Brief}}</a>
+                                            </div>
+                                            <a [routerLink]="'/details/single-course/' + c.Id"
+                                                class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
+                                        </div>
+                                    </div>
+                                </figure>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+        <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
+            <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+        </div>
+    </div>
+</section>
+
+<!-- =============== END SHOP SECTION ================ -->

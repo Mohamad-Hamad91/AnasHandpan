@@ -1,0 +1,45 @@
+<p-toast></p-toast>
+<section
+    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 150%; min-height: 100vh; overflow: hidden;">
+    <section class="main-content">
+        <!-- =============== START SHOP-SINGLE SECTION ================ -->
+        <section class="paddingShopSingle">
+            <div class="container">
+                <div class="row">
+                    <div class="clothing">
+                        <div class="col-12">
+                            <div class="productDetails">
+                                <nav>
+                                    <a routerLink="/details/Courses">Back to Couses</a>
+                                    <i class="fa fa-angle-double-right"></i>
+                                    {{data.Title}}
+                                </nav>
+
+                                <h1>{{data.Title}}</h1>
+                            </div>
+                            <div class="col-sm-12 ">
+                                <video [src]="baseURL + data.Video" controls style="width: 100%;"></video>
+                            </div>
+                        </div>
+                    </div><!-- end row -->
+                </div>
+            </div>
+        </section>
+
+        <section>
+            <div class="shopTab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="description">
+                                <span [innerHTML]="data.Description"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </section>
+</section>
