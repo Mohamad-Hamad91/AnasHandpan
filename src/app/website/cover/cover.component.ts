@@ -21,23 +21,6 @@ export class CoverComponent implements OnInit {
 
   ngOnInit(): void {
     this.title = 'ANAS';
-    // this.videoURL = this.data.CoverPhoto;
-    // // this.videoURL ='9tr024y7J5U';
-    // this.dataProperty = `{videoURL:'${this.videoURL}',containment:'.player',autoPlay:true, mute:true, startAt:0, opacity:1}`;
-    // const videoEl: any = document.getElementById('bgndVideo');
-    // videoEl.setAttribute('data-property', this.dataProperty);
-    // let e = new Event('just_ready');
-    // document.dispatchEvent(e);
-    // jQuery(function () {
-    //   (jQuery(".player") as any).YTPlayer();
-    // });
-    // videoEl.YTPlayer();
-    // videoEl.YTPChangeMovie(this.dataProperty);
-    // const player = new YTPlayer(videoEl);
-    // debugger;
-    // player.load(this.videoURL);
-    // player.play();
-    // player.setVolume(0);
   }
 
   changeData(data) {

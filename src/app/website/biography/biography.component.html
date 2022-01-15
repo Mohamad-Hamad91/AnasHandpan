@@ -1,5 +1,5 @@
 <!-- =============== START TOP HEADER ================ -->
-<div class="topHeader">
+<!-- <div class="topHeader">
     <div class="header">
         <div class="rightTopHeader">
             <div class="cartContainer">
@@ -8,7 +8,7 @@
                         <ul>
                             <li>
                                 <div class="priceCart">
-                                    <h4 style="color: black;">Logout, Are You shure?</h4>
+                                    <h4 style="color: black;">Logout, Are You sure?</h4>
                                 </div>
                             </li>
                         </ul>
@@ -20,32 +20,23 @@
                             (click)="cancel()">
                             Cancel
                         </button>
-                    </div><!-- end cartItems -->
+                    </div>
                 </div>
             </div>
-            <!--end cartContainer  -->
-            <!-- Open Menu Button -->
             <a #openMenu (click)='menuClicked()' id="open-menu" class="open-menu">
-                <!-- Buttons Bars -->
                 <span class="span-1"></span>
                 <span class="span-2"></span>
                 <span class="span-3"></span>
             </a>
-        </div><!-- end rightTopHeader -->
-    </div><!-- end header -->
-    <!-- Menu Fixed Container -->
+        </div>
+    </div>
     <div class="menu-fixed-container" id="menu-fixed-container">
-        <!-- Menu Fixed Centred Container -->
         <nav>
-            <!-- Menu Fixed Close Button -->
             <div class="x-filter" (click)="xClicked()">
                 <span></span>
                 <span></span>
             </div>
-            <!-- Menu Fixed Primary List -->
             <ul *ngIf="ready">
-                <!-- Menu Fixed Item -->
-                <!-- Menu Fixed Item -->
                 <li *ngIf="isAdmin">
                     <a routerLink="/dashboard">
                         Admin Dashboard
@@ -92,22 +83,20 @@
                     </a>
                 </li>
             </ul>
-            <!-- Menu Fixed Close Button -->
             <div class="x-filter" (click)="xClicked()">
                 <span></span>
                 <span></span>
             </div>
         </nav>
-    </div><!-- end menu-fixed-container -->
-    <!-- =============== STAR LOGO ================ -->
+    </div>
     <div class="logo-container-top">
         <a href="index.html"><img src="assets/img/logo/whiteLogo.png" alt="Aqura"></a>
-    </div><!-- end logo-container-top -->
-    <!-- =============== END LOGO ================ -->
-</div><!-- end topHeader -->
+    </div>
+    
+</div> -->
 <!-- =============== END TOP HEADER ================ -->
 <!-- =============== START BREADCRUMB ================ -->
-<section class="no-mb">
+<!-- <section class="no-mb">
     <div class="row">
         <div class="col-sm-12">
             <div class="before-FullscreenSlider"></div>
@@ -134,11 +123,11 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 <!-- =============== END BREADCRUMB ================ -->
-
+<app-top-header [data]="data"></app-top-header>
 <!-- =============== START BIOGRAPHY SECTION ================ -->
-<section style="background-image:url(assets/img/subHeader/header.png);" class="biography padding background-properties"
+<section class="biography padding background-properties"
     id="content">
     <div class="container">
         <div class="sectionTitle paddingBottom">
