@@ -10,6 +10,8 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let loader = document.getElementById('page-loader');
+    loader.style.display = 'none';
   }
 
 }

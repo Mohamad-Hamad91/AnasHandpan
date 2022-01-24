@@ -12,8 +12,10 @@
         </div>
         <div class="list-albums">
             <ul class="list-feature col-md-12 col-xs-12 col-sm-12">
-                <div class="row">
-                    <li class="col-md-{{data.length>4? '3' : floor(12/data.length)}} col-sm-{{data.length>4? '3' : floor(12/data.length)}} col-xs-12"
+                <div class="row justify-content-md-center">
+                  <!-- {{data.length>4? '' : 'offset-' + floor(12/data.length/3)}}  -->
+                    <li class="col-md-4 "
+                      style="margin-left:{{data.length>3? 0 : 25 / data.length}}%;"
                         *ngFor="let album of data; index as i">
                         <div class="album-icon">
                             <span class="thumbs-album">
