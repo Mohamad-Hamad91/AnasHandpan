@@ -16,6 +16,8 @@ export class DetailsComponent implements OnInit {
   constructor(private _dataService: DataService, private _router: Router) { }
 
   ngOnInit(): void {
+    let loader = document.getElementById('page-loader');
+    loader.style.display = 'none';
     this._dataService.get().subscribe(res => this.data = res.Data);
   }
 

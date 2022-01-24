@@ -16,6 +16,7 @@ export class AllAlbumsComponent implements OnInit {
   waiting: boolean = true;
   baseURL: string = environment.baseURL;
   totlaCount: number = 0;
+  offset: number = 0;
 
   constructor(private _dataService: AlbumService) { }
 
@@ -28,6 +29,7 @@ export class AllAlbumsComponent implements OnInit {
     this._dataService.getAll(this.params)
       .subscribe(res => {
         this.data.push(...res.Data.List);
+        this.offset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 33;
         this.totlaCount = +res.Data.TotalCount;
         this.waiting = false;
       }, er => this.waiting = false);

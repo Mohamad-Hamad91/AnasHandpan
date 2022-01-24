@@ -15,7 +15,7 @@
                 <div class="row justify-content-md-center">
                   <!-- {{data.length>4? '' : 'offset-' + floor(12/data.length/3)}}  -->
                     <li class="col-md-4 "
-                      style="margin-left:{{data.length>3? 0 : 25 / data.length}}%;"
+                      style="margin-left:{{albumOffset}}%;"
                         *ngFor="let album of data; index as i">
                         <div class="album-icon">
                             <span class="thumbs-album">

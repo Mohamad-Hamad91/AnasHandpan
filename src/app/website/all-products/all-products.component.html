@@ -11,7 +11,8 @@
                 <div class="row">
                     <nav class="shop-products">
                         <ul class="clearfix">
-                            <li class="col-sm-{{data.length>3? '4' : floor(12/data.length)}} col-xs-12 " *ngFor="let p of data">
+                            <li class="col-sm-4 col-xs-12 " style="margin-left:{{offset}}%;"
+                            *ngFor="let p of data">
                                 <figure>
                                     <figcaption>
                                         <img [src]="baseURL + p.Photo" alt="">

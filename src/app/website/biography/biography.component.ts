@@ -22,6 +22,8 @@ export class BiographyComponent implements OnInit {
     private _authService: AuthService) { }
 
   ngOnInit(): void {
+    let loader = document.getElementById('page-loader');
+    loader.style.display = 'none';
     this._dataService.get().subscribe(res => {
       this.data = res.Data;
       // for (const key in this.data.SideMenu) {
@@ -36,7 +38,7 @@ export class BiographyComponent implements OnInit {
     this.role = localStorage.getItem('role');
     this.isAdmin = this.role === '1' || this.role === '2';
     this.isLoggedin = !!this.role;
-    
+
   }
 
   // menuClicked() {

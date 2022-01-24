@@ -12,17 +12,12 @@ export class AlbumsComponent implements OnInit {
   @Input('data') data: Album[] = new Array();
   baseURL = environment.baseURL;
   floor = Math.floor;
+  albumOffset: number = 0;
 
   constructor() { }
 
   ngOnInit(): void {
-
-    const disks: HTMLCollectionOf<Element> = document.getElementsByClassName('disk');
-    // debugger;
-    // for (let index = 0; index < disks.length; index++) {
-    //   const element:HTMLSpanElement = disks.item(index) as HTMLSpanElement;
-    //   element.style.backgroundImage = this.baseURL + this.data[index].Thumbnail;
-    // }
+    this.albumOffset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 33;
   }
 
   diskHover(e: MouseEvent, index: number) {
