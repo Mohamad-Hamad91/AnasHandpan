@@ -21,7 +21,8 @@
                             </ul>
                         </div><!-- end admin-list -->
                         <div class="blogParagraph">
-                            <p>{{news.Brief}}</p>
+                            <p>
+                            {{ (news.Brief.length>100)? (news.Brief | slice:0:100)+'...':(news.Brief) }}</p>
                         </div>
                         <!--end blogParagraph  -->
                         <div class="rmButton">

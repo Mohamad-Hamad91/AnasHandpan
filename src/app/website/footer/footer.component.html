@@ -11,7 +11,11 @@
         <div class="col-sm-4">
           <nav class="social-icons">
             <ul class="clearfix">
-              <li *ngFor="let link of data"><a href="{{link.Url}}" class="icon-button shopIcon"><i class="fa fa-{{link.Icon}}"></i><span></span></a></li>
+              <li *ngFor="let link of data">
+                <a href="{{link.Url}}" class="icon-button shopIcon" target="_blank">
+                  <i class="fa fa-{{link.Icon}}"></i><span></span>
+                </a>
+              </li>
             </ul>
           </nav>
         </div>

@@ -18,7 +18,9 @@
                                 <h1>{{data.Title}}</h1>
                             </div>
                             <div class="col-sm-12 ">
-                                <video [src]="baseURL + data.Video" controls style="width: 100%;"></video>
+                                <video #videoElement controls style="width: 100%;">
+                                    <source type="video/mp4" />
+                                </video>
                             </div>
                         </div>
                     </div><!-- end row -->

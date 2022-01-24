@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  baseURL: 'http://anas-dev-0128.eu-4.evennode.com/',
-  adminURl: 'http://anas-dev-0128.eu-4.evennode.com/admin/',
-  userURL: 'http://anas-dev-0128.eu-4.evennode.com/user/',
+  baseURL: 'https://api.anashandpan.com/',
+  adminURl: 'https://api.anashandpan.com/admin/',
+  userURL: 'https://api.anashandpan.com/user/',
 };
 
 /*

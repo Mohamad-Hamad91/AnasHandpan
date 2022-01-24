@@ -4,19 +4,19 @@
     <section class="app-cover" >
         <app-cover #cover [data]="data"></app-cover>
     </section>
-    <section #Albums *ngIf="data.SideMenu?.Albums == '1'" class="app-albums">
+    <section #Albums *ngIf="data.SideMenu?.Albums == '1' && data.Albums?.length > 0" class="app-albums">
         <app-albums [data]="data.Albums"></app-albums>
     </section>
-    <section #Courses *ngIf="data.SideMenu?.Courses == '1'">
+    <section #Courses *ngIf="data.SideMenu?.Courses == '1' && data.Courses?.length > 0">
         <app-courses [data]="data.Courses"></app-courses>
     </section>
-    <section #Events *ngIf="data.SideMenu?.Events == '1'">
+    <section #Events *ngIf="data.SideMenu?.Events == '1' && data.Events?.length > 0">
         <app-events [data]="data.Events"></app-events>
     </section>
-    <section #News *ngIf="data.SideMenu?.News == '1'">
+    <section #News *ngIf="data.SideMenu?.News == '1' && data.News?.length > 0">
         <app-news [data]="data.News"></app-news>
     </section>
-    <section #Products *ngIf="data.SideMenu?.Products == '1'">
+    <section #Products *ngIf="data.SideMenu?.Products == '1' && data.Products?.length > 0">
         <app-products [data]="data.Products"></app-products>
     </section>
 </div>
