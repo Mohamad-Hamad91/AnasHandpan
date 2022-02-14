@@ -17,6 +17,7 @@ export class AllNewsComponent implements OnInit {
   baseURL: string = environment.baseURL;
   totlaCount: number = 0;
   floor = Math.floor;
+  offset: number = 0;
 
   constructor(private _dataService: NewsService) { }
 
@@ -30,6 +31,7 @@ export class AllNewsComponent implements OnInit {
       .subscribe(res => {
         this.data.push(...res.Data.List);
         this.totlaCount = +res.Data.TotalCount;
+        this.offset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 33;
         this.waiting = false;
       }, er => this.waiting = false);
   }
