@@ -1,19 +1,55 @@
-<!-- <app-breadcrumb style="min-height: 100vh;" [title]="data.Name" [bg]="baseURL + data.Photo"
-    [description]="data.Description"></app-breadcrumb> -->
+<section class="main-content">
+    <div class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <a routerLink="/details/Albums">Albums</a>&nbsp;&nbsp;&nbsp;
+                <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+                {{data.Name}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-img col-12">
+            <img [src]="baseURL+data.Photo" alt="album main image" style="width: 100%;">
+        </div>
+        <div class="album-title">
+            <h3>{{data.Name}}</h3>
+        </div>
+        <div class="paragraph">{{data.Description}} </div>
+        <div class="realease-date">Realease Date: {{data.ReleaseDate | date}}</div>
+        <div class="genre">Genre: {{data.Genre}}</div>
 
-<!-- <section class="no-mb">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="before-FullscreenSlider"></div>
-            <div class="breadcrumb-fullscreen-parent phone-menu-bg">
-                <div class="breadcrumb breadcrumb-fullscreen alignleft small-description overlay almost-black-overlay" style="background-image: url({{baseURL}}{{data.Photo}});" data-stellar-background-ratio="0.5" data-stellar-vertical-offset="0">
+        <div class="songs">
+            <div *ngFor="let track of data.Songs; let i = index">
+                <div class="trak-item">
+
+                    <div class="name-artist">
+                        <div class="center-y-table">
+                            <h2>
+                                {{track.Name}}
+                            </h2>
+                        </div>
+                    </div>
+
+                    <div class="play-pause-button">
+                        <div class="center-y-table">
+                            <i class="fa fa-play" (click)="playThis(i)"
+                                *ngIf="trackIndex != i || audioStatus != 'playing' || currSrc !== (baseURL + track.Url)"></i>
+                            <i class="fa fa-pause"
+                                *ngIf="trackIndex == i && audioStatus == 'playing' && currSrc == (baseURL + track.Url)"
+                                (click)="pause()"></i>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</section> -->
+</section>
+
+
+
 <!-- =============== START ALBUM SINGLE ================ -->
-<div class="single-album-content">
+<!-- <div class="single-album-content">
 
 </div>
 <section class="albumSingle padding background-properties"
@@ -23,7 +59,7 @@
             <span class="heading-t3"></span>
             <h2>{{data.Name}}</h2>
             <span class="heading-b3"></span>
-        </div><!-- end sectionTtile -->
+        </div>
         <div class="row">
             <div class="col-sm-8">
                 <div class="jp-playlist" *ngIf="data.Songs?.length > 0">
@@ -34,12 +70,6 @@
                         <div class="trak-item">
                             <div class="additional-button">
                                 <div class="center-y-table">
-                                    <!-- <a href="#">
-                                        <i class="fa fa-apple"></i>
-                                    </a>
-                                    <a href="#">
-                                        <i class="fa fa-soundcloud"></i>
-                                    </a> -->
                                 </div>
                             </div>
                             <div class="play-pause-button">
@@ -57,13 +87,10 @@
                                     </h2>
                                 </div>
                             </div>
-                            <!-- <time class="trak-duration">
-                                {{duration}}
-                            </time> -->
                         </div>
                     </div>
                 </div>
-            </div><!-- end-col-sm-8 -->
+            </div>
             <div class="col-sm-3 col-sm-offset-1">
                 <div class="sidebarAlbum">
                     <div class="widget">
@@ -73,45 +100,12 @@
                             <li style="color: black;">Genre:<span style="color: black;">{{data.Genre}} </span></li>
                             <li style="color: black;">Number Of Songs:<span style="color: black;">{{data.Songs?.length}} </span></li>
                         </ul>
-                    </div><!-- end widget -->
-
-                    <!-- <div class="widget">
-                        <h3>Available On</h3>
-                        <section>
-                            <ul id='services'>
-                                <li>
-                                    <a href="#">
-                                        <div><i class="fa fa-lastfm"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div><i class="fa fa-soundcloud"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div><i class="fa fa-apple"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div><i class="fa fa-spotify"></i></div>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div><i class="fa fa-amazon"></i></div>
-                                    </a>
-                                </li>
-                            </ul>
-                        </section>
-                    </div> -->
-                </div><!-- end sidebarAlbum -->
-            </div><!-- end col-sm-3 col-sm-offset-1 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
-</section>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
 
 <!-- <audio preload="auto" crossOrigin="anonymous" #audioElement style="display: hidden;"
     src="{{baseURL + defaultTrack}}"></audio> -->
