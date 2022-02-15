@@ -28,16 +28,6 @@
                     </div><!-- end productRating -->
                     <table class="variations" *ngIf="data.AcceptColor == 1">
                         <tbody>
-                            <!-- <tr>
-                                <td class="label"><label for="size">Size</label></td>
-                                <td class="value"><select id="size" name="attribute_size"
-                                        data-attribute_name="attribute_size">
-                                        <option value="">Choose an option…</option>
-                                        <option value="small" class="attached enabled">S</option>
-                                        <option value="medium" class="attached enabled">M</option>
-                                        <option value="large" class="attached enabled">L</option>
-                                    </select></td>
-                            </tr> -->
                             <tr>
                                 <td class="label"><label for="colors">Colors</label></td>
                                 <td class="value">
@@ -95,23 +85,25 @@
                 <div class="col-sm-12">
                     <div class="container" style="padding: 10px;">
                         <h3>Description</h3>
-                        {{data.Description}}
+                        <p>{{data.Description}}</p>
                         <br><br>
                     </div>
                     <div class="container" style="padding: 10px;">
-                        <h3>Places</h3>
+                        <h3>Also Available At:</h3>
                         <div class="col-sm-4" *ngFor="let p of data.Places" style="padding: 10px;">
                             <div class="blogBox">
-                                <div class="imgBox"><img [src]="baseURL + p.Photo" alt="box-img"></div>
+                                <div class="imgBox"><a [href]="p.Location">
+                                    <img [src]="baseURL + p.Photo" alt="box-img">
+                                </a></div>
                                 <div class="blogBoxContent">
-                                    <div class="blogHeader">
-                                        <h3>{{p.Name}}</h3>
+                                    <!-- <div class="blogHeader">
+                                        <a [href]="p.Location"><h3>{{p.Name}}</h3></a>
                                     </div>
                                     <div class="admin-list clearfix">
-                                    </div><!-- end admin-list -->
-                                    <div class="blogParagraph">
+                                    </div>-->
+                                    <!-- <div class="blogParagraph">
                                         <p>{{p.Location}}</p>
-                                    </div>
+                                    </div> -->
                                     <!--end blogParagraph  -->
                                 </div><!-- end blogBoxContent -->
                             </div><!-- end blogBox -->

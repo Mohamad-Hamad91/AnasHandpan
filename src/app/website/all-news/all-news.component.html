@@ -1,11 +1,21 @@
+<!-- <div class="top" style="background-color: #1b1d1f; height: 10%; position: fixed; width: 100%;"></div> -->
 <!-- =============== START BLOG FILTER ================ -->
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <a routerLink="/">Home</a>&nbsp;&nbsp;&nbsp;
+            <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+            News
+        </div>
+    </div>
+</section>
 <section class="aquraFilter padding" id="content">
     <div class="container">
-        <div class="sectionTitle paddingBottom">
+        <!-- <div class="sectionTitle paddingBottom">
             <span class="heading-t3"></span>
             <h2>News</h2>
             <span class="heading-b3"></span>
-        </div>
+        </div> -->
         <!-- start blog-filter-category -->
         <!-- <div class="categories"> -->
 
@@ -28,13 +38,13 @@
             <div class="col-sm-12 col-xs-12">
                 <div class="aqura-filter-content">
                     <ul class="clearfix">
-                        <li class="col-sm-4 col-xs-12 " [style]="{'margin-left':offset+'%'}"
-                            *ngFor="let news of data">
+                        <li class="col-sm-4 col-xs-12 " [style]="{'margin-left':offset+'%'}" *ngFor="let news of data">
                             <div class="blogBox">
                                 <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
                                 <div class="blogBoxContent">
                                     <div class="blogHeader">
-                                        <h1><a [routerLink]="'/details/single-news/' + news.Id">{{news.Title}}</a></h1>
+                                        <h1><a [routerLink]="'/details/single-news/' + news.Id">{{news.Title}}</a>
+                                        </h1>
                                     </div>
                                     <div class="admin-list clearfix">
                                         <ul>

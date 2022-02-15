@@ -1,36 +1,52 @@
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <a routerLink="/">Home</a>&nbsp;&nbsp;&nbsp;
+            <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+            Instruments
+        </div>
+    </div>
+</section>
+
 <!-- =============== START SHOP SECTION ================ -->
 <section id="content">
     <div class="container-fluid">
-        <div class="sectionTitle paddingBottom" style="margin-top: 10vh;">
+        <!-- <div class="sectionTitle paddingBottom" style="margin-top: 10vh;">
             <span class="heading-t3"></span>
             <h2>Products</h2>
             <span class="heading-b3"></span>
-        </div>
+        </div> -->
         <div class="row" style="padding-bottom:0!important;">
             <div class="col-sm-12">
                 <div class="row">
-                    <nav class="shop-products">
+                    <nav class="">
                         <ul class="clearfix">
-                            <li class="col-sm-4 col-xs-12 " style="margin-left:{{offset}}%;"
-                            *ngFor="let p of data">
-                                <figure>
-                                    <figcaption>
-                                        <img [src]="baseURL + p.Photo" alt="">
-                                    </figcaption>
-                                    <div class="content">
-                                        <div class="shopHover">
-                                            <div class="price">
-                                                {{p.Price | currency}}
+                            <li class="col-sm-4 col-xs-12 " [style]="{'margin-left': offset +'%'}"
+                                *ngFor="let p of data">
+                                <a [routerLink]="'/details/single-product/' + p.Id">
+                                    <figure>
+                                        <figcaption>
+                                            <img [src]="baseURL + p.Photo" alt="">
+                                        </figcaption>
+                                        <div class="content">
+                                            <div class="shopHover">
+                                                <!-- <div class="price">
+                                                    {{p.Price | currency}}
+                                                </div> -->
+                                                <!-- <div class="proTitle">
+                                                    <a [routerLink]="'/details/single-product/' + p.Id">{{p.Title}}</a>
+                                                </div>
+                                                <a [routerLink]="'/details/single-product/' + p.Id"
+                                                    class="icon-button shopIcon"><i
+                                                        class="fa fa-info"></i><span></span></a> -->
                                             </div>
-                                            <div class="proTitle">
-                                                <a [routerLink]="'/details/single-product/' + p.Id">{{p.Title}}</a>
-                                            </div>
-                                            <!-- <div class="product">Hoodie Aqura</div> -->
-                                            <!-- <a [routerLink]="'/details/single-product/' + p.Id" class="icon-button shopIcon"><i class="fa fa-shopping-cart"></i><span></span></a> -->
-                                             <a [routerLink]="'/details/single-product/' + p.Id" class="icon-button shopIcon"><i class="fa fa-info"></i><span></span></a>
                                         </div>
+                                    </figure>
+                                    <div class="price">
+                                        {{p.Price | currency}}
                                     </div>
-                                </figure>
+                                    <h3>{{p.Title}}</h3>
+                                </a>
                             </li>
                         </ul>
                     </nav>

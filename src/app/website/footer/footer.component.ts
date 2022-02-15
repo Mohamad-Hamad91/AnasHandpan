@@ -9,6 +9,7 @@ import { SocialLinks } from '../model/socialLinks';
 export class FooterComponent implements OnInit {
 
   @Input('data') data: SocialLinks[] = new Array();
+  year = (new Date()).getFullYear();
 
   constructor() { }
 

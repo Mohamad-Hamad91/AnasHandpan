@@ -65,4 +65,8 @@ export class SingleEventComponent implements OnInit {
     this.currentVideo = this.data?.Videos[this.currentVideoIndex];
   }
 
+  setCurrentPhoto (index: number) {
+    this.currentPhotoIndex = index;
+  }
+
 }

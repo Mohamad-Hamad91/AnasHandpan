@@ -1,25 +1,75 @@
 <p-toast></p-toast>
-<div class="main-content"></div>
+
+<section class="main-content">
+    <div class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <a routerLink="/details/Courses">Courses</a>&nbsp;&nbsp;&nbsp;
+                <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+                {{data.Title}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-img col-12">
+            <video [src]="baseURL + data.Demo" controls style="width: 100%;"></video>
+        </div>
+        <div class="course-title">
+            <h3>{{data.Title}}</h3>
+        </div>
+        <div class="brief">{{data.Brief}}</div>
+        <div class="description" [innerHTML]="data.Description"></div>
+        <div class="price">{{data.Price | currency}}</div>
+        <div class="enroll">
+            <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
+                *ngIf="isLoggedIn && role == 'USER' && data.IsEnrolled != 1" [disabled]="enrollCilcked">
+                Enroll Now!
+            </button>
+            <p *ngIf="!isLoggedIn || role != 'USER'">
+                Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
+        </div>
+        <section>
+            <div class="shopTab">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div *ngIf="role === 'USER' && data.IsEnrolled == 1">
+                                <div class="col-sm-8 lessons">
+                                    <h2>Lessons</h2>
+                                    <ul>
+                                        <li class="lesson" *ngFor="let l of data.Lessons?.List">
+                                            <a [routerLink]="'/details/single-lesson/' +l.Id">
+                                                <span class="lesson-title">{{l.Title}}</span>
+                                            </a>
+                                            <a [routerLink]="'/details/single-lesson/' +l.Id">
+                                                <img [src]="baseURL + l.Thumbnail" alt="" width="50">
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</section>
+
+<!-- <div class="main-content"></div>
 <section
     style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 150%; min-height: 100vh; overflow: hidden;">
     <section>
-        <!-- =============== START SHOP-SINGLE SECTION ================ -->
         <section class="paddingShopSingle">
             <div class="container">
                 <div class="row">
                     <div class="clothing">
                         <div class="col-sm-7 ">
                             <a [href]="baseURL + data.Photo" class="lightbox">
-                                <!-- <img [src]="baseURL + data.Photo" alt=""> -->
                                 <video [src]="baseURL + data.Demo" controls style="width: 100%;"></video>
                             </a>
-                            <!-- <div class="products">
-                        <a *ngFor="let p of data.Photos" [href]="baseURL + p" class="lightbox">
-                            <img [src]="baseURL + p" alt="" style="width: 145px;">
-                        </a>
-                    </div> -->
-                        </div><!-- end col-sm-8 -->
-                    </div><!-- end clothing -->
+                        </div>
+                    </div>
                     <div class="col-sm-5">
                         <div class="productDetails">
                             <nav>
@@ -31,7 +81,7 @@
                             <p>{{data.Brief}}</p>
                             <div class="productRating">
                                 <p class="price">{{data.Price | currency}}</p>
-                            </div><!-- end productRating -->
+                            </div>
 
                             <div class="product-quantity woocommerce cart shop_table">
 
@@ -42,15 +92,12 @@
                                 </button>
                                 <p *ngIf="!isLoggedIn || role != 'USER'">
                                     Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
-                            </div><!-- end product-quantity -->
-                        </div><!-- end productDetails -->
-                    </div><!-- end col-sm-4 -->
-                </div><!-- end row -->
-            </div><!-- end container -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- =============== END SHOP-SINGLE SECTION ================ -->
-
-        <!-- =============== START SHOP TAB ================ -->
         <section>
             <div class="shopTab">
                 <div class="container">
@@ -82,16 +129,12 @@
                         </div>
                         <div class="col-sm-12">
                             <div class="description">
-                                <!-- <div class="app-course-demo">
-                                                <img [src]="baseURL + data.Photo" alt="course photo">
-                                        </div> -->
                                 <span [innerHTML]="data.Description"></span>
                             </div>
                         </div>
-                    </div><!-- end row -->
-                </div><!-- end container -->
-            </div><!-- end shopTap -->
+                    </div>
+                </div>
+            </div>
         </section>
-        <!-- =============== END SHOP TAB ================ -->
     </section>
-</section>
+</section> -->
