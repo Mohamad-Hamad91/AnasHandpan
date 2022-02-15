@@ -27,6 +27,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this._dataService.get().subscribe(res => {
       this.headerData = res.Data;
+      let loader = document.getElementById('page-loader');
+      loader.style.display = 'none';
     });
   }
 

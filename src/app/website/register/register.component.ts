@@ -24,11 +24,13 @@ export class RegisterComponent implements OnInit {
   section: string;
 
   constructor(private _router: Router, private _authService: AuthService,
-     private _messageService: MessageService, private _dataService: DataService) { }
+    private _messageService: MessageService, private _dataService: DataService) { }
 
   ngOnInit(): void {
     this._dataService.get().subscribe(res => {
       this.headerData = res.Data;
+      let loader = document.getElementById('page-loader');
+      loader.style.display = 'none';
     });
   }
 
@@ -62,7 +64,7 @@ export class RegisterComponent implements OnInit {
       this._messageService.add({ severity: 'error', summary: 'Confirm Passowrd is required' });
       return false;
     }
-    if(this.data.Password !== this.data.ConfirmPassowrd) {
+    if (this.data.Password !== this.data.ConfirmPassowrd) {
       this._messageService.add({ severity: 'error', summary: 'Confirm Passowrd Must match password!' });
       return false;
     }

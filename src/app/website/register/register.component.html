@@ -1,5 +1,75 @@
 <p-toast></p-toast>
 <app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Here We Go!</h2>
+            <p>Enter your information to join our community</p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p-messages></p-messages>
+                <form class="comment-form" (ngSubmit)="register()">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <input id="Email" name="Email" type="text" aria-required="true" required
+                                placeholder="Email *" [(ngModel)]="data.Email" #Email="ngModel" minlength="4"
+                                autocomplete="off">
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input id="Name" name="Name" type="text" aria-required="true" minlength="4" required
+                                placeholder="Name *" [(ngModel)]="data.Name" #Name="ngModel" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <input id="Passowrd" name="Password" type="password" aria-required="true" required
+                                placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel"
+                                autocomplete="off">
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            <input id="ConfirmPassowrd" name="ConfirmPassowrd" type="password" aria-required="true"
+                                required placeholder="ConfirmPassowrd *" [(ngModel)]="data.ConfirmPassowrd"
+                                #Password="ngModel" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            <input id="Phone" name="Phone" type="text" aria-required="true" required
+                                placeholder="Phone *" [(ngModel)]="data.Phone" #Phone="ngModel" autocomplete="off">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 submit">
+                            <p><input name="submit" type="submit" id="submit" value="Submit"></p>
+                            <p class="have-account">
+                                <a routerLink="/login" style="color: black; background: rgba(200,200,200,0.2);">
+                                        Already have an account? <span class="forget">sign in</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
+
+<!-- 
 <section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
@@ -10,7 +80,7 @@
                     <p>To create an account
                     </p>
                 </div>
-            </div><!-- end col-sm-4 -->
+            </div>
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>Register</h2>
@@ -36,8 +106,8 @@
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
                     </form>
-                </div><!-- end contactForm -->
-            </div><!-- end col-sm-7 col-sm-offset-1 -->
+                </div>
+            </div>
         </div>
-    </div><!-- end container -->
-</section>
+    </div>
+</section> -->

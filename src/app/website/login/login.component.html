@@ -1,5 +1,49 @@
 <p-toast></p-toast>
 <app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Hey!, You made it</h2>
+            <p>Enter your registered email and password or sign in with</p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-9 col-md-6 form-wrapper">
+                <form class="comment-form" (ngSubmit)="login()">
+                    <input id="Email" name="Email" type="text" aria-required="true" required
+                        placeholder="Email Address *" [(ngModel)]="data.Email" #Email="ngModel" minlength="4">
+                    <input id="Passowrd" name="Password" type="password" aria-required="true" required
+                        placeholder="Passowrd *" [(ngModel)]="data.Password" #Password="ngModel">
+                    <br>
+                    <p class="form-submit">
+                        <a routerLink="/forget-password" class="forget">Forget password?</a>
+                        <br><br>
+                        <input name="submit" type="submit" id="submit" value="Sign in" class="btn"><br><br>
+                    <p>Don't have an account yet?</p>
+                    <p><a routerLink="/register" class="forget">Register Now</a>
+                </form>
+            </div>
+            <div class="col-xs-3 col-md-6 social-wrapper">
+                <a (click)="loginWithGoogle()" mat-raised-button class="btn btn-img">
+                    <img src="assets/img/google.svg" alt="" style="width: 60px;">
+                </a>
+                <br>
+                <a (click)="loginWithApple()" mat-raised-button class="btn btn-img">
+                    <img src="assets/img/apple.svg" alt="" style="width: 60px;">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
+
+<!-- 
 <section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
@@ -16,7 +60,7 @@
                         Apple
                     </button>
                 </div>
-            </div><!-- end col-sm-4 -->
+            </div>
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>LOG-IN</h2>
@@ -36,8 +80,8 @@
                         <br><br>
                         <a routerLink="/register" style="color: black;">Don't have an account?</a>
                     </form>
-                </div><!-- end contactForm -->
-            </div><!-- end col-sm-7 col-sm-offset-1 -->
+                </div>
+            </div>
         </div>
-    </div><!-- end container -->
-</section>
+    </div>
+</section> -->
