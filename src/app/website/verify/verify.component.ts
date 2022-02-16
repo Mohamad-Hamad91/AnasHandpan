@@ -25,6 +25,8 @@ export class VerifyComponent implements OnInit {
     this.data.Email = localStorage.getItem('email');
     this._dataService.get().subscribe(res => {
       this.headerData = res.Data;
+      let loader = document.getElementById('page-loader');
+      loader.style.display = 'none';
     });
   }
 

@@ -1,5 +1,68 @@
 <p-toast></p-toast>
-<section class="contactSingle padding background-properties" id="content"
+
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Here We Go!</h2>
+            <p>Enter your verirification code </p>
+            <p>and the new password</p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p-messages></p-messages>
+                <form class="comment-form" (ngSubmit)="resetPass()">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <input id="NewPassword" name="NewPassword" type="password" aria-required="true" required
+                            placeholder="New Password *" [(ngModel)]="data.NewPassword" #NewPassword="ngModel">
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <input id="ConfirmPassword" name="ConfirmPassword" type="password" aria-required="true" required
+                            placeholder="Confirm Password *" [(ngModel)]="data.ConfirmPassword"
+                            #ConfirmPassword="ngModel">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input id="ForgetPasswordCode" name="ForgetPasswordCode" type="text" aria-required="true"
+                            required placeholder="ForgetPasswordCode *" [(ngModel)]="data.ForgetPasswordCode"
+                            #ForgetPasswordCode="ngModel" minlength="4">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 submit">
+                            <p><input name="submit" type="submit" id="submit" value="Reset Password"></p>
+                            <br>
+                            <p><a (click)="resendCode()"><span class="forget">Resend Code?</span></a></p>
+                            <p class="have-account">
+                                <a routerLink="/login" style="color: black; background: rgba(200,200,200,0.2);">
+                                        Did you Remember? <span class="forget">Sign in</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
+
+
+<!-- <section class="contactSingle padding background-properties" id="content"
     style="background-image:url(assets/img/subHeader/header.png);">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
@@ -10,7 +73,7 @@
                     <p>To reset your password
                     </p>
                 </div>
-            </div><!-- end col-sm-4 -->
+            </div>
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>Reset Password</h2>
@@ -29,8 +92,8 @@
                         </p>
                         <a (click)="resendCode()">Resend Code?</a>
                     </form>
-                </div><!-- end contactForm -->
-            </div><!-- end col-sm-7 col-sm-offset-1 -->
+                </div>
+            </div>
         </div>
-    </div><!-- end container -->
-</section>
+    </div>
+</section> -->

@@ -1,4 +1,53 @@
 <p-toast></p-toast>
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Not a Problem!</h2>
+            <p>Enter your registered email address </p>
+            <p>and we will send you a verivication code to reset password</p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p-messages></p-messages>
+                <form class="comment-form" (ngSubmit)="requestCode()">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input id="Email" name="Email" type="text" aria-required="true" required placeholder="Email *"
+                            [(ngModel)]="Email" minlength="4">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 submit">
+                            <p><input name="submit" type="submit" id="submit" value="Send Code"></p>
+                            <p class="have-account">
+                                <a routerLink="/login" style="color: black; background: rgba(200,200,200,0.2);">
+                                        Did you Remember? <span class="forget">Sign in</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
+
+
+<!-- 
 <section class="contactSingle padding background-properties" id="content"
     style="background-image:url(assets/img/subHeader/header.png);">
     <div class="container">
@@ -9,7 +58,7 @@
                     <h4>Please fill your Email in the form</h4>
                     <p>To to get a code </p>
                 </div>
-            </div><!-- end col-sm-4 -->
+            </div>
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>Reset Password</h2>
@@ -20,8 +69,8 @@
                             <input name="submit" type="submit" id="submit" value="Submit">
                         </p>
                     </form>
-                </div><!-- end contactForm -->
-            </div><!-- end col-sm-7 col-sm-offset-1 -->
+                </div>
+            </div>
         </div>
-    </div><!-- end container -->
-</section>
+    </div>
+</section> -->

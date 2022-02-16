@@ -1,6 +1,53 @@
 <p-toast></p-toast>
 <app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
-<section class="contactSingle padding background-properties static-image" id="content">
+
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Here We Go!</h2>
+            <p>Please fill the verification code To verify your account</p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <p-messages></p-messages>
+                <form class="comment-form" (ngSubmit)="verify()">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input id="VerificationCode" name="VerificationCode" type="text" aria-required="true"
+                                required placeholder="Verification Code *" [(ngModel)]="data.VerificationCode"
+                                #VerificationCode="ngModel" minlength="4">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 submit">
+                            <p><input name="submit" type="submit" id="submit" value="Verify"></p>
+                            <p class="have-account">
+                                <a (click)="resend()"> <span class="forget">Resend verification Code</span></a>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
+
+
+<!-- <section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
         <div class="row" style="min-height: 63vh;">
             <div class="col-sm-4">
@@ -10,7 +57,7 @@
                     <p>To verify your account
                     </p>
                 </div>
-            </div><!-- end col-sm-4 -->
+            </div>
             <div class="col-sm-7 col-sm-offset-1">
                 <div class="singleBlogForm">
                     <h2>Account Verification</h2>
@@ -22,8 +69,8 @@
                         </p>
                         <a (click)="resend()" style="color: black;"> Resend verification Code</a>
                     </form>
-                </div><!-- end contactForm -->
-            </div><!-- end col-sm-7 col-sm-offset-1 -->
+                </div>
+            </div>
         </div>
-    </div><!-- end container -->
-</section>
+    </div>
+</section> -->
