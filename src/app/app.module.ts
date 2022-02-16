@@ -92,6 +92,9 @@ import { AllCoursesComponent } from './website/all-courses/all-courses.component
 import { ProfileComponent } from './website/profile/profile.component';
 import { BiographyComponent } from './website/biography/biography.component';
 import { SingleLessonComponent } from './website/single-lesson/single-lesson.component';
+import { ContactComponent } from './website/contact/contact.component';
+import { ContactManagementComponent } from './admin/contact-management/contact-management.component';
+import { ContactInfoManagementComponent } from './admin/contact-info-management/contact-info-management.component';
 //#endregion components
 
 //#region Other
@@ -156,7 +159,10 @@ import { SingleLessonComponent } from './website/single-lesson/single-lesson.com
     AllCoursesComponent,
     ProfileComponent,
     BiographyComponent,
-    SingleLessonComponent
+    SingleLessonComponent,
+    ContactComponent,
+    ContactManagementComponent,
+    ContactInfoManagementComponent
   ],
   imports: [
     BrowserModule,

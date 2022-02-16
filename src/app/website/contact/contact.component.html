@@ -1,0 +1,63 @@
+<p-toast></p-toast>
+
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Get in touch!</h2>
+            <p>Reach out any time </p>
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-md-6 info">
+                <ul>
+                    <li *ngFor="let c of info"><a [href]="c.Value"></a> {{c.Name}}</li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-md-6 form">
+                <p-messages></p-messages>
+                <form class="comment-form" (ngSubmit)="sendContact()">
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <input id="Name" name="Name" type="text" aria-required="true" required placeholder="Name *"
+                                [(ngModel)]="form.Name" minlength="4">
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <input id="Email" name="Email" type="text" aria-required="true" required
+                                placeholder="Email *" [(ngModel)]="form.Email" minlength="4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12 col-md-6">
+                            <input id="Phone" name="Phone" type="text" aria-required="true" required
+                                placeholder="Phone *" [(ngModel)]="form.Phone" minlength="4">
+                        </div>
+                        <div class="col-xs-12 col-md-6">
+                            <input id="Subject" name="Subject" type="text" aria-required="true" required
+                                placeholder="Subject *" [(ngModel)]="form.Subject" minlength="4">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <textarea id="Message" name="Message" aria-required="true" required placeholder="Message *"
+                                [(ngModel)]="form.Message" cols="5"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-12 submit">
+                            <p><input name="submit" type="submit" id="submit" value="Send"></p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>

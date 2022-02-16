@@ -108,6 +108,22 @@ export class AdminNavbarComponent implements OnInit {
             },
           },
           {
+            label: 'Contact Info',
+            icon: 'pi pi-info',
+            routerLink: ['/dashboard/contact-info'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
+            label: 'Contact Messages',
+            icon: 'pi pi-envelope',
+            routerLink: ['/dashboard/contact'],
+            command: () => {
+              this.sideBarShow = false;
+            },
+          },
+          {
             label: 'Social Links',
             icon: 'pi pi-facebook',
             routerLink: ['/dashboard/social-media'],

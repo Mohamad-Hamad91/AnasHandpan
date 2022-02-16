@@ -27,14 +27,14 @@ export class AuthGaurdGuard implements CanActivate {
           }
         }
         if (this.authorized === false) {
-          this._router.navigate(['/admin']);
+          this._router.navigate(['/login']);
         }
         return this.authorized;
       } else {
         return true;
       }
     } else {
-      this._router.navigate(['/admin']);
+      this._router.navigate(['/login']);
       return false;
     }
   }

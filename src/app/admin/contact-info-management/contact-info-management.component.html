@@ -1,0 +1,111 @@
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text">
+</p-confirmDialog>
+<p-toast></p-toast>
+<div class="p-grid">
+    <div class="p-col-12">
+        <p-progressBar mode="indeterminate" [style]="{ height: '5px' }" *ngIf="waiting"></p-progressBar>
+        <div class="card">
+            <p-toolbar styleClass="p-mb-4">
+                <ng-template pTemplate="left">
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success p-mr-2"
+                        (click)="openNew()"></button>
+                </ng-template>
+                <ng-template pTemplate="right">
+                    <p-paginator *ngIf="!waiting" [rows]="params.PageSize" [totalRecords]="totalRecords"
+                        [rowsPerPageOptions]="[10,20,30]" (onPageChange)="paginate($event)"></p-paginator>
+                </ng-template>
+            </p-toolbar>
+        </div>
+        <p-table #dt dataKey="Id" [value]="data" [columns]="cols" styleClass="p-datatable-gridlines"
+            [resizableColumns]="true" responsive="true" [scrollable]="true" scrollHeight="400px"
+            [reorderableColumns]="true" [loading]="waiting">
+            <ng-template pTemplate="colgroup">
+                <colgroup>
+                    <col *ngFor="let col of cols">
+                </colgroup>
+            </ng-template>
+            <ng-template pTemplate="caption">
+                <div class="p-mb-4">
+                    <button type="button" pButton pRipple icon="pi pi-filter-slash" (click)="clearFilter()"
+                        class="p-ml-6 clearFilter" pTooltip="clearFilter" *ngIf="filtersNo>0"
+                        tooltipPosition="bottom"></button>
+                </div>
+
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th pSortableColumn="{{col.field}}" pResizableColumn pReorderableColumn class="p-text-{{col.align}}"
+                        *ngFor="let col of cols">
+                        {{col.header}}
+                        <p-sortIcon field="{{col.field}}"></p-sortIcon>
+                    </th>
+                    <th>Action </th>
+                </tr>
+                <tr>
+                    <th *ngFor="let col of cols" pResizableColumn class="autocomplete">
+                        <input pInputText type="text" [(ngModel)]="criteria[col.field]" [style]="{width:'90%'}"
+                            (input)="filterChange($any($event.target).value, col.field)" class="filterInputCss" />
+                    </th>
+                    <th></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-row>
+                <tr>
+                    <td pReorderableRowHandle *ngFor="let col of cols">
+                        <div *ngIf="!row.isEditable">
+                            {{ row[col.field] }}
+                        </div>
+                        <div *ngIf="row.isEditable">
+                            <input type="text" pInputText id="col.field" [(ngModel)]="row[col.field]" />
+                        </div>
+                    </td>
+                    <td>
+                        <button type="button" pButton pRipple icon="pi pi-pencil" (click)="editRow(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable" pTooltip="Update"
+                            tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-save" (click)="update(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable" pTooltip="Save"
+                            tooltipPosition="bottom"></button> &nbsp;
+                        <button type="button" pButton pRipple icon="pi pi-times" (click)="cancel(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="row.isEditable" pTooltip="Cancel"
+                            tooltipPosition="bottom"></button>
+                        <button type="button" pButton pRipple icon="pi pi-trash" (click)="delete(row)"
+                            class="p-button-rounded p-button-warning" *ngIf="!row.isEditable && row.Id"
+                            pTooltip="Delete" tooltipPosition="bottom"></button>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-dialog [(visible)]="dialog" [style]="{width: '450px'}" header="Add a new Record" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div class="p-field">
+            <label for="name">Name</label>
+            <input type="text" pInputText id="name" [(ngModel)]="tmp.Name" required autofocus />
+            <small class="p-error" *ngIf="submitted && !tmp.Name">Name is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="SortOrder">SortOrder</label>
+            <p-inputNumber type="SortOrder" pInputText id="SortOrder" mode="decimal" [useGrouping]="false"
+                [(ngModel)]="tmp.SortOrder" required></p-inputNumber>
+            <small class="p-error" *ngIf="submitted && !tmp.SortOrder">SortOrder is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Icon">Icon</label>
+            <input type="Icon" pInputText id="Icon" [(ngModel)]="tmp.Icon" required />
+            <small class="p-error" *ngIf="submitted && !tmp.Icon">Icon is required.</small>
+        </div>
+        <div class="p-field">
+            <label for="Value">Value</label>
+            <input type="Value" pInputText id="Value" [(ngModel)]="tmp.Value" required />
+            <small class="p-error" *ngIf="submitted && !tmp.Value">Value is required.</small>
+        </div>
+    </ng-template>
+
+    <ng-template pTemplate="footer">
+        <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="save()"></button>
+    </ng-template>
+</p-dialog>

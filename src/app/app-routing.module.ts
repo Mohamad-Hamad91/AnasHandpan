@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLoginComponent } from './admin/admin-login/admin-login.component';
 import { AdminsComponent } from './admin/admins/admins.component';
 import { AlbumsManagementComponent } from './admin/albums-management/albums-management.component';
+import { ContactInfoManagementComponent } from './admin/contact-info-management/contact-info-management.component';
+import { ContactManagementComponent } from './admin/contact-management/contact-management.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
 import { CoverManagementComponent } from './admin/cover-management/cover-management.component';
 import { DashboardComponent } from './admin/dashboard/dashboard.component';
@@ -28,6 +30,7 @@ import { AllEventsComponent } from './website/all-events/all-events.component';
 import { AllNewsComponent } from './website/all-news/all-news.component';
 import { AllProductsComponent } from './website/all-products/all-products.component';
 import { BiographyComponent } from './website/biography/biography.component';
+import { ContactComponent } from './website/contact/contact.component';
 import { DetailsComponent } from './website/details/details.component';
 import { ForgetPassCodeComponent } from './website/forget-pass-code/forget-pass-code.component';
 import { ForgetPassComponent } from './website/forget-pass/forget-pass.component';
@@ -76,6 +79,10 @@ const routes: Routes = [
   { path: 'forget-password', component: ForgetPassComponent },
   { path: 'forget-password-code', component: ForgetPassCodeComponent },
   { path: 'logout', component: LogoutComponent },
+  { path: 'contact', component: ContactComponent,
+  //  canActivate: [AuthGaurdGuard]
+},
+
   //#endregion website section
 
   //#region Admin section
@@ -100,6 +107,14 @@ const routes: Routes = [
       },
       {
         path: 'sections', component: SectionsComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'contact-info', component: ContactInfoManagementComponent, canActivate: [AuthGaurdGuard],
+        data: { roles: ['1'] }
+      },
+      {
+        path: 'contact', component: ContactManagementComponent, canActivate: [AuthGaurdGuard],
         data: { roles: ['1'] }
       },
       {
