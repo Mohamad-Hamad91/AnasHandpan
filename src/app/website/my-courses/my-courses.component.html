@@ -1,5 +1,39 @@
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <a routerLink="/">Home</a>&nbsp;&nbsp;&nbsp;
+            <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+            My Courses
+        </div>
+    </div>
+</section>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row" *ngFor="let c of data">
+                    <div class="col-xs-8">
+                        <img [src]="baseURL + c.Photo" alt="">
+                    </div>
+                    <div class="col-xs-4">
+                        <div class="proTitle">
+                            <h2>{{c.Title}}</h2>
+                            <p [routerLink]="'/details/single-course/' + c.Id">{{c.Brief}}</p>
+                        </div>
+                        <a [routerLink]="'/details/single-course/' + c.Id" class="btn">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" *ngIf="totlaCount > data?.length" style="text-align: center; margin-top: 1%;">
+        <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
+    </div>
+</section>
+
 <!-- =============== START SHOP SECTION ================ -->
-<section id="content">
+<!-- <section id="content">
     <div class="container-fluid">
         <div class="row" style="padding-bottom:0!important;">
             <div class="col-sm-12">
@@ -41,6 +75,6 @@
             <button class="btn btn-primary" (click)="loadMore()" style="color: rgb(87, 82, 82);">Load More</button>
         </div>
     </div>
-</section>
+</section> -->
 
 <!-- =============== END SHOP SECTION ================ -->

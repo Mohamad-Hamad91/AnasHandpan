@@ -1,8 +1,32 @@
 <p-toast></p-toast>
-<section
+
+<section class="main-content">
+    <div class="bread-crumb">
+        <div class="container">
+            <div class="row">
+                <a routerLink="/details/Courses">Courses</a>&nbsp;&nbsp;&nbsp;
+                <span class="fa fa-arrow-right"></span>&nbsp;&nbsp;&nbsp;
+                {{data.Title}}
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="main-img col-12">
+            <video #videoElement controls style="width: 100%;">
+                <source type="video/mp4" />
+            </video>
+        </div>
+        <div class="course-title">
+            <h3>{{data.Title}}</h3>
+        </div>
+        <div class="brief" [innerHTML]="data.Description"></div>
+    </div>
+</section>
+
+
+<!-- <section
     style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 150%; min-height: 100vh; overflow: hidden;">
     <section class="main-content">
-        <!-- =============== START SHOP-SINGLE SECTION ================ -->
         <section class="paddingShopSingle">
             <div class="container">
                 <div class="row">
@@ -23,7 +47,7 @@
                                 </video>
                             </div>
                         </div>
-                    </div><!-- end row -->
+                    </div>
                 </div>
             </div>
         </section>
@@ -44,4 +68,4 @@
 
 
     </section>
-</section>
+</section> -->
