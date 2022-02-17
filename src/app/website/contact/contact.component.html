@@ -27,22 +27,28 @@
                 <form class="comment-form" (ngSubmit)="sendContact()">
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
-                            <input id="Name" name="Name" type="text" aria-required="true" required placeholder="Name *"
-                                [(ngModel)]="form.Name" minlength="4">
+                            <input id="FirstName" name="FirstName" type="text" aria-required="true" required placeholder="First Name *"
+                                [(ngModel)]="form.FirstName" minlength="4">
                         </div>
                         <div class="col-xs-12 col-md-6">
-                            <input id="Email" name="Email" type="text" aria-required="true" required
-                                placeholder="Email *" [(ngModel)]="form.Email" minlength="4">
+                            <input id="LastName" name="LastName" type="text" aria-required="true" required placeholder="Last Name *"
+                                [(ngModel)]="form.LastName" minlength="4">
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-xs-12 col-md-6">
+                            <input id="Email" name="Email" type="text" aria-required="true" required
+                                placeholder="Email *" [(ngModel)]="form.Email" minlength="4">
+                        </div>
+                        <div class="col-xs-12 col-md-6">
                             <input id="Phone" name="Phone" type="text" aria-required="true" required
                                 placeholder="Phone *" [(ngModel)]="form.Phone" minlength="4">
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-xs-12 col-md-6">
                             <input id="Subject" name="Subject" type="text" aria-required="true" required
-                                placeholder="Subject *" [(ngModel)]="form.Subject" minlength="4">
+                            placeholder="Subject *" [(ngModel)]="form.Subject" minlength="4">
                         </div>
                     </div>
                     <div class="row">

@@ -20,4 +20,6 @@ export class ContactForm {
     Phone: string;
     Subject: string;
     Message: string;
+    FirstName: string;
+    LastName: string;
 }

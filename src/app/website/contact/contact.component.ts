@@ -38,6 +38,7 @@ export class ContactComponent implements OnInit {
   }
 
   sendContact() {
+    this.form.Name = this.form.FirstName + ' ' + this.form.LastName;
     this._contactService
       .sendContact(this.form)
       .subscribe(res => {
