@@ -11,43 +11,60 @@
         </div>
     </div>
     <div class="container">
-        <div class="main-img col-12">
-            <video [src]="baseURL + data.Demo" controls style="width: 100%;"></video>
+        <div *ngIf="data.IsEnrolled != 1">
+            <div class="main-img col-12">
+                <video [src]="baseURL + data.Demo" controls style="width: 100%;"></video>
+            </div>
+            <div class="course-title">
+                <h3>{{data.Title}}</h3>
+            </div>
+            <div class="brief">{{data.Brief}}</div>
+            <div class="description" [innerHTML]="data.Description"></div>
+            <div class="price">{{data.Price | currency}}</div>
+            <div class="enroll">
+                <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
+                    *ngIf="isLoggedIn && role == 'USER' && data.IsEnrolled != 1" [disabled]="enrollCilcked">
+                    Enroll Now!
+                </button>
+                <p *ngIf="!isLoggedIn || role != 'USER'">
+                    Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
+            </div>
         </div>
-        <div class="course-title">
-            <h3>{{data.Title}}</h3>
+
+        <div *ngIf="isLoggedIn && data.IsEnrolled == 1" class="enrolled">
+            <div class="main-img col-12">
+                <img [src]="baseURL + data.Photo" style="min-width: 70%;" />
+                <a *ngIf="nextLessonId" [href]="'/details/single-lesson/' + nextLessonId" class="btn next-lesson">Start Next Lesson</a>
+                <span *ngIf="!nextLessonId" class="btn next-lesson">You Watched All Lessons of this course</span>
+            </div>
         </div>
-        <div class="brief">{{data.Brief}}</div>
-        <div class="description" [innerHTML]="data.Description"></div>
-        <div class="price">{{data.Price | currency}}</div>
-        <div class="enroll">
-            <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
-                *ngIf="isLoggedIn && role == 'USER' && data.IsEnrolled != 1" [disabled]="enrollCilcked">
-                Enroll Now!
-            </button>
-            <p *ngIf="!isLoggedIn || role != 'USER'">
-                Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
-        </div>
-        <section>
-            <div class="shopTab">
+
+        <section *ngIf="isLoggedIn && data.IsEnrolled == 1">
+            <div class="shopTab lessons">
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-12">
-                            <div *ngIf="role === 'USER' && data.IsEnrolled == 1">
-                                <div class="col-sm-8 lessons">
-                                    <h2>Lessons</h2>
-                                    <ul>
-                                        <li class="lesson" *ngFor="let l of data.Lessons?.List">
-                                            <a [routerLink]="'/details/single-lesson/' +l.Id">
-                                                <span class="lesson-title">{{l.Title}}</span>
-                                            </a>
-                                            <a [routerLink]="'/details/single-lesson/' +l.Id">
-                                                <img [src]="baseURL + l.Thumbnail" alt="" width="50">
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <ul>
+                                <li class="lesson" *ngFor="let l of data.Lessons?.List; index as i">
+                                    <span class="lesson-img">
+                                        <img [src]="baseURL + l.Thumbnail" alt="" width="50">
+                                    </span>
+                                    <span class="lesson-title">
+                                        <a [routerLink]="'/details/single-lesson/' +l.Id">
+                                            {{l.Title}}
+                                        </a>
+                                    </span>
+                                    <span class="lesson-duration">{{l.Duration}}</span>&nbsp;&nbsp;
+                                    <span class="fa fa-info-circle info"
+                                    
+                                    (click)="displayLessonInfo(i)"></span>&nbsp;&nbsp;
+
+                                    <a [routerLink]="'/details/single-lesson/' +l.Id" class="info">
+                                        <span class="fa fa-play"></span></a>&nbsp;&nbsp;
+                                    <span *ngIf="l.IsWatched != 1" class="fa fa-eye info"></span>
+                                    <span *ngIf="l.IsWatched == 1" class="fa fa-eye-slash info"></span>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -56,85 +73,13 @@
     </div>
 </section>
 
-<!-- <div class="main-content"></div>
-<section
-    style="background-image:url({{baseURL}}{{data.Photo}});background-size: cover;background-size: 100% 150%; min-height: 100vh; overflow: hidden;">
-    <section>
-        <section class="paddingShopSingle">
-            <div class="container">
-                <div class="row">
-                    <div class="clothing">
-                        <div class="col-sm-7 ">
-                            <a [href]="baseURL + data.Photo" class="lightbox">
-                                <video [src]="baseURL + data.Demo" controls style="width: 100%;"></video>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-5">
-                        <div class="productDetails">
-                            <nav>
-                                <a routerLink="/details/Courses">Back to Couses</a>
-                                <i class="fa fa-angle-double-right"></i>
-                                {{data.Title}}
-                            </nav>
-                            <h1>{{data.Title}}</h1>
-                            <p>{{data.Brief}}</p>
-                            <div class="productRating">
-                                <p class="price">{{data.Price | currency}}</p>
-                            </div>
 
-                            <div class="product-quantity woocommerce cart shop_table">
+<p-dialog [(visible)]="dialog" [style]="{width: '450px', 'color': '#fff', 'background':'#1b1d1f'}" header="Lesson Description" [modal]="true" styleClass="p-fluid">
+    <ng-template pTemplate="content">
+        <div [innerHTML]="lessonDescTmp"></div>
+    </ng-template>
 
-                                <button class="single_add_to_cart_button button alt buttonTT" (click)="enroll()"
-                                    *ngIf="isLoggedIn && role == 'USER' && data.IsEnrolled != 1"
-                                    [disabled]="enrollCilcked">
-                                    Enroll
-                                </button>
-                                <p *ngIf="!isLoggedIn || role != 'USER'">
-                                    Please <a routerLink="/login">Login</a> to Enroll this Course.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="shopTab">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div *ngIf="role === 'USER' && data.IsEnrolled == 1">
-                                <div class="col-sm-8 lessons">
-                                    <h2>Lessons</h2>
-                                    <table class="variations">
-                                        <thead>
-                                            <th>Title</th>
-                                            <th>Photo</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr *ngFor="let l of data.Lessons?.List">
-                                                <td class="value">
-                                                    <a [routerLink]="'/details/single-lesson/' +l.Id">{{l.Title}}</a>
-                                                </td>
-                                                <td class="value">
-                                                    <a [routerLink]="'/details/single-lesson/' +l.Id">
-                                                        <img [src]="baseURL + l.Thumbnail" alt="" width="50">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12">
-                            <div class="description">
-                                <span [innerHTML]="data.Description"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </section>
-</section> -->
+    <ng-template pTemplate="footer">
+        <button class="btn" (click)="hideDialog()">Close</button>
+    </ng-template>
+</p-dialog>

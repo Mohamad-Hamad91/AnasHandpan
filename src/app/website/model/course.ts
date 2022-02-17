@@ -48,6 +48,8 @@ export class CouerseLessone {
     Photo: string;
     Thumbnail: string;
     IsWatched: number;
+    Description: string;
+    Duration: string;
 }
 
 export class EnrollmentReq {

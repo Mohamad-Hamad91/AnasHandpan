@@ -19,6 +19,9 @@ export class SingleCourseComponent implements OnInit {
   role: string;
   isLoggedIn: boolean = false;
   enrollCilcked: boolean = false;
+  dialog: boolean;
+  lessonDescTmp: string;
+  nextLessonId: string;
 
   constructor(private _courseService: CourseService, private _activatedRoute: ActivatedRoute,
     private _messageService: MessageService) { }
@@ -39,6 +42,7 @@ export class SingleCourseComponent implements OnInit {
       .subscribe(res => {
         this.data = res.Data;
         this.waiting = false;
+        this.nextLessonId = this.data.Lessons.List?.find(lesson => lesson.IsWatched != 1)?.Id;
       }, er => this.waiting = false);
   }
 
@@ -66,6 +70,16 @@ export class SingleCourseComponent implements OnInit {
           });
         }, er => this.waiting = false);
     }
+  }
+
+  displayLessonInfo(index) {
+    // debugger;
+    this.lessonDescTmp = this.data.Lessons?.List[index].Description;
+    this.dialog = true;
+  }
+
+  hideDialog() {
+    this.dialog = false;
   }
 
 }

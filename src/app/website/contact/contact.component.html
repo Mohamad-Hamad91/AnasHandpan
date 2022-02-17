@@ -16,7 +16,10 @@
         <div class="row">
             <div class="col-xs-12 col-md-6 info">
                 <ul>
-                    <li *ngFor="let c of info"><a [href]="c.Value"></a> {{c.Name}}</li>
+                    <li *ngFor="let c of info">
+                        <span class="fa fa-{{c.Icon}}"></span>&nbsp;&nbsp;
+                        <span>{{c.Name}}: </span> {{c.Value}}
+                    </li>
                 </ul>
             </div>
             <div class="col-xs-12 col-md-6 form">
