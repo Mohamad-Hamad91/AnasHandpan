@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Home } from 'src/app/website/model/home';
+import { DataService } from 'src/app/website/service/data.service';
 import { AdminAuthService } from '../service/admin-auth.service';
 
 @Component({
@@ -11,12 +13,17 @@ export class AdminLoginComponent implements OnInit {
 
   Username: string = '';
   Password: string = '';
+  headerData: Home = new Home();
 
-  constructor(private _router: Router, private _authService: AdminAuthService) { }
+  constructor(private _router: Router, private _authService: AdminAuthService,
+    private _dataService: DataService) { }
 
   ngOnInit(): void {
-    let loader = document.getElementById('page-loader');
-    loader.style.display = 'none';
+    this._dataService.get().subscribe(res => {
+      this.headerData = res.Data;
+      let loader = document.getElementById('page-loader');
+      loader.style.display = 'none';
+    });
   }
 
   login() {

@@ -33,34 +33,33 @@ export class SingleLessonComponent implements OnInit {
     this._dataService.getLesson(this.lessonId)
       .subscribe(res => {
         this.data = res.Data;
+        if (
+          "MediaSource" in window &&
+          MediaSource.isTypeSupported(this.mimeCodec)
+        ) {
+          const mediaSource = new MediaSource();
+          (this.video.nativeElement as HTMLVideoElement).src = URL.createObjectURL(mediaSource);
+          this.ready = true;
+          mediaSource.addEventListener("sourceopen", () => {
+            this.sourceOpen(mediaSource);
+            console.log('Source opened');
+
+          });
+        } else {
+          console.error("Unsupported MIME type or codec: ", this.mimeCodec);
+        }
       });
   }
 
   ngAfterViewInit() {
-    if (
-      "MediaSource" in window &&
-      MediaSource.isTypeSupported(this.mimeCodec)
-    ) {
-      const mediaSource = new MediaSource();
-      (this.video.nativeElement as HTMLVideoElement).src = URL.createObjectURL(
-        mediaSource
-      );
-      this.ready = true;
-      mediaSource.addEventListener("sourceopen", () => {
-        this.sourceOpen(mediaSource);
-        console.log('Source opened');
-        
-      });
-    } else {
-      console.error("Unsupported MIME type or codec: ", this.mimeCodec);
-    }
+
   }
 
   sourceOpen(mediaSource: MediaSource) {
     let sourceBuffer = mediaSource.addSourceBuffer(this.mimeCodec);
-    const SID = '61e53de94beefd8370148ca2';
+    const SID = localStorage.getItem('sID');
     const headers = new HttpHeaders({ auth: `${SID}` });
-    const url = this.baseURL + '/uploads/protected/616ac37c9ae158631a7a68af/2ba464d6-429f-4eda-8c26-969b29620652.mp4';
+    const url = this.baseURL + this.data.Video;
     return this.http
       .get(url, {
         headers,
@@ -68,12 +67,13 @@ export class SingleLessonComponent implements OnInit {
       })
       .subscribe(async (blob) => {
         console.log('get buffer');
+        this.video.nativeElement.src = URL.createObjectURL(blob);
         // sourceBuffer.addEventListener("updateend", () => {
-        //   mediaSource.endOfStream();
-        //   this.video.nativeElement.play();
+        // mediaSource.endOfStream();
+        // this.video.nativeElement.play();
         // });
         // blob.arrayBuffer().then(x => sourceBuffer.appendBuffer(x));
-        sourceBuffer.appendBuffer((await blob.arrayBuffer()));
+        // sourceBuffer.appendBuffer((await blob.arrayBuffer()));
       });
   }
 

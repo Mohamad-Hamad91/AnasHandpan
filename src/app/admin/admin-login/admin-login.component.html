@@ -1,6 +1,17 @@
+<app-top-header *ngIf="headerData.SideMenu" [data]="headerData.SideMenu"></app-top-header>
+
+<section class="bread-crumb">
+    <div class="container">
+        <div class="row">
+            <h2>Welcome back Admin</h2>
+            <p>Enter your credentials to sign in</p>
+        </div>
+    </div>
+</section>
+
 <section class="contactSingle padding background-properties static-image" id="content">
     <div class="container">
-        <div class="row" style="min-height: 63vh;">
+        <div class="row" style="min-height: 50vh;">
             <div class="col-sm-4">
                 <div class="contactTop">
                     <h2>Dashboard</h2>
@@ -10,7 +21,7 @@
                 </div>
             </div><!-- end col-sm-4 -->
             <div class="col-sm-7 col-sm-offset-1">
-                <div class="singleBlogForm">
+                <div>
                     <h2>LOG-IN</h2>
                     <form class="comment-form" (ngSubmit)="login()">
                         <input id="Username" name="Username" type="text" aria-required="true" required
@@ -26,3 +37,5 @@
         </div>
     </div><!-- end container -->
 </section>
+
+<app-footer [data]="headerData.SocialMediaLinks" *ngIf="headerData.SocialMediaLinks"></app-footer>
