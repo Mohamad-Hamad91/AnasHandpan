@@ -14,7 +14,7 @@ export class HomeRes extends BaseResponse {
 
 export class Home {
     CoverPhoto: string;
-    PersonalInfo: string;
+    PersonalInfo: string = '';
     SideMenu: Sections;
     SocialMediaLinks: SocialLinks[];
     Albums: Album[];

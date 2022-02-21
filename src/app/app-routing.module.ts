@@ -39,6 +39,7 @@ import { LoginComponent } from './website/login/login.component';
 import { LogoutComponent } from './website/logout/logout.component';
 import { MyCoursesComponent } from './website/my-courses/my-courses.component';
 import { MyOrdersComponent } from './website/my-orders/my-orders.component';
+import { PrivacyPolicyComponent } from './website/privacy-policy/privacy-policy.component';
 import { ProfileComponent } from './website/profile/profile.component';
 import { RegisterComponent } from './website/register/register.component';
 import { SingleAlbumComponent } from './website/single-album/single-album.component';
@@ -47,6 +48,7 @@ import { SingleEventComponent } from './website/single-event/single-event.compon
 import { SingleLessonComponent } from './website/single-lesson/single-lesson.component';
 import { SingleNewsComponent } from './website/single-news/single-news.component';
 import { SingleProductComponent } from './website/single-product/single-product.component';
+import { TermsConditionsComponent } from './website/terms-conditions/terms-conditions.component';
 import { VerifyComponent } from './website/verify/verify.component';
 
 const routes: Routes = [
@@ -54,9 +56,11 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'home/:section', component: HomeComponent },
-  { path: 'Biography', component: BiographyComponent },
   {
     path: 'details', component: DetailsComponent, children: [
+      { path: 'Biography', component: BiographyComponent },
+      { path: 'privacy-policy', component: PrivacyPolicyComponent },
+      { path: 'terms-and-conditions', component: TermsConditionsComponent },
       { path: 'Profile', component: ProfileComponent },
       { path: 'MyOrders', component: MyOrdersComponent },
       { path: 'MyCourses', component: MyCoursesComponent },
@@ -79,9 +83,10 @@ const routes: Routes = [
   { path: 'forget-password', component: ForgetPassComponent },
   { path: 'forget-password-code', component: ForgetPassCodeComponent },
   { path: 'logout', component: LogoutComponent },
-  { path: 'contact', component: ContactComponent,
-  //  canActivate: [AuthGaurdGuard]
-},
+  {
+    path: 'contact', component: ContactComponent,
+    //  canActivate: [AuthGaurdGuard]
+  },
 
   //#endregion website section
 

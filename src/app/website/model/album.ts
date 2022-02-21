@@ -39,4 +39,5 @@ export class Song {
     Name: string;
     Url: string;
     SortOrder: number;
+    Duration: string;
 }

@@ -12,68 +12,16 @@ import { DataService } from '../service/data.service';
 export class BiographyComponent implements OnInit {
 
   data: Home = new Home();
-  isAdmin: boolean = false;
-  isLoggedin: boolean = false;
-  sections: string[] = new Array();
-  role: string;
-  ready: boolean = false;
 
-  constructor(private _dataService: DataService, private _router: Router,
-    private _authService: AuthService) { }
+  constructor(private _dataService: DataService) { }
 
   ngOnInit(): void {
-    let loader = document.getElementById('page-loader');
-    loader.style.display = 'none';
+
     this._dataService.get().subscribe(res => {
       this.data = res.Data;
-      // for (const key in this.data.SideMenu) {
-      //   if (this.data.SideMenu[key] == '1') {
-      //     if (key == 'MyCourses' || key == 'MyOrders') {
-      //       if (this.isLoggedin && this.role === 'USER') this.sections.push(key);
-      //     } else this.sections.push(key);
-      //   }
-      // }
-      // this.ready = true;
+      let loader = document.getElementById('page-loader');
+      loader.style.display = 'none';
     });
-    this.role = localStorage.getItem('role');
-    this.isAdmin = this.role === '1' || this.role === '2';
-    this.isLoggedin = !!this.role;
-
-  }
-
-  // menuClicked() {
-  //   document.getElementById('open-menu')?.classList?.add('active');
-  //   document.getElementById('menu-fixed-container')?.classList?.add('open');
-  // }
-
-  // xClicked() {
-  //   document.getElementById('open-menu')?.classList?.remove('active');
-  //   document.getElementById('menu-fixed-container')?.classList?.remove('open');
-  // }
-
-  // navigateTo(element: string) {
-  //   this._router.navigate(['/details/' + element]);
-  //   this.xClicked();
-  // }
-
-  // logoutConfirm() {
-  //   this.xClicked();
-  //   const elm: HTMLElement = document.getElementById('cartParent');
-  //   elm.style.display = 'block';
-  // }
-
-  logout() {
-    this._authService
-    .logout()
-    .subscribe(res => {
-      localStorage.clear();
-      this._router.navigate(['/']);
-    }, er => { });
-  }
-
-  cancel() {
-    const elm: HTMLElement = document.getElementById('cartParent');
-    elm.style.display = 'none';
   }
 
 }

@@ -95,6 +95,9 @@ import { SingleLessonComponent } from './website/single-lesson/single-lesson.com
 import { ContactComponent } from './website/contact/contact.component';
 import { ContactManagementComponent } from './admin/contact-management/contact-management.component';
 import { ContactInfoManagementComponent } from './admin/contact-info-management/contact-info-management.component';
+import { TermsConditionsComponent } from './website/terms-conditions/terms-conditions.component';
+import { PrivacyPolicyComponent } from './website/privacy-policy/privacy-policy.component';
+import { SafeHtmlPipe } from './trust-html.pipe';
 //#endregion components
 
 //#region Other
@@ -162,7 +165,10 @@ import { ContactInfoManagementComponent } from './admin/contact-info-management/
     SingleLessonComponent,
     ContactComponent,
     ContactManagementComponent,
-    ContactInfoManagementComponent
+    ContactInfoManagementComponent,
+    TermsConditionsComponent,
+    PrivacyPolicyComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
