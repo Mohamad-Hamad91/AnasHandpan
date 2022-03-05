@@ -10,32 +10,29 @@
                 </div><!-- end sectionTtile -->
                 <div class="container">
                     <div class="row">
-                        <nav class="shop-products">
+                        <nav>
                             <ul class="clearfix">
                                 <li class="col-sm-4 col-xs-12 " [style]="{'margin-left':offset+'%'}"
                                     *ngFor="let course of data">
                                     <figure>
-                                        <figcaption>
-                                            <img [src]="baseURL + course.Photo" alt="">
-                                        </figcaption>
-                                        <div class="content">
-                                            <div class="shopHover">
-                                                <div class="price">
-                                                    <!-- &pound;  -->
-                                                    {{course.Price | currency}}
+                                        <a [routerLink]="'/details/single-course/' + course.Id">
+                                            <figcaption>
+                                                <img [src]="baseURL + course.Photo" alt="">
+                                            </figcaption>
+                                            <div class="content">
+                                                <div class="shopHover">
+
                                                 </div>
-                                                <div class="proTitle">
-                                                    <a
-                                                        [routerLink]="'/details/single-course/' + course.Id">{{course.Title}}</a>
-                                                </div>
-                                                <div class="product">{{course.Brief}}</div>
-                                                <!-- <a [routerLink]="'/details/single-course/' + course.Id" class="icon-button shopIcon"><i
-                                                    class="fa fa-shopping-cart"></i><span></span></a> -->
-                                                <a [routerLink]="'/details/single-course/' + course.Id"
-                                                    class="icon-button shopIcon"><i
-                                                        class="fa fa-info"></i><span></span></a>
                                             </div>
-                                        </div>
+                                            <div class="price">
+                                                {{course.Price | currency}}
+                                            </div>
+                                            <div class="proTitle">
+                                                <a [routerLink]="'/details/single-course/' + course.Id">
+                                                    {{course.Title}}
+                                                </a>
+                                            </div>
+                                        </a>
                                     </figure>
                                 </li>
                             </ul>

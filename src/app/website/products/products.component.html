@@ -10,34 +10,26 @@
                 </div><!-- end sectionTtile -->
                 <div class="container">
                     <div class="row">
-                        <nav class="shop-products">
+                        <nav>
                             <ul class="clearfix">
                                 <li class="col-sm-4 col-xs-12 " style="margin-left:{{offset}}%;"
                                     *ngFor="let product of data">
-                                    <figure>
-                                        <figcaption>
-                                            <img [src]="baseURL + product.Photo" alt="">
-                                        </figcaption>
-                                        <div class="content">
-                                            <div class="shopHover">
-                                                <div class="price">
-                                                    <!-- &pound;  -->
-                                                    {{product.Price | currency}}
+                                    <a [routerLink]="'/details/single-product/' + product.Id">
+                                        <figure>
+                                            <figcaption>
+                                                <img [src]="baseURL + product.Photo" alt="">
+                                            </figcaption>
+                                            <div class="content">
+                                                <div class="shopHover">
+
                                                 </div>
-                                                <div class="proTitle">
-                                                    <a
-                                                        [routerLink]="'/details/single-product/' + product.Id">{{product.Title}}</a>
-                                                </div>
-                                                <!-- <div class="product">Hoodie Aqura</div> -->
-                                                <!-- <a [routerLink]="'/details/single-product/' + product.Id"
-                                                class="icon-button shopIcon"><i
-                                                    class="fa fa-shopping-cart"></i><span></span></a> -->
-                                                <a [routerLink]="'/details/single-product/' + product.Id"
-                                                    class="icon-button shopIcon"><i
-                                                        class="fa fa-info"></i><span></span></a>
                                             </div>
+                                        </figure>
+                                        <div class="price">
+                                            {{product.Price | currency}}
                                         </div>
-                                    </figure>
+                                        <h3>{{product.Title}}</h3>
+                                    </a>
                                 </li>
                             </ul>
                         </nav><!-- end shop-products -->
