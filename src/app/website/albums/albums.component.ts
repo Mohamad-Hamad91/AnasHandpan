@@ -17,7 +17,7 @@ export class AlbumsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.albumOffset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 33;
+    this.albumOffset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 25;
   }
 
   diskHover(e: MouseEvent, index: number) {

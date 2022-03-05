@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.offset = (this.data.length > 2 || window.innerWidth < 1000) ? 0 : this.data.length == 2 ? 11.5 : 33;
+    this.offset = (this.data.length >= 2 || window.innerWidth < 1000) ? 0 : 25;
   }
 
 }
