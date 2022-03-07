@@ -11,34 +11,44 @@ import { ConfirmationService, MessageService } from 'primeng/api';
 })
 export class AdminsComponent implements OnInit {
 
+  //#region vars init
+  // for spinner
   waiting: boolean = false;
+  // table columns
   cols: TableColumn[] = new Array();
+  // list of roles to select from
   roles: Role[] = new Array();
+  // for pagination
   params: AdminsReq = { PageNumber: 1, PageSize: 10 };
+  // total count of records
   totalRecords: number = 0;
+  // main data list
   admins: Admin[] = new Array();
+  // for filtering, keep original data in a list
   adminsTemp: Admin[] = new Array();
+  // keep original record in it, if cancel the update operation then return the original value
   originalVal: any;
+  // for filtering
   criteria: any = {};
+  // filters number
   filtersNo: number = 0;
+  // if dialog submitted or cenceled
   submitted: boolean;
+  // to display or hide the create and update dialog
   dialog: boolean;
+  // temp object contains the created or updated object
   admin: Admin;
+  //#endregion vars init
 
   constructor(private _adminsService: AdminsService, private confirmationService: ConfirmationService,
     private _messageService: MessageService) { }
 
   ngOnInit(): void {
     this.cols = [
-      {
-        header: 'Username',
-        field: 'Username',
-      },
-      {
-        header: 'Role',
-        field: 'Role',
-      }
+      { header: 'Username', field: 'Username', },
+      { header: 'Role', field: 'Role', }
     ];
+    
     this.waiting = true;
     this._adminsService
       .getRoles()

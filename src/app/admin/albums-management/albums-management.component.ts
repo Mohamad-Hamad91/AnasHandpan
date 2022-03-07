@@ -14,8 +14,12 @@ import { DataService } from '../service/data.service';
 })
 export class AlbumsManagementComponent implements OnInit {
 
+  //#region vars init
+  // for spinner
   waiting: boolean = false;
+  // table columns
   cols: TableColumn[] = new Array();
+  // for pagination from the back-end
   params: AlbumReq = { PageNumber: 1, PageSize: 10 };
   totalRecords: number = 0;
   data: Album[] = new Array();
@@ -27,6 +31,7 @@ export class AlbumsManagementComponent implements OnInit {
   dialog: boolean;
   item: Album;
   baseURL: string = environment.baseURL;
+  //#endregion vars init
 
   constructor(private _albumService: AlbumService, private confirmationService: ConfirmationService,
     private _messageService: MessageService, private _dataService: DataService, private _route: Router) { }

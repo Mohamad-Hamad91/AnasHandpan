@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin-sidebar.component.html',
   styleUrls: ['./admin-sidebar.component.less']
 })
+/**
+ * @deprecated not used, we only use admin-navbar
+ */
 export class AdminSidebarComponent implements OnInit {
 
   constructor() { }
