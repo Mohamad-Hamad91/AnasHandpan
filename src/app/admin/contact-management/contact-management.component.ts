@@ -11,48 +11,42 @@ import { ContactManagementService } from '../service/contact-management.service'
 })
 export class ContactManagementComponent implements OnInit {
 
+  //#region vars init
+  // for spinner
   waiting: boolean = false;
+  // table columns
   cols: TableColumn[] = new Array();
+  // for pagination from the backend
   params: ContactInfoReq = { PageNumber: 1, PageSize: 10 };
+  // total nuber of records
   totalRecords: number = 0;
+  // data list of the table 
   data: ContactMessage[] = new Array();
+  // a temp list to keep the original data for filtering
   dataTemp: ContactMessage[] = new Array();
+  // a temp var to keep the original value of the updated record
   originalVal: any;
+  // an object contains all filters on the table
   criteria: any = {};
+  // count of the filters on the table
   filtersNo: number = 0;
+  // if the user submitted the dialog or not
   submitted: boolean;
+  // to display the dialog or not
   dialog: boolean;
+  // a temp variable contains the object in the form in the dialog
   tmp: ContactMessage;
+  //#endregion
 
   constructor(private _contactService: ContactManagementService, private confirmationService: ConfirmationService,
     private _messageService: MessageService) { }
 
   ngOnInit(): void {
     this.cols = [
-      {
-        header: 'Email',
-        field: 'Email',
-      },
-      {
-        header: 'Name',
-        field: 'Name',
-      },
-      {
-        header: 'Phone',
-        field: 'Phone',
-      },
-      {
-        header: 'Subject',
-        field: 'Subject',
-      },
-      // {
-      //   header: 'Date',
-      //   field: 'Date',
-      // },
-      // {
-      //   header: 'Message',
-      //   field: 'Message',
-      // }
+      { header: 'Email', field: 'Email', },
+      { header: 'Name', field: 'Name', },
+      { header: 'Phone', field: 'Phone', },
+      { header: 'Subject', field: 'Subject', },
     ];
 
     this.getData();

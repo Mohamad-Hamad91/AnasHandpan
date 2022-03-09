@@ -10,10 +10,13 @@ import { DataService } from '../service/data.service';
 })
 export class CoverManagementComponent implements OnInit {
 
+  //#region vars init
   data: { CoverPhoto: string };
   waiting: boolean;
   baseURL: string = environment.baseURL;
+  //  the admin can't save the changes if didn't uploaded an image
   canSave: boolean = false;
+  //#endregion
 
   constructor(private _dataService: DataService, private _messageService: MessageService) { }
 

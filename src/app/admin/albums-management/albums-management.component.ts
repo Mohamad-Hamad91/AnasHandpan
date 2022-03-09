@@ -21,15 +21,25 @@ export class AlbumsManagementComponent implements OnInit {
   cols: TableColumn[] = new Array();
   // for pagination from the back-end
   params: AlbumReq = { PageNumber: 1, PageSize: 10 };
+  // total number of records
   totalRecords: number = 0;
+  // the list of table data
   data: Album[] = new Array();
+  // keep a temp version of the data for filtering
   dataTemp: Album[] = new Array();
+  // keep the original value of the updated object
   originalVal: any;
+  // contains all filters on the table
   criteria: any = {};
+  // number of filters on the table
   filtersNo: number = 0;
+  // if the user submitted the operation in the dialog or not
   submitted: boolean;
+  // create or update dialog
   dialog: boolean;
+  // a temp object contains the item to be created or updated in the dialog
   item: Album;
+  // for the images because we store the url starts from the buplic folder
   baseURL: string = environment.baseURL;
   //#endregion vars init
 
@@ -39,26 +49,11 @@ export class AlbumsManagementComponent implements OnInit {
   ngOnInit(): void {
 
     this.cols = [
-      {
-        header: 'Name',
-        field: 'Name',
-      },
-      {
-        header: 'Photo',
-        field: 'Photo',
-      },
-      {
-        header: 'Genre',
-        field: 'Genre',
-      },
-      {
-        header: 'ReleaseDate',
-        field: 'ReleaseDate',
-      },
-      {
-        header: 'Appears In Home Page',
-        field: 'AppearInHomePage',
-      }
+      { header: 'Name', field: 'Name', },
+      { header: 'Photo', field: 'Photo', },
+      { header: 'Genre', field: 'Genre', },
+      { header: 'ReleaseDate', field: 'ReleaseDate', },
+      { header: 'Appears In Home Page', field: 'AppearInHomePage', }
     ];
 
     this.getData();
@@ -126,6 +121,7 @@ export class AlbumsManagementComponent implements OnInit {
       }, er => this.waiting = false);
   }
 
+  // cancel inline update operation
   cancel(row: Album) {
     // debugger;
     row = { ...this.originalVal };

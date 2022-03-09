@@ -14,19 +14,34 @@ import { DataService } from '../service/data.service';
 })
 export class CourseManagementComponent implements OnInit {
 
+  //#region vars init 
+  // for spinner
   waiting: boolean = false;
+  // columns table
   cols: TableColumn[] = new Array();
+  // for backend pagination
   params: CourseReq = { PageNumber: 1, PageSize: 10 };
+  // total number of records
   totalRecords: number = 0;
+  // table data
   data: Course[] = new Array();
+  // keeps the original data for filtering
   dataTemp: Course[] = new Array();
+  // a temp variable keeps the original value of the updated record
   originalVal: any;
+  // an object contains all filters on the table
   criteria: any = {};
+  // count of filters on the table
   filtersNo: number = 0;
+  // if the user submitted the dialog or not
   submitted: boolean;
+  // display the dialog
   dialog: boolean;
+  // contains the form data in the dialog
   item: Course;
+  // for images because in the database the url starts from the public folder
   baseURL: string = environment.baseURL;
+  //#endregion vars init 
 
   constructor(private _courseService: CourseService, private confirmationService: ConfirmationService,
     private _messageService: MessageService, private _route: Router, private _dataService: DataService) { }
@@ -34,34 +49,12 @@ export class CourseManagementComponent implements OnInit {
   ngOnInit(): void {
 
     this.cols = [
-      {
-        header: 'Title',
-        field: 'Title',
-      },
-      {
-        header: 'Photo',
-        field: 'Photo',
-      },
-      {
-        header: 'Price',
-        field: 'Price',
-      },
-      {
-        header: 'Brief',
-        field: 'Brief',
-      },
-      {
-        header: 'Description',
-        field: 'Description',
-      },
-      // {
-      //   header: 'Demo',
-      //   field: 'Demo',
-      // },
-      {
-        header: 'AppearInHomePage',
-        field: 'AppearInHomePage',
-      }
+      { header: 'Title', field: 'Title', },
+      { header: 'Photo', field: 'Photo', },
+      { header: 'Price', field: 'Price', },
+      { header: 'Brief', field: 'Brief', },
+      { header: 'Description', field: 'Description', },
+      { header: 'AppearInHomePage', field: 'AppearInHomePage', }
     ];
 
     this.getData();
