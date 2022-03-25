@@ -277,7 +277,7 @@ body{
 
 @media only screen and (max-width: 1025px) {
     .list-albums .list-feature li .album-icon .thumbs-album span {
-        opacity: 1;
+        opacity: 0;
     }
 }
 
@@ -336,7 +336,7 @@ body{
 
 @media only screen and (max-width: 1025px) {
     .list-albums .list-feature li .album-icon .disk {
-        display: none;
+        display: block;
     }
 }
 
@@ -360,17 +360,17 @@ body{
 }
 
 @media only screen and (min-width: 1170px) {
-    .list-albums .list-feature li:hover .album-icon {
+    .list-albums .list-feature li .album-icon {
         width: 270px;
         left: -20px;
     }
-    .list-albums .list-feature li:hover .album-icon .thumbs-album {
+    .list-albums .list-feature li .album-icon .thumbs-album {
         margin-left: 0px;
     }
-    .list-albums .list-feature li:hover .album-icon .thumbs-album span {
+    .list-albums .list-feature li .album-icon .thumbs-album span {
         opacity: 1;
     }
-    .list-albums .list-feature li:hover .disk {
+    .list-albums .list-feature li .disk {
         left: 120px;
     }
 }

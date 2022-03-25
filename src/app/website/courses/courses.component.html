@@ -2,45 +2,50 @@
 <section class="shopHomePage shopHomePadding hide-section">
     <div class="shopSection">
         <div class="container-fluid">
-            <div class="shopContent">
+            <div class="shopContent container">
                 <div class="sectionTitle paddingBottom">
-                    <span class="heading-t3"></span>
-                    <h2><a routerLink="/details/Courses">Learn To Play Handpan</a></h2>
-                    <span class="heading-b3"></span>
+                    <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
+                    <h1>Learn To Play Handpan</h1>
+                    <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
                 </div><!-- end sectionTtile -->
                 <div class="container">
-                    <div class="row">
-                        <nav>
+                    <div class="row" *ngFor="let course of data">
+                        <div class="col-xs-6 col-md-8">
+                            <!-- <a [routerLink]="'/details/single-course/' + course.Id"> -->
+                            <img [src]="baseURL + course.Photo" alt="">
+                            <a [routerLink]="'/details/single-course/' + course.Id" class="btn next-lesson">Play
+                                Demo</a>
+                            <!-- </a> -->
+                        </div>
+                        <div class="col-xs-6 col-md-4">
+                            <div class="proTitle">
+                                <a [routerLink]="'/details/single-course/' + course.Id">
+                                    {{course.Title}}
+                                </a>
+                            </div>
+                            <p class="price">
+                                {{course.Brief}}
+                            </p>
+                            <a [routerLink]="'/details/single-course/' + course.Id" class="btn btn-details">View Details</a>
+                        </div>
+                        <!-- <nav>
                             <ul class="clearfix">
                                 <li class="col-sm-4 col-xs-12 " [style]="{'margin-left':offset+'%'}"
                                     *ngFor="let course of data">
                                     <figure>
-                                        <a [routerLink]="'/details/single-course/' + course.Id">
-                                            <figcaption>
-                                                <img [src]="baseURL + course.Photo" alt="">
-                                            </figcaption>
-                                            <div class="content">
-                                                <div class="shopHover">
 
-                                                </div>
-                                            </div>
-                                            <div class="price">
-                                                {{course.Price | currency}}
-                                            </div>
-                                            <div class="proTitle">
-                                                <a [routerLink]="'/details/single-course/' + course.Id">
-                                                    {{course.Title}}
-                                                </a>
-                                            </div>
-                                        </a>
+                                       
                                     </figure>
                                 </li>
                             </ul>
-                        </nav><!-- end shop-products -->
+                        </nav> -->
                     </div><!-- end row -->
                 </div>
             </div><!-- end shopContent -->
         </div>
     </div>
+    <!-- <hr style="color: aliceblue;"> -->
+    <h2 class="view-all"><a routerLink="/details/Courses">View All</a></h2>
+    <!-- <hr style="color: aliceblue;"> -->
 </section>
 <!-- =============== END HOME-SHOP SECTION ================ -->

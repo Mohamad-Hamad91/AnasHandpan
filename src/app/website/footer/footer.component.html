@@ -5,12 +5,15 @@
       <div class="row">
         <div class="col-sm-4">
           <div class="copyFooter">
-            &copy; Anas Al Halabi {{year}} &nbsp; &nbsp; 
-            <a routerLink="/contact">Contact Us</a>
+            &copy; Anas Al Halabi {{year}} &nbsp; &nbsp;
+            <!-- <a routerLink="/contact">Contact Us</a> &nbsp; | &nbsp;
+            <a routerLink="/details/Biography">Biography</a> &nbsp; | &nbsp;
+            <a routerLink="/details/terms-and-conditions">Terms</a> &nbsp; | &nbsp;
+            <a routerLink="/details/privacy-policy">Privacy policy</a> &nbsp;  -->
           </div>
         </div>
         <div class="col-sm-4">
-          <nav class="social-icons">
+          <nav class="social-icons" style="text-align: center;">
             <ul class="clearfix">
               <li *ngFor="let link of data">
                 <a href="{{link.Url}}" class="icon-button shopIcon" target="_blank">
@@ -24,6 +27,17 @@
           <div class="goTop" id="back-to-top">
             <i class="fa fa-angle-up"></i>
             <a (click)="scrollToTop()" style="cursor: pointer;">Go Top</a>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-8">
+          <div class="copyFooter">
+            <a routerLink="/contact">Contact Us</a> &nbsp; | &nbsp;
+            <a routerLink="/details/Biography">Biography</a> &nbsp; | &nbsp;
+            <a routerLink="/details/terms-and-conditions">Terms</a> &nbsp; | &nbsp;
+            <a routerLink="/details/privacy-policy">Privacy policy</a>
           </div>
         </div>
       </div>

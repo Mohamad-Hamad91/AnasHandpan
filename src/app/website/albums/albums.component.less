@@ -2,23 +2,91 @@
 // padding-left: 6%;
 // padding-right: 6%;
 // }
+.albumsHome {
+  background-color: #1b1d1f !important;
+  padding-bottom: 1%;
+}
+
+.sectionTitle {
+  text-align: left;
+  h1 {
+    font-weight: 800;
+  }
+}
 
 .list-albums {
   padding-left: 4%;
 }
 
 .thumbs-album {
-  width: 400px !important;
-  height: 400px !important;
+  width: 600px !important;
+  height: 600px !important;
 }
 
 .disk {
-  width: 400px !important;
-  height: 400px !important;
+  width: 600px !important;
+  height: 600px !important;
   top: 0 !important;
 }
 
 .name {
   width: 100%;
   text-align: left;
+}
+
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+button,
+section {
+  font-family: "Montserrat Alternates", "Karla", sans-serif !important;
+  color: #ffffff !important;
+}
+
+// .thumbs-album {
+//   // margin-left: -90% !important;
+// }
+
+.name {
+  transform: translate(130%, -50%);
+  -ms-transform: translate(130%, -50%);
+  position: absolute;
+  right: 50%;
+  top: 50%;
+  // background: red;
+  z-index: 11;
+  height: 500px;
+  h3 {
+    font-size: xxx-large;
+  }
+  p {
+    font-size: x-large;
+  }
+  h3,
+  p {
+    margin-top: 50%;
+    text-shadow: #1b1d1f 1px 5px 5px;
+  }
+}
+
+.view-all {
+  padding-right: 2%;
+  text-align: right;
+  a {
+    font-weight: 800;
+  }
+}
+
+
+@media (max-width: 799px) {
+  .name {
+    transform: translate(50%, -50%);
+  -ms-transform: translate(50%, -50%);
+  }
 }

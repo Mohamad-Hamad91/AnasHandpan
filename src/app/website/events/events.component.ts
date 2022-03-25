@@ -13,6 +13,8 @@ export class EventsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.table(this.data);
+    
   }
 
 }

@@ -5,6 +5,7 @@ export class Album {
     Id: string;
     Name: string;
     Photo: string;
+    DiskPhoto: string;
     Genre: string;
     ReleaseDate: string;
     Thumbnail: string;

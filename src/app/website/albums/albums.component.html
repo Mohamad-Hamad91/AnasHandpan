@@ -1,39 +1,43 @@
 <!-- =============== START ALBUM COVER SECTION ================ -->
 <section class="padding albumsHome hide-section">
+    <!-- <hr style="color: aliceblue;"> -->
     <div class="container">
         <div class="row">
             <div class="col-sm-12">
                 <div class="sectionTitle paddingBottom">
-                    <span class="heading-t3"></span>
-                    <h2><a routerLink="/details/Albums">Picked For You</a></h2>
-                    <span class="heading-b3"></span>
+                    <h1>Picked For You</h1>
+                    <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
                 </div><!-- end sectionTtile -->
             </div><!-- end col-sm-12 -->
         </div>
         <div class="list-albums">
-            <ul class="list-feature col-md-12 col-xs-12 col-sm-12">
+            <ul class="list-feature col-md-12 col-xs-12 col-sm-12 col-md-6 offset-3">
                 <div class="row justify-content-md-center">
-                  <!-- {{data.length>4? '' : 'offset-' + floor(12/data.length/3)}}  -->
-                    <li class="col-md-4 "
-                      style="margin-left:{{albumOffset}}%;"
-                        *ngFor="let album of data; index as i">
+                    <!-- {{data.length>4? '' : 'offset-' + floor(12/data.length/3)}}  -->
+                    <li class="col-12" *ngFor="let album of data; index as i">
                         <div class="album-icon">
                             <span class="thumbs-album">
-                                <a [routerLink]="'/details/single-album/' + album.Id"><img width="400" height="400"
+                                <a [routerLink]="'/details/single-album/' + album.Id"><img width="600" height="600"
                                         [src]="baseURL + album.Thumbnail"
                                         class="attachment-album-thumbnail wp-post-image" alt="album-cover-1"></a>
                             </span>
-                            <span class="disk" style="background-image: url('{{ baseURL + album.Thumbnail }}');"></span>
+                            <a [routerLink]="'/details/single-album/' + album.Id">
+                                <span class="disk"
+                                    style="background-image: url('{{ baseURL + album.DiskPhoto }}');"></span>
+                                <div class="name">
+                                    <h3>{{album.Name}}</h3>
+                                    <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
+                                </div><!-- end name -->
+                            </a>
                         </div><!-- END ALBUM ICON -->
-                        <div class="name">
-                            <h3>{{album.Name}}</h3>
-                            <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
-                        </div><!-- end name -->
                     </li>
                 </div>
-
             </ul>
         </div><!-- end list-albums -->
+
     </div><!-- end container -->
+    <!-- <hr style="color: aliceblue;"> -->
+    <h2 class="view-all"><a routerLink="/details/Albums">View All</a></h2>
+    <!-- <hr style="color: aliceblue;"> -->
 </section>
 <!-- =============== END ALBUM COVER SECTION ================ -->

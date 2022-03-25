@@ -1,14 +1,11 @@
 <!-- =============== START HOME-BLOG SECTION ================ -->
-<section class="padding hide-section background-properties blogHomeSection news-bg">
+<section class="padding hide-section background-properties blogHomeSection news">
+    <div class="sectionTitle paddingBottom">
+        <h1>Stay Tuned</h1>
+    </div><!-- end sectionTtile -->
     <div class="container">
         <div class="row">
-            <div class="sectionTitle paddingBottom">
-                <span class="heading-t3"></span>
-                <h2><a routerLink="/details/News">Stay Tuned</a></h2>
-                <span class="heading-b3"></span>
-            </div><!-- end sectionTtile -->
-            <div class="col-sm-6 col-xs-12 " [style]="{'margin-left':offset+'%'}"
-                 *ngFor="let news of data">
+            <div class="col-sm-6 col-xs-12 " [style]="{'margin-left':offset+'%'}" *ngFor="let news of data">
                 <div class="blogBox">
                     <div class="imgBox"><img [src]="baseURL + news.Photo" alt="box-img"></div>
                     <div class="blogBoxContent">
@@ -23,7 +20,7 @@
                         </div><!-- end admin-list -->
                         <div class="blogParagraph">
                             <p>
-                            {{ (news.Brief.length>100)? (news.Brief | slice:0:100)+'...':(news.Brief) }}</p>
+                                {{ (news.Brief.length>100)? (news.Brief | slice:0:100)+'...':(news.Brief) }}</p>
                         </div>
                         <!--end blogParagraph  -->
                         <div class="rmButton">
@@ -34,5 +31,6 @@
             </div><!-- end col-sm-4 -->
         </div><!-- end container -->
     </div><!-- end row -->
+    <h2 class="view-all"><a routerLink="/details/Events">View All</a></h2>
 </section>
 <!-- =============== END HOME-NLOG SECTION ================ -->

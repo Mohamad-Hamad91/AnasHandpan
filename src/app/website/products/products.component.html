@@ -1,20 +1,18 @@
 <!-- =============== START HOME-SHOP SECTION ================ -->
-<section class="shopHomePage shopHomePadding hide-section">
+<section class="shopHomePage shopHomePadding hide-section products">
+    <div class="sectionTitle paddingBottom">
+        <h1>Instruments</h1>
+    </div><!-- end sectionTtile -->
     <div class="shopSection">
         <div class="container-fluid">
             <div class="shopContent">
-                <div class="sectionTitle paddingBottom">
-                    <span class="heading-t3"></span>
-                    <h2><a routerLink="/details/Products">Instruments</a></h2>
-                    <span class="heading-b3"></span>
-                </div><!-- end sectionTtile -->
                 <div class="container">
                     <div class="row">
                         <nav>
                             <ul class="clearfix">
-                                <li class="col-sm-4 col-xs-12 " style="margin-left:{{offset}}%;"
+                                <li class="col-sm-4 col-xs-12 " [style.marginLeft.%]="offset"
                                     *ngFor="let product of data">
-                                    <a [routerLink]="'/details/single-product/' + product.Id">
+                                    <a class="product" [routerLink]="'/details/single-product/' + product.Id">
                                         <figure>
                                             <figcaption>
                                                 <img [src]="baseURL + product.Photo" alt="">
@@ -25,10 +23,10 @@
                                                 </div>
                                             </div>
                                         </figure>
-                                        <div class="price">
+                                        <!-- <div class="price">
                                             {{product.Price | currency}}
-                                        </div>
-                                        <h3>{{product.Title}}</h3>
+                                        </div> -->
+                                        <h3 class="title">{{product.Title}}</h3>
                                     </a>
                                 </li>
                             </ul>

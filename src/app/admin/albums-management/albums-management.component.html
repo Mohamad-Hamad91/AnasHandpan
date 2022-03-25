@@ -113,10 +113,15 @@
         </div>
         <div class="p-field">
             <label for="Photo">Photo</label>
-            <!-- <input type="text" pInputText id="Photo" [(ngModel)]="item.Photo" required />
-            <small class="p-error" *ngIf="submitted && !item.Photo">Photo is required.</small> -->
             <img [src]="baseURL + item.Photo" width="50" alt="">
             <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUpload($event)" accept="image/*"
+                maxFileSize="15000000">
+            </p-fileUpload>
+        </div>
+        <div class="p-field">
+            <label for="DiskPhoto">Disk Photo</label>
+            <img [src]="baseURL + item.DiskPhoto" width="50" alt="">
+            <p-fileUpload name="demo[]" customUpload="true" (uploadHandler)="onUploadDisk($event)" accept="image/*"
                 maxFileSize="15000000">
             </p-fileUpload>
         </div>

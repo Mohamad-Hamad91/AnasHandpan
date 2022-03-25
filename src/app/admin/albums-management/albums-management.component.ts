@@ -223,6 +223,19 @@ export class AlbumsManagementComponent implements OnInit {
       }, er => this.waiting = false);
   }
 
+  onUploadDisk(event) {
+    this.waiting = true;
+    const file = event.files[0];
+    const formData: FormData = new FormData();
+    formData.append('file', file);
+    this._dataService.upload(formData)
+      .subscribe(res => {
+        this.item.DiskPhoto = res.Data.Url;
+        this.waiting = false;
+        this._messageService.add({ severity: 'success', summary: 'Uploaded Successfully!' });
+      }, er => this.waiting = false);
+  }
+
   gtoToSongs(row: Album) {
     this._route.navigate(['dashboard/songs/' + row.Id]);
   }
