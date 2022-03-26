@@ -4,8 +4,11 @@
 
 .sectionTitle {
   text-align: left;
+  padding-bottom: 2rem;
   h1 {
     font-weight: 800;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
   }
 }
 
@@ -21,6 +24,11 @@
 .proTitle {
   text-align: center;
   padding: 5%;
+  padding-top: 5rem;
+  h1 {
+    font-weight: 800;
+    padding-bottom: 3rem;
+  }
 }
 
 .content:hover {
@@ -81,7 +89,7 @@ section {
 
 @media (min-width: 800px) {
   .proTitle {
-    padding-top: 0%;
+    padding-top: 5rem;
   }
   .next-lesson {
     transform: translate(-100%, -100%);
@@ -90,6 +98,9 @@ section {
 }
 
 @media (max-width: 499px) {
+  .proTitle {
+    padding-top: 0;
+  }
   .next-lesson {
     font-size: 8px;
     padding: 5px 5px;
@@ -99,14 +110,27 @@ section {
 .view-all {
   padding-right: 2%;
   text-align: right;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   a {
     font-weight: 800;
   }
 }
 
 .btn-details {
-  float: right;
-  padding: 5%;
+  padding: 2rem 4rem;
   background-color: #515861;
   border-radius: 10%;
+}
+
+.course-details {
+  text-align: center;
+  p {
+    font-size: larger;
+    padding-bottom: 1rem;
+  }
+}
+
+.shopSection {
+  padding-bottom: 3rem;
 }

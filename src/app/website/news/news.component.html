@@ -1,8 +1,16 @@
 <!-- =============== START HOME-BLOG SECTION ================ -->
-<section class="padding hide-section background-properties blogHomeSection news">
-    <div class="sectionTitle paddingBottom">
-        <h1>Stay Tuned</h1>
-    </div><!-- end sectionTtile -->
+<section class="hide-section background-properties blogHomeSection news">
+    <div class="colored-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="sectionTitle">
+                        <h1>Stay Tuned</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-sm-6 col-xs-12 " [style]="{'margin-left':offset+'%'}" *ngFor="let news of data">
@@ -32,5 +40,6 @@
         </div><!-- end container -->
     </div><!-- end row -->
     <h2 class="view-all"><a routerLink="/details/Events">View All</a></h2>
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
 </section>
 <!-- =============== END HOME-NLOG SECTION ================ -->

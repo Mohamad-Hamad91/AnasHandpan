@@ -1,12 +1,23 @@
 <!-- =============== START EVENTS SECTION-1 ================ -->
 <section class="background-properties hide-section paddingHomeEvents events">
-    <div class="tableEvents">
-        <div class="sectionTitle paddingBottom">
-            <h1>Join Us</h1>
-        </div><!-- end sectionTtile -->
+    <div class="colored-header">
         <div class="container">
             <div class="row">
                 <div class="col-sm-12">
+                    <div class="sectionTitle">
+                        <h1>Join Us</h1>
+                    </div><!-- end sectionTtile -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tableEvents">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <!-- <div class="sectionTitle">
+                        <h1>Join Us</h1>
+                    </div> -->
                     <table>
                         <thead class="tableEventsTitle">
                             <th class="date">Date</th>
@@ -19,14 +30,17 @@
                             <td class="aqura-location">{{e.Venue}}</td>
                             <td class="aqura-city">{{e.Location}}</td>
                             <td class="aqura-tickets">
-                                <a class="aqura-tickets-btn"
-                                    [routerLink]="'/details/single-event/' + e.Id">View Details</a></td>
+                                <a class="aqura-tickets-btn" [routerLink]="'/details/single-event/' + e.Id">View
+                                    Details</a>
+                            </td>
                         </tr>
                     </table>
                 </div><!-- end col-sm-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
     </div><!-- end tableEvents -->
+    <!-- <hr style="color: aliceblue;"> -->
     <h2 class="view-all"><a routerLink="/details/Events">View All</a></h2>
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
 </section>
 <!-- =============== END EVENTS SECTION-1 ================ -->

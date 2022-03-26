@@ -1,12 +1,12 @@
 <!-- =============== START HOME-SHOP SECTION ================ -->
-<section class="shopHomePage shopHomePadding hide-section">
+<section class="shopHomePage hide-section">
     <div class="shopSection">
         <div class="container-fluid">
             <div class="shopContent container">
-                <div class="sectionTitle paddingBottom">
+                <div class="sectionTitle">
                     <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
                     <h1>Learn To Play Handpan</h1>
-                    <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
+                    <hr style="color: aliceblue; width: 600%; margin-left: -100%;">
                 </div><!-- end sectionTtile -->
                 <div class="container">
                     <div class="row" *ngFor="let course of data">
@@ -17,16 +17,17 @@
                                 Demo</a>
                             <!-- </a> -->
                         </div>
-                        <div class="col-xs-6 col-md-4">
+                        <div class="col-xs-6 col-md-4 course-details">
                             <div class="proTitle">
-                                <a [routerLink]="'/details/single-course/' + course.Id">
+                                <h1>
                                     {{course.Title}}
-                                </a>
+                                </h1>
                             </div>
-                            <p class="price">
+                            <p>
                                 {{course.Brief}}
                             </p>
-                            <a [routerLink]="'/details/single-course/' + course.Id" class="btn btn-details">View Details</a>
+                            <a [routerLink]="'/details/single-course/' + course.Id" class="btn btn-details">View
+                                Details</a>
                         </div>
                         <!-- <nav>
                             <ul class="clearfix">
@@ -44,8 +45,8 @@
             </div><!-- end shopContent -->
         </div>
     </div>
-    <!-- <hr style="color: aliceblue;"> -->
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
     <h2 class="view-all"><a routerLink="/details/Courses">View All</a></h2>
-    <!-- <hr style="color: aliceblue;"> -->
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
 </section>
 <!-- =============== END HOME-SHOP SECTION ================ -->

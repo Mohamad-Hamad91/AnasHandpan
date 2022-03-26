@@ -1,43 +1,64 @@
 <!-- =============== START ALBUM COVER SECTION ================ -->
 <section class="padding albumsHome hide-section">
-    <!-- <hr style="color: aliceblue;"> -->
-    <div class="container">
+    <hr style="color: aliceblue;">
+    <div class="container main-content">
         <div class="row">
             <div class="col-sm-12">
-                <div class="sectionTitle paddingBottom">
+                <div class="sectionTitle">
                     <h1>Picked For You</h1>
-                    <!-- <hr style="color: aliceblue; width: 600%; margin-left: -100%;"> -->
+                    <hr style="color: aliceblue; width: 600%; margin-left: -100%;">
                 </div><!-- end sectionTtile -->
             </div><!-- end col-sm-12 -->
         </div>
-        <div class="list-albums">
+        <div class="row">
+            <ul class="col-md-12" style="margin-left: 18rem;">
+                <li *ngFor="let album of data; index as i">
+                    <a [routerLink]="'/details/single-album/' + album.Id">
+                        <div class="row">
+                            <div class="col-md-6 disk-image">
+                                <div class="name">
+                                    <h3>{{album.Name}}</h3>
+                                    <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
+                                </div>
+                                <img width="500" height="500" [src]="baseURL + album.DiskPhoto"
+                                    class="attachment-album-thumbnail wp-post-image" alt="album-cover-1">
+                            </div>
+                            <div class="col-md-6 album-image">
+                                <img width="500" height="500" [src]="baseURL + album.Photo"
+                                    class="attachment-album-thumbnail wp-post-image" alt="album-cover-1">
+                            </div>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <!-- <div class="list-albums">
             <ul class="list-feature col-md-12 col-xs-12 col-sm-12 col-md-6 offset-3">
                 <div class="row justify-content-md-center">
-                    <!-- {{data.length>4? '' : 'offset-' + floor(12/data.length/3)}}  -->
                     <li class="col-12" *ngFor="let album of data; index as i">
                         <div class="album-icon">
                             <span class="thumbs-album">
-                                <a [routerLink]="'/details/single-album/' + album.Id"><img width="600" height="600"
+                                <a [routerLink]="'/details/single-album/' + album.Id"><img width="500" height="500"
                                         [src]="baseURL + album.Thumbnail"
                                         class="attachment-album-thumbnail wp-post-image" alt="album-cover-1"></a>
                             </span>
                             <a [routerLink]="'/details/single-album/' + album.Id">
                                 <span class="disk"
-                                    style="background-image: url('{{ baseURL + album.DiskPhoto }}');"></span>
+                                    style="background-image: url('{{ baseURL + album.DiskPhoto }}');background-repeat: no-repeat;"></span>
                                 <div class="name">
                                     <h3>{{album.Name}}</h3>
                                     <p>{{ album.Genre }} - {{ album.ReleaseDate | date }}</p>
-                                </div><!-- end name -->
+                                </div>
                             </a>
-                        </div><!-- END ALBUM ICON -->
+                        </div>
                     </li>
                 </div>
             </ul>
-        </div><!-- end list-albums -->
+        </div> -->
 
     </div><!-- end container -->
-    <!-- <hr style="color: aliceblue;"> -->
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
     <h2 class="view-all"><a routerLink="/details/Albums">View All</a></h2>
-    <!-- <hr style="color: aliceblue;"> -->
+    <hr style="color: aliceblue;margin-top: 0;margin-bottom: 0;">
 </section>
 <!-- =============== END ALBUM COVER SECTION ================ -->

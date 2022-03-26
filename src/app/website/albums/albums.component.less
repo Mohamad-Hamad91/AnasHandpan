@@ -4,11 +4,12 @@
 // }
 .albumsHome {
   background-color: #1b1d1f !important;
-  padding-bottom: 1%;
+  padding-bottom: 1rem;
 }
 
 .sectionTitle {
   text-align: left;
+  padding-bottom: 2rem;
   h1 {
     font-weight: 800;
   }
@@ -24,14 +25,38 @@
 }
 
 .disk {
-  width: 600px !important;
-  height: 600px !important;
+  width: 500px !important;
+  height: 500px !important;
   top: 0 !important;
 }
 
-.name {
-  width: 100%;
-  text-align: left;
+.disk-image {
+  overflow: hidden;
+  width: 500px !important;
+  height: 500px !important;
+  z-index: 10;
+  border-radius: 50%;
+  padding-left: 0%;
+  img {
+    height: 500px !important;
+    width: 500px !important;
+    max-width: 500px !important;
+  }
+}
+
+.album-image {
+  overflow: hidden;
+  width: 500px !important;
+  height: 500px !important;
+  z-index: 12;
+  padding-left: 0%;
+  transform: translateX(-238px);
+  -ms-transform: translateX(-238px);
+  img {
+    height: 500px !important;
+    width: 500px !important;
+    max-width: 500px !important;
+  }
 }
 
 a,
@@ -54,19 +79,21 @@ section {
 // }
 
 .name {
-  transform: translate(130%, -50%);
-  -ms-transform: translate(130%, -50%);
+  transform: translate(40%, -50%);
+  -ms-transform: translate(40%, -50%);
   position: absolute;
-  right: 50%;
-  top: 50%;
+  top: 60%;
   // background: red;
   z-index: 11;
   height: 500px;
+  width: 200px;
+  text-align: center;
   h3 {
-    font-size: xxx-large;
+    font-size: xx-large;
+    margin-top: 50%;
   }
   p {
-    font-size: x-large;
+    font-size: large;
   }
   h3,
   p {
@@ -78,15 +105,20 @@ section {
 .view-all {
   padding-right: 2%;
   text-align: right;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
   a {
     font-weight: 800;
   }
 }
 
+.main-content {
+  padding-bottom: 3rem;
+}
 
 @media (max-width: 799px) {
   .name {
     transform: translate(50%, -50%);
-  -ms-transform: translate(50%, -50%);
+    -ms-transform: translate(50%, -50%);
   }
 }
