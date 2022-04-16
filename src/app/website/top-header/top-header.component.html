@@ -47,12 +47,12 @@
                 <ul>
                     <!-- Menu Fixed Item -->
                     <li *ngIf="isAdmin">
-                        <a routerLink="/dashboard">
+                        <a routerLink="/dashboard" (click)="xClicked()">
                             Admin Dashboard
                         </a>
                     </li>
                     <li>
-                        <a routerLink="/home">
+                        <a routerLink="/home" (click)="xClicked()">
                             Home
                         </a>
                     </li>
@@ -61,37 +61,37 @@
                             {{section}}
                         </a>
                     </li>
-                    <li>
+                    <li (click)="xClicked()">
                         <a routerLink="/details/Biography">
                             Biography
                         </a>
                     </li>
-                    <li>
+                    <li (click)="xClicked()">
                         <a routerLink="/details/terms-and-conditions">
                             Terms & Conditions
                         </a>
                     </li>
-                    <li>
+                    <li (click)="xClicked()">
                         <a routerLink="/details/privacy-policy">
                             Privacy Policy
                         </a>
                     </li>
-                    <li>
+                    <li (click)="xClicked()">
                         <a routerLink="/contact">
                             Contact Us
                         </a>
                     </li>
-                    <li *ngIf="!isLoggedin">
+                    <li *ngIf="!isLoggedin" (click)="xClicked()">
                         <a routerLink="/admin">
                             Admin Login
                         </a>
                     </li>
-                    <li *ngIf="!isLoggedin">
+                    <li *ngIf="!isLoggedin" (click)="xClicked()">
                         <a routerLink="/login">
                             Login
                         </a>
                     </li>
-                    <li *ngIf="!isLoggedin">
+                    <li *ngIf="!isLoggedin" (click)="xClicked()">
                         <a routerLink="/register">
                             Register
                         </a>
