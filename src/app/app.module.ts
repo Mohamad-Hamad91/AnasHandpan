@@ -98,6 +98,8 @@ import { ContactInfoManagementComponent } from './admin/contact-info-management/
 import { TermsConditionsComponent } from './website/terms-conditions/terms-conditions.component';
 import { PrivacyPolicyComponent } from './website/privacy-policy/privacy-policy.component';
 import { SafeHtmlPipe } from './trust-html.pipe';
+import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
+import { AppleSigninModule } from 'ngx-apple-signin'
 //#endregion components
 
 //#region Other
@@ -194,12 +196,27 @@ import { SafeHtmlPipe } from './trust-html.pipe';
     CalendarModule,
     FileUploadModule,
     InputTextareaModule,
+    SocialLoginModule,
+    AppleSigninModule
   ],
   providers: [MessageService, ConfirmationService, {
     provide: HTTP_INTERCEPTORS,
     useClass: SessionInterceptor,
     multi: true
-  },],
+  },
+  {
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: true, //keeps the user signed in
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider('70372555090-501e2kerpumfhe02da1jje6vcs02kcr3.apps.googleusercontent.com') // your client id
+        }
+      ]
+    }
+  },
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
