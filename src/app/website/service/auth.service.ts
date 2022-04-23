@@ -30,8 +30,12 @@ export class AuthService {
     return this._http.post<LoginRes>(this._thisURL + 'login', data);
   }
 
-  googleLogin(data: {GoogleTokenId: string}) {
+  googleLogin(data: { GoogleTokenId: string }) {
     return this._http.post<any>(this._thisURL + 'loginWithGoogle', data);
+  }
+
+  appleLogin(data: { AppleTokenId: string, Name: string }) {
+    return this._http.post<any>(this._thisURL + 'loginWithApple', data);
   }
 
   requestForgetPassCode(data: VerifyResendReq): Observable<ForgetPassCodeRes> {

@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+
     this._dataService.get().subscribe(res => {
       this.headerData = res.Data;
       let loader = document.getElementById('page-loader');
@@ -80,31 +80,43 @@ export class LoginComponent implements OnInit {
 
   async signInWithApple() {
     const CLIENT_ID = "com.anashandpan.App"
-    const REDIRECT_API_URL = "https://anashandpan.bahaaobeid.com/frontend/"
+    const REDIRECT_API_URL = "https://dev.anashandpan.com/"
     window.open(
-        `https://appleid.apple.com/auth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_API_URL)}&response_type=code id_token&scope=name email&response_mode=form_post&usePopup=true`,
-        '_blank'
+      `https://appleid.apple.com/auth/authorize?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(REDIRECT_API_URL)}&response_type=code id_token&scope=name email&response_mode=form_post&usePopup=true`,
+      'mozillaWindow', 'left=100,top=100,width=420,height=420'
     );
 
     window.addEventListener('message', async event => {
-        const decodedToken = this.jwtHelper.decodeToken(event.data.id_token);
-        let requestData = {}
-        if (event.data.user) {
-            const userName = JSON.parse(event.data.user);
-            requestData = {
-                "email": decodedToken.email,
-                "name": `${userName.name.firstName} ${userName.name.lastName}`,
-                "socialId": decodedToken.sub,
-            };
-        } else {
-            requestData = {
-                "email": decodedToken.email,
-                "socialId": decodedToken.sub,
-            };
-        }
-        console.log(`User Data : ${requestData}`);
-        // do your next stuff here
+      const decodedToken = this.jwtHelper.decodeToken(event.data.id_token);
+      let requestData: any = {};
+      if (event.data.user) {
+        const userName = JSON.parse(event.data.user);
+        requestData = {
+          email: decodedToken.email,
+          name: `${userName.name.firstName} ${userName.name.lastName}`,
+          socialId: decodedToken.sub,
+        };
+      } else {
+        requestData = {
+          email: decodedToken.email,
+          socialId: decodedToken.sub,
+          name: decodedToken.email
+        };
+      }
+      console.log(`User Data : ${requestData}`);
+      this._authService.appleLogin({
+        AppleTokenId: event.data?.id_token,
+        Name: requestData?.name
+      })
+        .subscribe(backRes => {
+          debugger;
+          localStorage.setItem('role', 'USER');
+          localStorage.setItem('username', requestData?.name);
+          localStorage.setItem('email', requestData?.email);
+          localStorage.setItem('sID', backRes.Data?.SessionId);
+          this._router.navigate(['/']);
+        });
     });
-};
+  };
 
 }
