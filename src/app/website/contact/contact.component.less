@@ -39,7 +39,7 @@ p {
 
 input[type="text"],
 input[type="password"],
-textarea  {
+textarea {
   width: 100%;
   border-bottom: 1px solid #1b1d1f;
   border-top: none;
@@ -55,8 +55,8 @@ textarea  {
 }
 
 textarea {
-    line-height: 1.7em;
-    min-height: 100px;
+  line-height: 1.7em;
+  min-height: 100px;
 }
 
 .form-submit {
@@ -70,46 +70,14 @@ textarea {
   cursor: pointer;
 }
 
-@media (max-width: 799px) {
-  .bread-crumb {
-    padding-top: 20%;
-    padding-bottom: 2%;
-    font-size: medium;
-  }
-  h2 {
-    font-size: 80%;
-  }
-  p {
-    font-size: 60%;
-    line-height: 1.7em;
-  }
-}
-
-@media (max-width: 499px) {
-  .bread-crumb {
-    padding-top: 25%;
-    padding-bottom: 5%;
-    font-size: small;
-  }
-  h2 {
-    font-size: 60%;
-    font-weight: 600;
-  }
-
-  p {
-    font-size: 40%;
-    line-height: 1.7em;
-  }
-}
-
-input[type="submit"]{
+input[type="submit"] {
   color: #ffffff;
   border-radius: 10%;
   padding: 5% 10%;
   background-color: #515861;
 }
 
-input[type="submit"]:hover{
+input[type="submit"]:hover {
   background-color: #9a3333;
   border-color: #9a3333;
   border-radius: 10%;
@@ -159,4 +127,58 @@ li {
 }
 .form {
   padding: 1%;
+}
+
+@media (max-width: 799px) {
+  li {
+    font-size: medium;
+    font-weight: 600;
+    line-height: 2.7em;
+    color: #1b1d1f;
+  }
+  h2 {
+    font-size: x-large;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: medium;
+    line-height: 1.7em;
+  }
+  .bread-crumb {
+    padding-top: 20%;
+    padding-bottom: 2%;
+    font-size: medium;
+  }
+  input,
+  textarea {
+    font-size: medium !important;
+  }
+}
+
+@media (max-width: 499px) {
+  li {
+    font-size: small;
+    font-weight: 600;
+    line-height: 2.7em;
+    color: #1b1d1f;
+  }
+  h2 {
+    font-size: large;
+    font-weight: 600;
+  }
+
+  p {
+    font-size: medium;
+    line-height: 1.7em;
+  }
+  .bread-crumb {
+    padding-top: 25%;
+    padding-bottom: 5%;
+    font-size: small;
+  }
+  input,
+  textarea {
+    font-size: small !important;
+  }
 }

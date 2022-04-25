@@ -59,38 +59,6 @@ input[type="password"] {
   font-weight: 600;
 }
 
-@media (max-width: 799px) {
-  .bread-crumb {
-    padding-top: 20%;
-    padding-bottom: 2%;
-    font-size: medium;
-  }
-  h2 {
-    font-size: 80%;
-  }
-  p {
-    font-size: 60%;
-    line-height: 1.7em;
-  }
-}
-
-@media (max-width: 499px) {
-  .bread-crumb {
-    padding-top: 25%;
-    padding-bottom: 5%;
-    font-size: small;
-  }
-  h2 {
-    font-size: 60%;
-    font-weight: 600;
-  }
-
-  p {
-    font-size: 40%;
-    line-height: 1.7em;
-  }
-}
-
 input[type="submit"] {
   color: #ffffff;
   border-radius: 10%;
@@ -110,14 +78,79 @@ input[type="submit"]:hover {
   font-weight: 600;
   border-radius: 10%;
   margin: 16px;
+  img {
+    width: 60px;
+  }
 }
 
 .btn-img:hover {
-    border-color: #9a3333;
-  }
+  border-color: #9a3333;
+}
 
 .btn-img:hover:after {
   background-color: #9a3333;
   border-color: #9a3333;
   border-radius: 10%;
+}
+
+@media (max-width: 799px) {
+  .bread-crumb {
+    padding-top: 20%;
+    padding-bottom: 2%;
+    font-size: medium;
+  }
+  h2 {
+    font-size: large;
+  }
+  p {
+    font-size: medium;
+    line-height: 1.7em;
+  }
+
+  .btn-img {
+    padding: 2% 15%;
+    font-size: x-large;
+    font-weight: 600;
+    border-radius: 10%;
+    margin: 16px;
+    img {
+      width: 40px;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    font-size: large;
+  }
+}
+
+@media (max-width: 499px) {
+  .bread-crumb {
+    padding-top: 25%;
+    padding-bottom: 5%;
+    font-size: small;
+  }
+  h2 {
+    font-size: large;
+  }
+  p {
+    font-size: medium;
+    line-height: 1.7em;
+  }
+
+  .btn-img {
+    padding: 1% 10%;
+    font-size: xx-large;
+    font-weight: 600;
+    border-radius: 10%;
+    margin: 16px;
+    img {
+      width: 20px;
+    }
+  }
+
+  input[type="text"],
+  input[type="password"] {
+    font-size: medium;
+  }
 }
